@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "833704384280",
-    "project_id": "appcovid-8c3ec",
-    "storage_bucket": "appcovid-8c3ec.appspot.com"
+    "project_number": "411939638303",
+    "project_id": "cardihealt",
+    "storage_bucket": "cardihealt.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:833704384280:android:12ea88af8f611e843a306d",
+        "mobilesdk_app_id": "1:411939638303:android:9488deafb7e580581cd92a",
         "android_client_info": {
-          "package_name": "project.main"
+          "package_name": "com.example.cardihealt"
         }
       },
       "oauth_client": [
         {
-          "client_id": "833704384280-2j2471fkulols5f58mlrmaq6fq6eddd0.apps.googleusercontent.com",
+          "client_id": "411939638303-cdau2064ei4ge2r66m70qkj37co6glas.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cardihealt",
+            "certificate_hash": "8dbf41931ad80b6247eda205c89e881ca10717d9"
+          }
+        },
+        {
+          "client_id": "411939638303-7p3nfsv2sf6uo4771jtt36gjllk61vgq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCPKuzGrMbeAK6ZZ5zdrMf7J4O_cS3xEJ0"
+          "current_key": "AIzaSyBMrPPH_NHlHM9veJ6rZ-CgBYBUMB2UbRU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "833704384280-2j2471fkulols5f58mlrmaq6fq6eddd0.apps.googleusercontent.com",
+              "client_id": "411939638303-7p3nfsv2sf6uo4771jtt36gjllk61vgq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -50,12 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnEntrar = (Button) findViewById(R.id.btnEntrar);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
         btnGmail=(Button) findViewById(R.id.btnGmail);
-        btnFacebook=(Button) findViewById(R.id.btnFacebook);
 
         btnEntrar.setOnClickListener(this);
         btnRegistrar.setOnClickListener(this);
         btnGmail.setOnClickListener(this);
-        btnFacebook.setOnClickListener(this);
 
         // Configurar Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -159,10 +157,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(i);
                 break;
 
-            case R.id.btnFacebook:
-
-
-                break;
             case R.id.btnGmail:
                 signIn();
                 break;
