@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "411939638303",
+    "project_id": "cardihealt",
+    "storage_bucket": "cardihealt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411939638303:android:9488deafb7e580581cd92a",
+        "android_client_info": {
+          "package_name": "com.example.cardihealt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411939638303-7p3nfsv2sf6uo4771jtt36gjllk61vgq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMrPPH_NHlHM9veJ6rZ-CgBYBUMB2UbRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411939638303-7p3nfsv2sf6uo4771jtt36gjllk61vgq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
