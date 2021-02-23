@@ -10,10 +10,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import com.example.cardihealt.Formularios.FormularioInfoPersonal;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
     private EditText userReg, passReg;
@@ -23,6 +30,8 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
     private String contraseña = "";
 
     private FirebaseAuth firebaseAuth;
+    DatabaseReference nDatabase;
+
     private ProgressDialog progressDialog;
 
     @Override
@@ -31,6 +40,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_registro);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        nDatabase= FirebaseDatabase.getInstance().getReference();
 
         userReg = (EditText) findViewById(R.id.userReg);
         passReg = (EditText) findViewById(R.id.passwordReg);
@@ -76,21 +86,28 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
         progressDialog.setMessage("Realizando registro Online...");
         progressDialog.show();
-
+        //Crea usuario
         firebaseAuth.createUserWithEmailAndPassword(usuario,contraseña)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(Registro.this,"Se ha registrado exitosamente",Toast.LENGTH_LONG).show();
+
+                            Intent intent=new Intent(getApplication(), FormularioInfoPersonal.class);
+                            startActivity(intent);
+                            finish();
+
                         }else{
-                            Toast.makeText(Registro.this,"No se pudo realizar el registro",Toast.LENGTH_LONG).show();
+                            if(task.getException() instanceof FirebaseAuthUserCollisionException){ //Si existe el usuario
+                                Toast.makeText(Registro.this,"El usuario ya existe",Toast.LENGTH_SHORT).show();
+
+                            }else{
+                                Toast.makeText(Registro.this,"No se pudo realizar el registro",Toast.LENGTH_LONG).show();
+                            }
                         }
                         progressDialog.dismiss();
                     }
                 });
-
-
     }
 
 

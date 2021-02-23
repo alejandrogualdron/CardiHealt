@@ -56,7 +56,4 @@
         android:textColor="#ffffff"
         android:text="Regresar"
         android:textStyle="bold"/>
-
-
-
 </LinearLayout>

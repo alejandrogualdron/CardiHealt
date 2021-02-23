@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Formularios.FormularioInfoPersonal1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:text="Bienvenido!" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="1"
+        android:text="Para comenzar es necesaria la siguiente información" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:text="Nombre:" />
+    <EditText
+        android:id="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:hint="Primer nombre"
+        android:textSize="15sp"
+        android:inputType="text" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:text="Apellido" />
+
+    <EditText
+        android:id="@+id/Apellido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:hint="Primer Apellido"
+        android:textSize="15sp"
+        android:inputType="text" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:text="Fecha de nacimiento" />
+
+    <EditText
+        android:id="@+id/Edad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:hint="Año de nacimiento :V"
+        android:textSize="15sp"
+        android:inputType="textEmailAddress" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="left"
+        tools:context=".Formularios.FormularioInfoPersonal1"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="204dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".Formularios.FormularioInfoPersonal1"
+            >
+
+            <TextView
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Peso"
+                />
+
+            <EditText
+                android:id="@+id/peso"
+                android:layout_width="181dp"
+                android:layout_height="match_parent"
+                android:hint="Ingrese su peso"
+                android:layout_marginLeft="20dp"
+                android:textSize="15sp"
+                android:inputType="number" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="vertical"
+            tools:context=".Formularios.FormularioInfoPersonal1">
+
+            <TextView
+                android:layout_width="199dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Altura" />
+
+            <EditText
+                android:id="@+id/Altura"
+                android:layout_width="199dp"
+                android:layout_height="match_parent"
+                android:hint="Ingrese su altura"
+                android:inputType="number"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Ingrese su perimetro abdominal"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Con un metro por favor midase el perimetro abdominal"/>
+
+    <EditText
+        android:id="@+id/perimetroAbdominal"
+        android:layout_width="181dp"
+        android:layout_height="match_parent"
+        android:hint="Ingrese perimetro"
+        android:layout_marginLeft="20dp"
+        android:textSize="15sp"
+        android:inputType="number" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:text="Genero" />
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <RadioButton
+            android:id="@+id/RegRadbtnSi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="H" />
+
+        <RadioButton
+            android:id="@+id/RegRadbtnNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M" />
+    </RadioGroup>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:context=".Formularios.FormularioInfoPersonal1">
+        <Button
+            android:id="@+id/btnAnteriorFormul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:background=""
+            android:drawableRight="@mipmap/anterior"
+            android:textStyle="bold" />
+    <Button
+        android:id="@+id/btnSiguienteFormul2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background=""
+        android:drawableRight="@mipmap/siguienteboton1"
+        android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>

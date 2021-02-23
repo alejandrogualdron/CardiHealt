@@ -3,14 +3,17 @@ package com.example.cardihealt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cardihealt.Formularios.FormularioInfoPersonal;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -21,22 +24,34 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
     private EditText user, pass;
-    private Button btnEntrar, btnRegistrar,btnGmail,btnFacebook;
+    private Button btnEntrar, btnRegistrar, btnGmail;
 
     private String usuario = "";
     private String contraseña = "";
 
     private FirebaseAuth firebaseAuth;
+    DatabaseReference nDatabase;
+
     private GoogleSignInClient mGoogleSignInClient;
     int RC_SIGN_IN = 1;
-    String TAG= "GoogleSignInLoginActivity";
+    String TAG = "GoogleSignInLoginActivity";
+    private ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +59,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        nDatabase= FirebaseDatabase.getInstance().getReference();
 
         user = (EditText) findViewById(R.id.userLogin);
         pass = (EditText) findViewById(R.id.passwordLogin);
+
         btnEntrar = (Button) findViewById(R.id.btnEntrar);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
-        btnGmail=(Button) findViewById(R.id.btnGmail);
+        btnGmail = (Button) findViewById(R.id.btnGmail);
 
         btnEntrar.setOnClickListener(this);
         btnRegistrar.setOnClickListener(this);
         btnGmail.setOnClickListener(this);
+        googlesSignInOptions();
 
+
+
+    }
+    public void googlesSignInOptions(){
         // Configurar Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -62,8 +84,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .build();
         // Crear un GoogleSignInClient con las opciones especificadas por gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -71,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            if(task.isSuccessful()){
+            if (task.isSuccessful()) {
                 try {
                     // Google Sign In was successful, authenticate with Firebase
                     GoogleSignInAccount account = task.getResult(ApiException.class);
@@ -81,9 +103,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // Google Sign In fallido, actualizar GUI
                     Log.w(TAG, "Google sign in failed", e);
                 }
-            }else{
+            } else {
                 Log.d(TAG, "Error, login no exitoso:" + task.getException().toString());
-                Toast.makeText(this, "Ocurrio un error. "+task.getException().toString(),
+                Toast.makeText(this, "Ocurrio un error. " + task.getException().toString(),
                         Toast.LENGTH_LONG).show();
             }
         }
@@ -96,13 +118,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithCredential:success");
-                            //FirebaseUser user = mAuth.getCurrentUser();
-                            // Iniciar DASHBOARD u otra actividad luego del SigIn Exitoso
-                            Intent dashboardActivity = new Intent(MainActivity.this, Menu.class);
-                            startActivity(dashboardActivity);
-                            MainActivity.this.finish();
+
+                                Log.d(TAG, "signInWithCredential:success");
+
+                                Intent dashboardActivity = new Intent(MainActivity.this, FormularioInfoPersonal.class);
+                                startActivity(dashboardActivity);
+
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -115,18 +138,88 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+
     }
 
     @Override
     protected void onStart() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        if(user!=null){ //si no es null el usuario ya esta logueado
+
+        if (user != null) { //si no es null el usuario ya esta logueado
+
+            String id= firebaseAuth.getCurrentUser().getUid();
+            nDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        Intent dashboardActivity = new Intent(MainActivity.this, Menu.class);
+                        startActivity(dashboardActivity);
+                    }else{
+                        Intent dashboardActivity = new Intent(MainActivity.this, FormularioInfoPersonal.class);
+                        startActivity(dashboardActivity);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+
+            /*
             //mover al usuario al dashboard
             Intent dashboardActivity = new Intent(MainActivity.this, Menu.class);
-            startActivity(dashboardActivity);
+            startActivity(dashboardActivity);*/
         }
         super.onStart();
     }
+
+    private void entrar() {
+            usuario = user.getText().toString().trim();
+            contraseña = pass.getText().toString().trim();
+
+            if(TextUtils.isEmpty(usuario)){
+                Toast.makeText(this,"Ingrese un email",Toast.LENGTH_LONG).show();
+                return;
+            }
+            if(TextUtils.isEmpty(contraseña)){
+                Toast.makeText(this,"Ingrese una contraseña",Toast.LENGTH_LONG).show();
+                return;
+            }
+            //Login de usuario
+            firebaseAuth.signInWithEmailAndPassword(usuario,contraseña)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                String id= firebaseAuth.getCurrentUser().getUid();
+                                nDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if(snapshot.exists()){
+                                            Intent dashboardActivity = new Intent(MainActivity.this, Menu.class);
+                                            startActivity(dashboardActivity);
+                                        }else{
+                                            Intent dashboardActivity = new Intent(MainActivity.this, FormularioInfoPersonal.class);
+                                            startActivity(dashboardActivity);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                    }
+                                });
+
+                            }else{
+                                if(task.getException() instanceof FirebaseAuthUserCollisionException){ //Si existe el usuario
+                                    Toast.makeText(MainActivity.this,"El usuario ya existe",Toast.LENGTH_SHORT).show();
+
+                                }else{
+                                    Toast.makeText(MainActivity.this,"No se pudo realizar el registro",Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        }
+                    });
+        }
 
     @Override
     public void onClick(View v) {
@@ -138,16 +231,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnEntrar:
 
-                if ((!usuario.equals("")) && (!contraseña.equals(""))) {
-                    /*
-                    if(usuario.equals("administrador@gmail.com") && contraseña.equals("123456")){
-                        Toast.makeText(this,"Administrador", Toast.LENGTH_LONG).show();
-                        loginAdmin();
-                    }else
-                        loginUser();*/
-                } else {
-                    Toast.makeText(this, "Error: Usuario o contraseña incorrectos", Toast.LENGTH_LONG).show();
-                }
+                entrar();
 
                 break;
 
@@ -162,4 +246,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
 }
