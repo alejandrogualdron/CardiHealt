@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.cardihealt.MainActivity;
@@ -21,9 +23,8 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_info_personal);
 
-        btnNext = (Button) findViewById(R.id.btnSiguienteFormul1);
+        btnNext = (Button) findViewById(R.id.btnSiguienteFormul);
         btnNext.setOnClickListener(this);
-
 
     }
 
@@ -32,7 +33,7 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
         Intent i;
         switch (v.getId()) {
 
-            case R.id.btnSiguienteFormul1:
+            case R.id.btnSiguienteFormul:
                 i = new Intent(FormularioInfoPersonal.this, FormularioInfoPersonal1.class);
                 startActivity(i);
                 break;

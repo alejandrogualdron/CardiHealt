@@ -40,7 +40,7 @@
         android:id="@+id/btnEntrar"
         android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:background="#33CCFF"
+        android:backgroundTint="@color/blue"
         android:textColor="#ffffff"
         android:layout_gravity="center"
         android:text="Entrar"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_gravity="center"
-        android:background="#33CCFF"
+        android:backgroundTint="@color/blue"
         android:textColor="#ffffff"
         android:text="Registrar"
         android:textStyle="bold"/>

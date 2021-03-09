@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Formularios.FormularioInfoPersonal2">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:text="HABITOS" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:context=".Formularios.FormularioInfoPersonal2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:text="Fumador" />
+            <RadioGroup
+                android:id="@+id/radioGroup3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+                <RadioButton
+                    android:id="@+id/RegRadbtnSi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Si" />
+
+                <RadioButton
+                    android:id="@+id/RegRadbtnNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No" />
+            </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:text="De ser afirmativa la anterior pregunta responda" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:context=".Formularios.FormularioInfoPersonal2">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:text="Numero de cigarrillos diarios" />
+
+        <EditText
+            android:id="@+id/etNumeroCigarrillos"
+            android:layout_width="53dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:hint="    #"
+            android:inputType="number"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:context=".Formularios.FormularioInfoPersonal2">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="Años que lleva fumando" />
+
+        <EditText
+            android:id="@+id/etAñofumador"
+            android:layout_width="53dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:hint="    #"
+            android:inputType="number"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="20dp"
+        android:text="Marque a continuación cuales actividades realiza:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:context=".Formularios.FormularioInfoPersonal2">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".Formularios.FormularioInfoPersonal2">
+    <CheckBox
+        android:id="@+id/cbDormir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dormir"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbVerTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ver televisión"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <CheckBox
+        android:id="@+id/cbLeer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leer sentado"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <CheckBox
+        android:id="@+id/cbPlanchar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Planchar"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <CheckBox
+        android:id="@+id/cbConducir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manejar un auto"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".Formularios.FormularioInfoPersonal2">
+
+        <CheckBox
+            android:id="@+id/cbCocinar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cocinar"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <CheckBox
+            android:id="@+id/cbTrotar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trotar"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/cbSaltarCuerda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saltar Cuerda"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <CheckBox
+                android:id="@+id/cbCicla"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bicicleta "
+                android:layout_marginLeft="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <CheckBox
+                android:id="@+id/cbCaminarLento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Caminar lento en terreno plano"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:context=".Formularios.FormularioInfoPersonal2">
+
+        <Button
+            android:id="@+id/btnAnteriorFormul1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@android:color/white"
+            android:drawableRight="@drawable/anterior"
+            android:textStyle="bold"></Button>
+
+
+        <Button
+            android:id="@+id/btnSiguienteFormul2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="145dp"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@android:color/white"
+            android:drawableRight="@drawable/siguienteboton1"
+            android:textStyle="bold"></Button>
+    </LinearLayout>
+
+</LinearLayout>
