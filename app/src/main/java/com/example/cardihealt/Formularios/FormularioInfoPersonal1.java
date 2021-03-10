@@ -1,5 +1,6 @@
 package com.example.cardihealt.Formularios;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,10 +16,18 @@ import android.widget.Toast;
 import com.example.cardihealt.MainActivity;
 import com.example.cardihealt.R;
 import com.example.cardihealt.Registro;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FormularioInfoPersonal1 extends AppCompatActivity implements View.OnClickListener{
 
@@ -33,6 +42,11 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
      String perimetroAbdominal = "";
      String fechaNacimiento = "";
      String genero="";
+     String edad;
+
+    private DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +59,9 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
         etPerimetroAbdominal = (EditText) findViewById(R.id.etPerimetroAbdominal);
         etFechaN=(EditText)findViewById(R.id.etFechaEdad);
 
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
         etFechaEdad();
 
         btnAnterior = (Button) findViewById(R.id.btnAnteriorFormul);
@@ -54,14 +71,6 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
         btnAnterior.setOnClickListener(this);
         hombre = (RadioButton) findViewById(R.id.RegRadbtnHombre);
 
-        genero();
-        nombre =etNombre.getText().toString();
-        apellido =etApellido.getText().toString();
-        peso =etPeso.getText().toString();
-        altura =etAltura.getText().toString();
-        perimetroAbdominal =etPerimetroAbdominal.getText().toString();
-        nombre =etNombre.getText().toString();
-        fechaNacimiento=etFechaN.getText().toString();
 
 
     }
@@ -140,7 +149,7 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
         });
     }
 
-    /*public void calcEdad(){
+    public void calcEdad(){
 
         //Fecha actual
         Date date = new Date();
@@ -151,26 +160,55 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
         int añoActual= Integer.parseInt(parts[2]);
         int años=0;
 
-        if(!etEdad.getText().toString().equals("")){
+        if(!etFechaN.getText().toString().equals("")){
             //Fecha nacimiento
-            String fechaNacimiento= etEdad.getText().toString();
+            String fechaNacimiento= etFechaN.getText().toString();
             String[] parts1 = fechaNacimiento.split("/");
             int mesN = Integer.parseInt(parts1[1]);
             int añoN= Integer.parseInt(parts1[2]);
 
             if(mesActual<mesN){
-                años =añoN-añoActual-1;
+                años =añoActual-añoN-1;
             }else {
-                años= añoN-añoActual;
+                años= añoActual-añoN;
             }
             edad = años+"";
         }
-    }*/
+    }
+
+    public void crearDB(){
+        //Base de datos Firebase
+        Map<String,Object> map = new HashMap<>();
+        map.put("nombre",nombre);
+        map.put("apellido",apellido);
+        map.put("peso",peso);
+        map.put("altura",altura);
+        map.put("perimetro abdominal",perimetroAbdominal);
+        map.put("edad",edad);
+        map.put("genero",genero);
+
+        String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
+
+        mDatabase.child("Usuario").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(FormularioInfoPersonal1.this,"Se ha registrado exitosamente",Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(FormularioInfoPersonal1.this,"No se crearon los datos", Toast.LENGTH_LONG).show();
+                }
+            }
+
+        });
+
+    }
 
     @Override
     public void onClick(View v) {
         Intent i;
-
         switch (v.getId()) {
 
             case R.id.btnAnteriorFormul:
@@ -181,41 +219,23 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
                 break;
 
             case R.id.btnSiguienteFormul1:
+                genero();
+                calcEdad();
+                nombre =etNombre.getText().toString();
+                apellido =etApellido.getText().toString();
+                peso =etPeso.getText().toString();
+                altura =etAltura.getText().toString();
+                perimetroAbdominal =etPerimetroAbdominal.getText().toString();
+                nombre =etNombre.getText().toString();
+                fechaNacimiento=etFechaN.getText().toString();
 
-                i = new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
-                startActivity(i);
+                crearDB();
+
 
                 break;
         }
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public String getPeso() {
-        return peso;
-    }
-
-    public String getAltura() {
-        return altura;
-    }
-
-    public String getPerimetroAbdominal() {
-        return perimetroAbdominal;
-    }
-
-    public String getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
 
 
 

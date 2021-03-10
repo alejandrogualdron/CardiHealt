@@ -192,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 String id= firebaseAuth.getCurrentUser().getUid();
-                                nDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
+                                nDatabase.child("Usuario").child(id).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         if(snapshot.exists()){
