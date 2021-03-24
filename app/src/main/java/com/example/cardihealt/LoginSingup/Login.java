@@ -1,4 +1,4 @@
-package com.example.cardihealt;
+package com.example.cardihealt.LoginSingup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.cardihealt.Formularios.FormularioInfoPersonal;
+import com.example.cardihealt.Menu;
+import com.example.cardihealt.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -33,10 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private EditText user, pass;
     private Button btnEntrar, btnRegistrar, btnGmail;
@@ -72,10 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnRegistrar.setOnClickListener(this);
         btnGmail.setOnClickListener(this);
         googlesSignInOptions();
-
-
-
     }
+
     public void googlesSignInOptions(){
         // Configurar Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -121,12 +118,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             // Sign in success, update UI with the signed-in user's information
 
-                                Log.d(TAG, "signInWithCredential:success");
+                            if (user != null) { //si no es null el usuario ya esta logueado
 
-                                Intent dashboardActivity = new Intent(MainActivity.this, FormularioInfoPersonal.class);
-                                startActivity(dashboardActivity);
+                                String id= firebaseAuth.getCurrentUser().getUid();
+                                nDatabase.child("Informes").child(id
+                                ).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if(snapshot.exists()){
+                                            Intent dashboardActivity = new Intent(Login.this, Menu.class);
+                                            startActivity(dashboardActivity);
+                                        }else{
+                                            Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
+                                            startActivity(dashboardActivity);
+                                        }
+                                    }
 
-
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                    }
+                                });
+                            }
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
@@ -138,40 +150,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-
-    }
-
-    @Override
-    protected void onStart() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        if (user != null) { //si no es null el usuario ya esta logueado
-
-            String id= firebaseAuth.getCurrentUser().getUid();
-            nDatabase.child("Users").child(id).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if(snapshot.exists()){
-                        Intent dashboardActivity = new Intent(MainActivity.this, Menu.class);
-                        startActivity(dashboardActivity);
-                    }else{
-                        Intent dashboardActivity = new Intent(MainActivity.this, FormularioInfoPersonal.class);
-                        startActivity(dashboardActivity);
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
-
-            /*
-            //mover al usuario al dashboard
-            Intent dashboardActivity = new Intent(MainActivity.this, Menu.class);
-            startActivity(dashboardActivity);*/
-        }
-        super.onStart();
     }
+
+
 
     private void entrar() {
             usuario = user.getText().toString().trim();
@@ -196,10 +179,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         if(snapshot.exists()){
-                                            Intent dashboardActivity = new Intent(MainActivity.this, Menu.class);
+                                            Intent dashboardActivity = new Intent(Login.this, Menu.class);
                                             startActivity(dashboardActivity);
                                         }else{
-                                            Intent dashboardActivity = new Intent(MainActivity.this, FormularioInfoPersonal.class);
+                                            Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
                                             startActivity(dashboardActivity);
                                         }
                                     }
@@ -211,10 +194,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             }else{
                                 if(task.getException() instanceof FirebaseAuthUserCollisionException){ //Si existe el usuario
-                                    Toast.makeText(MainActivity.this,"El usuario ya existe",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Login.this,"El usuario ya existe",Toast.LENGTH_SHORT).show();
 
                                 }else{
-                                    Toast.makeText(MainActivity.this,"No se pudo realizar el registro",Toast.LENGTH_LONG).show();
+                                    Toast.makeText(Login.this,"No se pudo realizar el registro",Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
@@ -237,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.btnRegistrar:
 
-                i = new Intent(MainActivity.this, Registro.class);
+                i = new Intent(Login.this, Registro.class);
                 startActivity(i);
                 break;
 

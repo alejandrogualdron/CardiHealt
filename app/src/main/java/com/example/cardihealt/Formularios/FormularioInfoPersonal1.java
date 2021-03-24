@@ -2,241 +2,178 @@ package com.example.cardihealt.Formularios;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
-import com.example.cardihealt.MainActivity;
 import com.example.cardihealt.R;
-import com.example.cardihealt.Registro;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class FormularioInfoPersonal1 extends AppCompatActivity implements View.OnClickListener{
 
-     EditText etNombre, etApellido,etPeso,etAltura,etPerimetroAbdominal,etFechaN;
-     Button btnAnterior, btnSiguiente;
-     RadioButton hombre;
-
-     String nombre = "";
-     String apellido = "";
+     EditText etPeso,etAltura,etCadera,etCintura, numeroC,añosF;
+     CheckBox cbCianosis, cbColesterol, cbHipertension, cbDiabetes;
+     RadioButton si,no;
+     ImageButton btnSiguiente;
      String peso = "";
      String altura = "";
-     String perimetroAbdominal = "";
-     String fechaNacimiento = "";
-     String genero="";
-     String edad;
+     String numeroCigarrillos="";
+     String añosFumador="";
+     String fuma="";
+     String cintura="";
+     String cadera="";
+     String cianosis="";
+     String colesterol="";
+     String hipertension="";
+     String diabetes="";
+
+
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_info_personal1);
-        etNombre = (EditText) findViewById(R.id.etNombre);
-        etApellido = (EditText) findViewById(R.id.etApellido);
+
+        si = (RadioButton) findViewById(R.id.RegRadbtnSi);
+        no = (RadioButton) findViewById(R.id.RegRadbtnNo);
+
+        numeroC=(EditText)findViewById(R.id.etNumeroCigarrillos);
+        añosF=(EditText)findViewById(R.id.etAñofumador);
+
+
         etPeso = (EditText) findViewById(R.id.etPeso);
         etAltura = (EditText) findViewById(R.id.etAltura);
-        etPerimetroAbdominal = (EditText) findViewById(R.id.etPerimetroAbdominal);
-        etFechaN=(EditText)findViewById(R.id.etFechaEdad);
+        etCadera = (EditText) findViewById(R.id.cintura);
+        etCintura = (EditText) findViewById(R.id.cadera);
+
+        cbCianosis = (CheckBox) findViewById(R.id.cbCianosis);
+        cbColesterol = (CheckBox) findViewById(R.id.cbColesterol);
+        cbHipertension = (CheckBox) findViewById(R.id.cbHipertension);
+        cbDiabetes = (CheckBox) findViewById(R.id.cbDiabetes);
+
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        etFechaEdad();
-
-        btnAnterior = (Button) findViewById(R.id.btnAnteriorFormul);
-        btnSiguiente = (Button) findViewById(R.id.btnSiguienteFormul1);
+        btnSiguiente = (ImageButton) findViewById(R.id.btnSiguienteFormul1);
 
         btnSiguiente.setOnClickListener(this);
-        btnAnterior.setOnClickListener(this);
-        hombre = (RadioButton) findViewById(R.id.RegRadbtnHombre);
-
-
 
     }
 
-    public void genero(){
-        if(hombre.isChecked() == true){
-           genero="Hombre";
-        }else{
-            genero="Mujer";
-        }
-    }
-
-    public void etFechaEdad(){
-        etFechaN.addTextChangedListener(new TextWatcher() {
-            private String current = "";
-            private String ddmmyyyy = "DDMMYYYY";
-            private Calendar cal = Calendar.getInstance();
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!s.toString().equals(current)) {
-                    String clean = s.toString().replaceAll("[^\\d.]", "");
-                    String cleanC = current.replaceAll("[^\\d.]", "");
-
-                    int cl = clean.length();
-                    int sel = cl;
-                    for (int i = 2; i <= cl && i < 6; i += 2) {
-                        sel++;
-                    }
-                    //Fix for pressing delete next to a forward slash
-                    if (clean.equals(cleanC)) sel--;
-
-                    if (clean.length() < 8){
-                        clean = clean + ddmmyyyy.substring(clean.length());
-                    }else{
-                        //This part makes sure that when we finish entering numbers
-                        //the date is correct, fixing it otherwise
-                        int day  = Integer.parseInt(clean.substring(0,2));
-                        int mon  = Integer.parseInt(clean.substring(2,4));
-                        int year = Integer.parseInt(clean.substring(4,8));
-
-                        if(mon > 12) mon = 12;
-                        cal.set(Calendar.MONTH, mon-1);
-                        year = (year<1900)?1900:(year>2100)?2100:year;
-                        cal.set(Calendar.YEAR, year);
-                        // ^ first set year for the line below to work correctly
-                        //with leap years - otherwise, date e.g. 29/02/2012
-                        //would be automatically corrected to 28/02/2012
-
-                        day = (day > cal.getActualMaximum(Calendar.DATE))? cal.getActualMaximum(Calendar.DATE):day;
-                        clean = String.format("%02d%02d%02d",day, mon, year);
-                    }
-
-                    clean = String.format("%s/%s/%s", clean.substring(0, 2),
-                            clean.substring(2, 4),
-                            clean.substring(4, 8));
-
-                    sel = sel < 0 ? 0 : sel;
-                    current = clean;
-                    etFechaN.setText(current);
-                    etFechaN.setSelection(sel < current.length() ? sel : current.length());
-                }
-            }
-
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-    }
-
-    public void calcEdad(){
-
-        //Fecha actual
-        Date date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String fecha = dateFormat.format(date) + "";
-        String[] parts = fecha.split("/");
-        int mesActual = Integer.parseInt(parts[1]);
-        int añoActual= Integer.parseInt(parts[2]);
-        int años=0;
-
-        if(!etFechaN.getText().toString().equals("")){
-            //Fecha nacimiento
-            String fechaNacimiento= etFechaN.getText().toString();
-            String[] parts1 = fechaNacimiento.split("/");
-            int mesN = Integer.parseInt(parts1[1]);
-            int añoN= Integer.parseInt(parts1[2]);
-
-            if(mesActual<mesN){
-                años =añoActual-añoN-1;
-            }else {
-                años= añoActual-añoN;
-            }
-            edad = años+"";
-        }
-    }
 
     public void crearDB(){
         //Base de datos Firebase
         Map<String,Object> map = new HashMap<>();
-        map.put("nombre",nombre);
-        map.put("apellido",apellido);
+        map.put("fumador",fuma);
+        map.put("años de fumador",añosFumador);
+        map.put("numero de cigarrillos",numeroCigarrillos);
         map.put("peso",peso);
         map.put("altura",altura);
-        map.put("perimetro abdominal",perimetroAbdominal);
-        map.put("edad",edad);
-        map.put("genero",genero);
+        map.put("cintura",cintura);
+        map.put("cadera",cadera);
+        map.put("cianosis", cianosis);
+        map.put("colesterol", colesterol);
+        map.put("diabetes", diabetes);
+        map.put("hipertension", hipertension);
+
 
         String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
-
-        mDatabase.child("Usuario").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(FormularioInfoPersonal1.this,"Se ha registrado exitosamente",Toast.LENGTH_LONG).show();
-                    Intent intent=new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
-                    startActivity(intent);
-                    finish();
-                }else{
-                    Toast.makeText(FormularioInfoPersonal1.this,"No se crearon los datos", Toast.LENGTH_LONG).show();
-                }
-            }
-
-        });
-
+        mDatabase.child("Usuario").child(id).updateChildren(map);
     }
+
 
     @Override
     public void onClick(View v) {
-        Intent i;
+
         switch (v.getId()) {
 
-            case R.id.btnAnteriorFormul:
-
-                i = new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal.class);
-                startActivity(i);
-
-                break;
-
             case R.id.btnSiguienteFormul1:
-                genero();
-                calcEdad();
-                nombre =etNombre.getText().toString();
-                apellido =etApellido.getText().toString();
-                peso =etPeso.getText().toString();
-                altura =etAltura.getText().toString();
-                perimetroAbdominal =etPerimetroAbdominal.getText().toString();
-                nombre =etNombre.getText().toString();
-                fechaNacimiento=etFechaN.getText().toString();
 
-                crearDB();
+                if(si.isChecked()==true||no.isChecked()==true){
+                    fumador();
+                    numeroCigarrillos=numeroC.getText().toString();
+                    añosFumador=añosF.getText().toString();
+                    peso = etPeso.getText().toString();
+                    altura = etAltura.getText().toString();
+                    cadera = etCadera.getText().toString();
+                    cintura = etCintura.getText().toString();
 
+                    if(fuma.equals("Fumador")&& numeroCigarrillos.equals("")|| fuma.equals("Fumador")&&añosFumador.equals("")){
+                        Toast.makeText(FormularioInfoPersonal1.this,"Complete la informacion", Toast.LENGTH_LONG).show();
+                    }else {
+                        cianosis();
+                        colesterol();
+                        diabetes();
+                        hipertension();
+                        crearDB();
+                        crearDB();
+
+                        Intent intent=new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
+                        startActivity(intent);
+                    }
+                }else{
+                    Toast.makeText(FormularioInfoPersonal1.this,"Complete la informacion", Toast.LENGTH_LONG).show();
+                }
 
                 break;
         }
     }
 
+    public void fumador(){
+        if(si.isChecked() == true){
+            fuma="Fumador";
+        }else{
+            fuma="No fumador";
+        }
+    }
 
+    public void cianosis() {
+        if (cbCianosis.isChecked() == true) {
+            cianosis = "Si";
+        } else {
+            cianosis = "No";
+        }
+    }
 
+    public void colesterol() {
+        if (cbColesterol.isChecked() == true) {
+            colesterol = "Si";
+        } else {
+            colesterol = "No";
+        }
+    }
+
+    public void diabetes() {
+        if (cbDiabetes.isChecked() == true) {
+            diabetes = "Si";
+        } else {
+            diabetes = "No";
+        }
+    }
+
+    public void hipertension() {
+        if (cbHipertension.isChecked() == true) {
+            hipertension = "Si";
+        } else {
+            hipertension = "No";
+        }
+    }
 
 }

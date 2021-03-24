@@ -1,4 +1,4 @@
-package com.example.cardihealt;
+package com.example.cardihealt.LoginSingup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.example.cardihealt.Formularios.FormularioInfoPersonal;
+import com.example.cardihealt.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -18,9 +20,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Registro extends AppCompatActivity implements View.OnClickListener {
     private EditText userReg, passReg;
@@ -65,7 +64,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
 
             case R.id.btnRegAtras:
 
-                i = new Intent(Registro.this, MainActivity.class);
+                i = new Intent(Registro.this, Login.class);
                 startActivity(i);
                 break;
         }

@@ -11,13 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CardiHealt">
-        <activity android:name=".Formularios.FormularioInfoPersonal3"></activity>
+        <activity android:name=".Informes.Informe"></activity>
         <activity android:name=".Formularios.FormularioInfoPersonal2" />
         <activity android:name=".Formularios.FormularioInfoPersonal1" />
         <activity android:name=".Menu" />
         <activity android:name=".Formularios.FormularioInfoPersonal" />
-        <activity android:name=".Registro" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".LoginSingup.Registro" />
+        <activity android:name=".LoginSingup.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,261 +1,176 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".Formularios.FormularioInfoPersonal2">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:text="HABITOS" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        tools:context=".Formularios.FormularioInfoPersonal2">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:text="Fumador" />
-            <RadioGroup
-                android:id="@+id/radioGroup3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4">
-
-                <RadioButton
-                    android:id="@+id/RegRadbtnSi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="Si" />
-
-                <RadioButton
-                    android:id="@+id/RegRadbtnNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No" />
-            </RadioGroup>
-
-    </LinearLayout>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:text="De ser afirmativa la anterior pregunta responda" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        tools:context=".Formularios.FormularioInfoPersonal2">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:text="Numero de cigarrillos diarios" />
-
-        <EditText
-            android:id="@+id/etNumeroCigarrillos"
-            android:layout_width="53dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:hint="    #"
-            android:inputType="number"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        tools:context=".Formularios.FormularioInfoPersonal2">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:text="Años que lleva fumando" />
-
-        <EditText
-            android:id="@+id/etAñofumador"
-            android:layout_width="53dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:hint="    #"
-            android:inputType="number"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_width="384dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:layout_marginLeft="20dp"
-        android:text="Marque a continuación cuales actividades realiza:"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textColor="#000000"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        tools:context=".Formularios.FormularioInfoPersonal2">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".Formularios.FormularioInfoPersonal2">
-    <CheckBox
-        android:id="@+id/cbDormir"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dormir"
-        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:text="Marque a continuación que actividades realiza diariamente sin falta:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbDormir"
+        android:layout_width="91dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:text="Dormir"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/cbSaltarCuerda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saltar cuerda"
+        app:layout_constraintStart_toEndOf="@+id/cbCocinar"
+        app:layout_constraintTop_toTopOf="@+id/cbCocinar" />
+
+    <CheckBox
+        android:id="@+id/cbCicla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Montar cicla"
+        app:layout_constraintStart_toStartOf="@+id/cbVerTv"
+        app:layout_constraintTop_toBottomOf="@+id/cbVerTv" />
+
+    <CheckBox
+        android:id="@+id/cbCocinar"
+        android:layout_width="94dp"
+        android:layout_height="49dp"
+        android:text="Cocinar"
+        app:layout_constraintStart_toEndOf="@+id/cbDormir"
+        app:layout_constraintTop_toTopOf="@+id/cbDormir" />
+
+    <CheckBox
+        android:id="@+id/cbConducir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Conducir"
+        app:layout_constraintStart_toStartOf="@+id/cbPlanchar"
+        app:layout_constraintTop_toBottomOf="@+id/cbPlanchar" />
+
+    <CheckBox
+        android:id="@+id/cbCaminarLento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Caminar"
+        app:layout_constraintStart_toStartOf="@+id/cbConducir"
+        app:layout_constraintTop_toBottomOf="@+id/cbConducir" />
+
+    <CheckBox
+        android:id="@+id/cbLeer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leer"
+        app:layout_constraintStart_toEndOf="@+id/cbDormir"
+        app:layout_constraintTop_toBottomOf="@+id/cbDormir" />
+
+    <CheckBox
+        android:id="@+id/cbTrabajoEscritorio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trabajo de escritorio"
+        app:layout_constraintStart_toEndOf="@+id/cbConducir"
+        app:layout_constraintTop_toBottomOf="@+id/cbTrotar" />
+
+    <CheckBox
+        android:id="@+id/cbTrotar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trotar"
+        app:layout_constraintStart_toStartOf="@+id/cbLeer"
+        app:layout_constraintTop_toBottomOf="@+id/cbLeer" />
+
+    <CheckBox
+        android:id="@+id/cbPlanchar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Planchar"
+        app:layout_constraintStart_toStartOf="@+id/cbDormir"
+        app:layout_constraintTop_toBottomOf="@+id/cbDormir" />
 
     <CheckBox
         android:id="@+id/cbVerTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ver televisión"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <CheckBox
-        android:id="@+id/cbLeer"
+        app:layout_constraintStart_toEndOf="@+id/cbCocinar"
+        app:layout_constraintTop_toTopOf="@+id/cbLeer" />
+
+    <ImageButton
+        android:id="@+id/btnSiguienteFormul2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Leer sentado"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="16dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RegCheckbx"
+        app:layout_constraintVertical_bias="0.514"
+        app:srcCompat="@drawable/siguienteboton1" />
+
     <CheckBox
-        android:id="@+id/cbPlanchar"
+        android:id="@+id/RegCheckbx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Planchar"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Acepta las politicas de uso de datos"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/btnSiguienteFormul2"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <CheckBox
-        android:id="@+id/cbConducir"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
+
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Manejar un auto"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="12dp"
+        android:text="¿Tiene sensación de ahogo?"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/cbCaminarLento"
+        app:layout_constraintTop_toBottomOf="@+id/cbTrabajoEscritorio" />
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".Formularios.FormularioInfoPersonal2">
-
-        <CheckBox
-            android:id="@+id/cbCocinar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cocinar"
-            android:layout_marginLeft="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <CheckBox
-            android:id="@+id/cbTrotar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Trotar"
-            android:layout_marginLeft="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-            <CheckBox
-                android:id="@+id/cbSaltarCuerda"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Saltar Cuerda"
-                android:layout_marginLeft="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <CheckBox
-                android:id="@+id/cbCicla"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bicicleta "
-                android:layout_marginLeft="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-            <CheckBox
-                android:id="@+id/cbCaminarLento"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Caminar lento en terreno plano"
-                android:layout_marginLeft="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:context=".Formularios.FormularioInfoPersonal2">
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        <Button
-            android:id="@+id/btnAnteriorFormul1"
+        <RadioButton
+            android:id="@+id/RegRadDisnea0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@android:color/white"
-            android:drawableRight="@drawable/anterior"
-            android:textStyle="bold"></Button>
+            android:text="No posee sensación" />
 
-
-        <Button
-            android:id="@+id/btnSiguienteFormul2"
+        <RadioButton
+            android:id="@+id/RegRadDisnea1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="145dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@android:color/white"
-            android:drawableRight="@drawable/siguienteboton1"
-            android:textStyle="bold"></Button>
-    </LinearLayout>
+            android:text="Ligera fatiga, en actividades fisicas cotidianas"/>
 
-</LinearLayout>
+        <RadioButton
+            android:id="@+id/RegRadDisnea2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Marcada fatiga, en actividades fisicas bajas." />
+
+        <RadioButton
+            android:id="@+id/RegRadDisnea3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fatiga, en actividades fisicas y en reposo." />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
