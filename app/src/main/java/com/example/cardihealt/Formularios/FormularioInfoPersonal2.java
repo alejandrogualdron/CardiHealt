@@ -64,7 +64,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
     int riesgoEpoc = 0;
     int indiceTabaquico=0;
     int riesgoT=0;
-    int perAbd=0;
+    double perAbd=0;
     double imc=0;
 
     private DatabaseReference mDatabase;
@@ -253,7 +253,6 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         });
     }
 
-
     //Riesgo por Tabaco
     public void riesgoPorTabaco(){
         //Calculo del  tabaco riesgo
@@ -320,8 +319,10 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
 
     //Riesgo indice masa corporal
     public void indiceMasaCorporal(){
+        double altura=0;
+        altura=Integer.parseInt(alturaDb)/100;
         //indice masa corporal
-        imc = Integer.parseInt(pesoDb) / (Integer.parseInt(alturaDb) * Integer.parseInt(alturaDb));
+        imc = Integer.parseInt(pesoDb) / (altura*altura);
         if (imc > 18.4 && imc < 25) {
             imcS = "Normal";
         }
@@ -412,11 +413,11 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         map.put("edad",edadDb );
         map.put("riesgo por edad", rEdad);
         map.put("perimetro abdominal",perAbd+"");
+        map.put("Antecedentes", riesgoPor);
         map.put("riesgo por antecedentes",geneticaDb);
         map.put("riesgo por perimetro abdominal", riesgoPerAb);
         map.put("riesgo estimado", riesgoProm+"%");
         map.put("riesgo", riesgoLetras);
-
 
         mDatabase.child("Informes").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

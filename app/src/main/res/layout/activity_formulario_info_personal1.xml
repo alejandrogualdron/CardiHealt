@@ -5,13 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Formularios.FormularioInfoPersonal1">
+    tools:context=".Formularios.FormularioInfoPersonal1"
+
+    >
 
 
     <RadioGroup
         android:id="@+id/radioGroup2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
         app:layout_constraintStart_toEndOf="@+id/textView14"
@@ -22,43 +25,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No"
-            android:textSize="12dp" />
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:theme="@style/RadioButtonStyle"
+            />
 
         <RadioButton
             android:id="@+id/RegRadbtnSi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Si"
-            android:textSize="12dp" />
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:theme="@style/RadioButtonStyle"
+            />
+
     </RadioGroup>
 
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="49dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="¿Fuma?"
         android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <EditText
         android:id="@+id/etNumeroCigarrillos"
-        android:layout_width="wrap_content"
+        android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView15"
-        app:layout_constraintStart_toEndOf="@+id/textView15"></EditText>
+        app:layout_constraintStart_toEndOf="@+id/textView15"
+        android:textColor="@color/black"
+        />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
         android:text="Cigarrillos diarios:"
         android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/radioGroup2"
         app:layout_constraintTop_toTopOf="@+id/radioGroup2" />
 
@@ -68,10 +82,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/black"
-        android:text="Informacion Personal"
+        android:textSize="20sp"
+        android:text="INFORMACIÓN PERSONAL"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"
+        />
 
     <ImageButton
         android:id="@+id/btnSiguienteFormul1"
@@ -79,14 +95,17 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@android:color/white"
-        app:srcCompat="@drawable/siguienteboton1" />
+        android:backgroundTint="@color/cardview_light_background"
+        app:srcCompat="@drawable/siguienteboton1"
+        />
 
     <CheckBox
         android:id="@+id/cbCianosis"
-        android:layout_width="202dp"
-        android:layout_height="47dp"
+        android:layout_width="174dp"
+        android:layout_height="65dp"
         android:text="Coloracion azulosa en uñas, dedos, boca o nariz"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/cbHipertension"
         app:layout_constraintTop_toTopOf="@+id/cbColesterol" />
 
@@ -95,9 +114,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Años de fumador:"
-        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/etAñofumador"
-        app:layout_constraintStart_toStartOf="@+id/textView15" />
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        android:textColor="@color/black"
+        />
 
     <CheckBox
         android:id="@+id/cbDiabetes"
@@ -106,8 +127,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:text="Diabetes"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView23"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        android:textColor="@color/black"
+        />
 
     <TextView
         android:id="@+id/textView21"
@@ -115,36 +139,44 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Cintura:"
-        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20"
+        android:textColor="@color/black"
+        />
 
     <EditText
         android:id="@+id/cintura"
         android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView21"
-        app:layout_constraintStart_toEndOf="@+id/textView21" />
+        app:layout_constraintStart_toEndOf="@+id/textView21"
+        android:textColor="@color/black"
+        />
 
     <TextView
         android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cadera:"
-        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView18"
-        app:layout_constraintTop_toTopOf="@+id/textView21" />
+        app:layout_constraintTop_toTopOf="@+id/textView21"
+        android:textColor="@color/black"
+        />
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Altura:"
-        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView16"
-        app:layout_constraintTop_toTopOf="@+id/textView17" />
+        app:layout_constraintTop_toTopOf="@+id/textView17"
+        android:textColor="@color/black"
+        />
 
     <EditText
         android:id="@+id/cadera"
@@ -152,27 +184,33 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView22"
-        app:layout_constraintStart_toEndOf="@+id/textView22" />
+        app:layout_constraintStart_toEndOf="@+id/textView22"
+        android:textColor="@color/black"
+        />
 
     <EditText
         android:id="@+id/etAñofumador"
-        android:layout_width="wrap_content"
+        android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/etNumeroCigarrillos"
-        app:layout_constraintTop_toBottomOf="@+id/etNumeroCigarrillos"></EditText>
+        app:layout_constraintTop_toBottomOf="@+id/etNumeroCigarrillos"
+        android:textColor="@color/black"
+        />
 
     <EditText
         android:id="@+id/etPeso"
         android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView17"
-        app:layout_constraintStart_toEndOf="@+id/textView17" />
+        app:layout_constraintStart_toEndOf="@+id/textView17"
+        android:textColor="@color/black"
+        />
 
     <TextView
         android:id="@+id/textView19"
@@ -181,6 +219,7 @@
         android:layout_marginTop="24dp"
         android:text="Ingrese su peso y altura, respectivamente."
         android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -189,19 +228,22 @@
         android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:textSize="15dp"
+        android:textSize="15sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/textView18"
-        app:layout_constraintStart_toEndOf="@+id/textView18" />
+        app:layout_constraintStart_toEndOf="@+id/textView18"
+      />
 
     <CheckBox
         android:id="@+id/cbHipertension"
-        android:layout_width="201dp"
-        android:layout_height="45dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
         android:text="Hipertension Arterial"
+        android:textSize="15sp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/cbDiabetes"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toTopOf="@+id/cbDiabetes" />
 
     <TextView
         android:id="@+id/textView17"
@@ -210,6 +252,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="36dp"
         android:text="Peso:"
+        android:textSize="15sp"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
@@ -217,8 +260,11 @@
     <CheckBox
         android:id="@+id/cbColesterol"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
+        android:layout_marginTop="15dp"
         android:text="Colesterol alto"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/cbDiabetes"
         app:layout_constraintTop_toBottomOf="@+id/cbDiabetes" />
 
@@ -226,9 +272,10 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="44dp"
         android:text="Ha sudrido de:"
         android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
@@ -236,9 +283,10 @@
         android:id="@+id/textView20"
         android:layout_width="369dp"
         android:layout_height="58dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="52dp"
         android:text="Con un metro mida la cintura (altura ombligo) y la cadera (altura cola)"
         android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView18" />
 

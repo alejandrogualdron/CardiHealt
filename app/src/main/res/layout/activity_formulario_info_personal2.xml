@@ -8,21 +8,24 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="384dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="344dp"
+        android:layout_height="85dp"
         android:layout_marginTop="24dp"
-        android:textColor="@color/black"
         android:text="Marque a continuación que actividades realiza diariamente sin falta:"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/cbDormir"
-        android:layout_width="91dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Dormir"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -30,7 +33,12 @@
         android:id="@+id/cbSaltarCuerda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
         android:text="Saltar cuerda"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toEndOf="@+id/cbCocinar"
         app:layout_constraintTop_toTopOf="@+id/cbCocinar" />
 
@@ -39,14 +47,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Montar cicla"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/cbVerTv"
         app:layout_constraintTop_toBottomOf="@+id/cbVerTv" />
 
     <CheckBox
         android:id="@+id/cbCocinar"
-        android:layout_width="94dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
         android:text="Cocinar"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/cbDormir"
         app:layout_constraintTop_toTopOf="@+id/cbDormir" />
 
@@ -55,6 +68,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Conducir"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/cbPlanchar"
         app:layout_constraintTop_toBottomOf="@+id/cbPlanchar" />
 
@@ -63,6 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Caminar"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/cbConducir"
         app:layout_constraintTop_toBottomOf="@+id/cbConducir" />
 
@@ -71,15 +88,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Leer"
-        app:layout_constraintStart_toEndOf="@+id/cbDormir"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/cbCocinar"
         app:layout_constraintTop_toBottomOf="@+id/cbDormir" />
 
     <CheckBox
         android:id="@+id/cbTrabajoEscritorio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Trabajo de escritorio"
-        app:layout_constraintStart_toEndOf="@+id/cbConducir"
+        android:text="Tiempo sentado"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/cbTrotar"
         app:layout_constraintTop_toBottomOf="@+id/cbTrotar" />
 
     <CheckBox
@@ -87,6 +108,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Trotar"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/cbLeer"
         app:layout_constraintTop_toBottomOf="@+id/cbLeer" />
 
@@ -96,6 +119,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Planchar"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/cbDormir"
         app:layout_constraintTop_toBottomOf="@+id/cbDormir" />
 
@@ -104,29 +129,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ver televisión"
-        app:layout_constraintStart_toEndOf="@+id/cbCocinar"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/cbSaltarCuerda"
         app:layout_constraintTop_toTopOf="@+id/cbLeer" />
 
     <ImageButton
         android:id="@+id/btnSiguienteFormul2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegCheckbx"
-        app:layout_constraintVertical_bias="0.514"
         app:srcCompat="@drawable/siguienteboton1" />
 
     <CheckBox
         android:id="@+id/RegCheckbx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="Acepta las politicas de uso de datos"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@+id/btnSiguienteFormul2"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
@@ -135,9 +160,10 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="30dp"
         android:text="¿Tiene sensación de ahogo?"
         android:textColor="@color/black"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/cbCaminarLento"
         app:layout_constraintTop_toBottomOf="@+id/cbTrabajoEscritorio" />
 
@@ -152,25 +178,33 @@
             android:id="@+id/RegRadDisnea0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No posee sensación" />
+            android:text="No posee sensación"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
 
         <RadioButton
             android:id="@+id/RegRadDisnea1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ligera fatiga, en actividades fisicas cotidianas"/>
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:text="Ligera fatiga, en actividades fisicas cotidianas"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <RadioButton
             android:id="@+id/RegRadDisnea2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Marcada fatiga, en actividades fisicas bajas." />
+            android:layout_width="295dp"
+            android:layout_height="58dp"
+            android:text="Marcada fatiga, en actividades fisicas bajas."
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
         <RadioButton
             android:id="@+id/RegRadDisnea3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fatiga, en actividades fisicas y en reposo." />
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:text="Fatiga, en actividades fisicas y en reposo."
+            android:textColor="@color/black"
+            android:textSize="15sp" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,12 +38,12 @@
         android:id="@+id/etBienvenido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="44dp"
         android:text="Bienvenido"
         android:textColor="@color/white"
         android:textSize="19dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -116,7 +116,7 @@
         app:layout_constraintEnd_toStartOf="@+id/entrenamiento"
         app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#82b3d4"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/informe_medico" />
 
@@ -138,7 +138,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="#82b3d4"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
         app:layout_constraintTop_toTopOf="@+id/informe"
         app:srcCompat="@drawable/entrenadores" />
 
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
         android:layout_marginTop="24dp"
-        android:background="#82b3d4"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
         app:layout_constraintEnd_toStartOf="@+id/cerrarsesion"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -185,7 +185,7 @@
         android:layout_marginEnd="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/actualizar"
-        android:background="#82b3d4"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
         app:srcCompat="@drawable/powerbutton" />
 
     <TextView
