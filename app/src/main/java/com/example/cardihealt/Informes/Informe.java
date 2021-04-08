@@ -49,7 +49,7 @@ public class Informe extends AppCompatActivity implements View.OnClickListener {
         riesgoEdad=(TextView)findViewById(R.id.riesgoPorEdadInforme);
         actividadFisica=(TextView)findViewById(R.id.actividadFisicaInforme);
         estadoFisico=(TextView)findViewById(R.id.estadoFisicoInfor);
-        indiceMasaCorporal=(TextView)findViewById(R.id.indiceTabaInforme);
+        indiceMasaCorporal=(TextView)findViewById(R.id.imcInforme);
         perimetroAbdominal=(TextView)findViewById(R.id.perimetroInforme);
         riesgoPerAbd=(TextView)findViewById(R.id.riesgoPerAbdInforme);
         indiceTabac=(TextView)findViewById(R.id.indiceTabaInforme);
@@ -97,8 +97,8 @@ public class Informe extends AppCompatActivity implements View.OnClickListener {
                     edadS = snapshot.child("edad").getValue().toString();
                     riesgoEdadS = snapshot.child("riesgo por edad").getValue().toString();
                     perimetroAbdominalS = snapshot.child("perimetro abdominal").getValue().toString();
-                    riesgoEnfermedadesS = snapshot.child("Antecedentes").getValue().toString();
-                    riesgoAntecedentesS = snapshot.child("riesgo por antecedentes").getValue().toString();
+                    riesgoEnfermedadesS = snapshot.child("antecedentes").getValue().toString();
+                    riesgoAntecedentesS = snapshot.child("riesgo genetico").getValue().toString();
                     riesgoPerAbS = snapshot.child("riesgo por perimetro abdominal").getValue().toString();
                     riesgoLetaS = snapshot.child("riesgo").getValue().toString();
                     riesgoEstimadoS = snapshot.child("riesgo estimado").getValue().toString();
@@ -114,12 +114,11 @@ public class Informe extends AppCompatActivity implements View.OnClickListener {
                    edad.setText(edadS);
                    riesgoEdad.setText(riesgoEdadS);
                    perimetroAbdominal.setText(perimetroAbdominalS);
-                   riesgoEnfermedades.setText(nombreS);
+                   riesgoEnfermedades.setText(riesgoEnfermedadesS);
                    riesgoAntecedentes.setText(riesgoAntecedentesS);
                    riesgoPerAbd.setText(riesgoPerAbS);
                    riesgoLetra.setText(riesgoLetaS);
                    riesgoEstimado.setText(riesgoEstimadoS);
-
 
                 }
             }

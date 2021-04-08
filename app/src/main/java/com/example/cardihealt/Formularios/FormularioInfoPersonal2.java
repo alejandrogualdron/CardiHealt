@@ -64,8 +64,15 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
     int riesgoEpoc = 0;
     int indiceTabaquico=0;
     int riesgoT=0;
+    int  numeroCigarrillos=0;
+    int añosFumador=0;
     double perAbd=0;
     double imc=0;
+    double altura=0;
+    double peso=0;
+    double cadera=0;
+    double cintura=0;
+
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
@@ -234,8 +241,14 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
                     hipertensionDb = snapshot.child("hipertension").getValue().toString();
                     fumaDb=snapshot.child("fumador").getValue().toString();
 
-                    if(fumaDb.equals("Fumador")){
-                    riesgoPorTabaco();
+                    if(fumaDb.equals("Si")){
+                        numeroCigarrillos=Integer.parseInt(numeroCDb);
+                        añosFumador=Integer.parseInt(añosFDb);
+                        indiceTabaquico = numeroCigarrillos*añosFumador/20 ;
+                        riesgoPorTabaco();
+                    }   if(fumaDb.equals("No")){
+                        indiceTabaquico = 0 ;
+                        riesgoEpoc=0;
                     }
                     riesgoAntecedentes();
                     riesgoAbdominal();
@@ -255,9 +268,8 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
 
     //Riesgo por Tabaco
     public void riesgoPorTabaco(){
-        //Calculo del  tabaco riesgo
-        indiceTabaquico = Integer.parseInt(numeroCDb) / Integer.parseInt(añosFDb);
 
+        //Calculo del  tabaco riesgo
         if (indiceTabaquico < 10) {
             riesgoEpoc = 0;
         }
@@ -303,7 +315,9 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
     public void riesgoAbdominal(){
 
         //perimetro abdominal
-         perAbd=Integer.parseInt(cinturaDb)/Integer.parseInt(caderaDb);
+       cadera= Integer.parseInt(caderaDb);
+       cintura=Integer.parseInt(cinturaDb);
+        perAbd=cintura/cadera;
         if(generoDb.equals("Mujer")&&perAbd>0.84){
             riesgoT=riesgoT+1;
             riesgoPerAb="Posee riesgo";
@@ -319,10 +333,13 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
 
     //Riesgo indice masa corporal
     public void indiceMasaCorporal(){
-        double altura=0;
-        altura=Integer.parseInt(alturaDb)/100;
+
         //indice masa corporal
-        imc = Integer.parseInt(pesoDb) / (altura*altura);
+        peso=Integer.parseInt(pesoDb);
+        altura=Integer.parseInt(alturaDb);
+        altura=altura/100;
+        imc = peso/(altura*altura);
+
         if (imc > 18.4 && imc < 25) {
             imcS = "Normal";
         }
@@ -387,13 +404,15 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
 
     //Riesgo promedio
     public void riesgoPromedio(){
-        riesgoProm=(riesgoT*100)/20;
-        if(riesgoProm<33.4){
+        riesgoProm=(riesgoT*100)/21;
+        if(riesgoProm<26){
             riesgoLetras="Bajo";
-        }if(riesgoProm>33.3 &&riesgoProm<66.7){
+        }if(riesgoProm>25 &&riesgoProm<51){
             riesgoLetras="Medio";
-        }if(riesgoProm>66.8 &&riesgoProm<100){
+        }if(riesgoProm>50 &&riesgoProm<76){
             riesgoLetras="Alto";
+        }if(riesgoProm>75 &&riesgoProm<101){
+            riesgoLetras="Muy alto";
         }
     }
 
@@ -407,26 +426,24 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         map.put("indice tabaquico", indiceTabaquico + "");
         map.put("riesgo epoc", riesgoEpoc + "%");
         map.put("contextura", imcS);
-        map.put("indice masa corporal", imc);
+        map.put("indice masa corporal", imc+"");
         map.put("actividad fisica", actividadF);
         map.put("genero",generoDb );
         map.put("edad",edadDb );
         map.put("riesgo por edad", rEdad);
         map.put("perimetro abdominal",perAbd+"");
-        map.put("Antecedentes", riesgoPor);
-        map.put("riesgo por antecedentes",geneticaDb);
+        map.put("antecedentes", riesgoPor);
+        map.put("riesgo genetico",geneticaDb);
         map.put("riesgo por perimetro abdominal", riesgoPerAb);
         map.put("riesgo estimado", riesgoProm+"%");
         map.put("riesgo", riesgoLetras);
+        map.put("puntaje Prueba", riesgoT+"");
+
 
         mDatabase.child("Informes").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
 
-                } else {
-                    Toast.makeText(FormularioInfoPersonal2.this, "No se  ha creado su informe correctamente", Toast.LENGTH_LONG).show();
-                }
             }
         });
     }

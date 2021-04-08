@@ -10,9 +10,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-        >
-        <activity android:name=".Informes.Informe"></activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".Nutricion.Informacion_Nutricion"></activity>
+        <activity android:name=".Entrenamiento.Entrenamiento" />
+        <activity android:name=".Nutricion.Nutricion" />
+        <activity android:name=".Recomendaciones.Recomendaciones" />
+        <activity android:name=".Informes.Informe" />
         <activity android:name=".Formularios.FormularioInfoPersonal2" />
         <activity android:name=".Formularios.FormularioInfoPersonal1" />
         <activity android:name=".Menu" />
@@ -25,6 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

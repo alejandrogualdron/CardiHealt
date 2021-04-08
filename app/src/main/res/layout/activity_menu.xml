@@ -9,13 +9,11 @@
     android:background="@drawable/fondo_menu">
 
 
-
     <TextView
         android:id="@+id/etNameUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="nombre"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.109"
@@ -26,12 +24,10 @@
         android:id="@+id/etApellidoUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
-        android:text="apellido"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.197"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/etNameUser"
         app:layout_constraintTop_toBottomOf="@+id/etNameUser" />
 
     <TextView
@@ -41,7 +37,7 @@
         android:layout_marginTop="44dp"
         android:text="Bienvenido"
         android:textColor="@color/white"
-        android:textSize="19dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,16 +45,14 @@
 
     <TextView
         android:id="@+id/etTexto"
-        android:layout_width="83dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:text="Aquí podras:"
         android:textColor="@color/white"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/etBienvenido"
+        app:layout_constraintTop_toBottomOf="@+id/etApellidoUser" />
 
     <TextView
         android:id="@+id/etTexto3"
@@ -66,34 +60,29 @@
         android:layout_height="wrap_content"
         android:text="Actualizar la información"
         android:textColor="@color/white"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/etTexto2"
         app:layout_constraintTop_toBottomOf="@+id/etTexto2" />
 
     <TextView
         android:id="@+id/etTexto1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="Consultar tu riesgo"
         android:textColor="@color/white"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/etTexto"
         app:layout_constraintTop_toBottomOf="@+id/etTexto" />
 
     <TextView
         android:id="@+id/etTexto4"
-        android:layout_width="209dp"
-        android:layout_height="13dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Cerrar sesión"
         android:textColor="@color/white"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/etTexto3"
         app:layout_constraintTop_toBottomOf="@+id/etTexto3" />
 
     <TextView
@@ -102,22 +91,20 @@
         android:layout_height="wrap_content"
         android:text="Ver un plan de entrenamiento"
         android:textColor="@color/white"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/etTexto1"
         app:layout_constraintTop_toBottomOf="@+id/etTexto1" />
 
     <ImageButton
         android:id="@+id/informe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="80dp"
+        android:background="@color/common_google_signin_btn_text_dark_disabled"
         app:layout_constraintEnd_toStartOf="@+id/entrenamiento"
         app:layout_constraintHorizontal_bias="0.395"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/common_google_signin_btn_text_dark_disabled"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTexto4"
         app:srcCompat="@drawable/informe_medico" />
 
     <TextView
@@ -126,7 +113,7 @@
         android:layout_height="wrap_content"
         android:text="Informe"
         android:textColor="@color/white"
-        android:textSize="12dp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/informe"
         app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="@+id/informe"
@@ -148,7 +135,7 @@
         android:layout_height="wrap_content"
         android:text="Entrenamientos"
         android:textColor="@color/white"
-        android:textSize="12dp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/entrenamiento"
         app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="@+id/entrenamiento"
@@ -173,7 +160,7 @@
         android:layout_height="wrap_content"
         android:text="Actualizar informe"
         android:textColor="@color/white"
-        android:textSize="12dp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/actualizar"
         app:layout_constraintStart_toStartOf="@+id/actualizar"
         app:layout_constraintTop_toBottomOf="@+id/actualizar" />
@@ -186,7 +173,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/actualizar"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
-        app:srcCompat="@drawable/powerbutton" />
+        app:srcCompat="@drawable/cerrar_sesion" />
 
     <TextView
         android:id="@+id/textView9"
@@ -194,7 +181,7 @@
         android:layout_height="wrap_content"
         android:text="Cerrar sesión"
         android:textColor="@color/white"
-        android:textSize="12dp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@+id/cerrarsesion"
         app:layout_constraintStart_toStartOf="@+id/cerrarsesion"
         app:layout_constraintTop_toBottomOf="@+id/cerrarsesion" />

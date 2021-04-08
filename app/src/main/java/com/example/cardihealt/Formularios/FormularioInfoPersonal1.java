@@ -123,7 +123,6 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
                         diabetes();
                         hipertension();
                         crearDB();
-                        crearDB();
 
                         Intent intent=new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
                         startActivity(intent);
@@ -138,9 +137,9 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
 
     public void fumador(){
         if(si.isChecked() == true){
-            fuma="Fumador";
+            fuma="Si";
         }else{
-            fuma="No fumador";
+            fuma="No";
         }
     }
 

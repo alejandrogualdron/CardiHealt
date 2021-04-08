@@ -30,7 +30,6 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
     EditText etNombre, etApellido,etFechaN;
     ImageButton  btnSiguiente;
     RadioButton hombre,siG;
-
     String nombre = "";
     String apellido = "";
     String fechaNacimiento = "";
@@ -81,6 +80,7 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
                 fechaNacimiento = etFechaN.getText().toString();
 
                 crearDB();
+                planEntrenamiento();
 
 
                 break;
@@ -208,6 +208,93 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
         String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
 
         mDatabase.child("Usuario").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()){
+                    if(!nombre.isEmpty()||!apellido.isEmpty()||!edad.isEmpty()||!genero.isEmpty()){
+
+                        Toast.makeText(FormularioInfoPersonal.this,"Se ha registrado exitosamente",Toast.LENGTH_LONG).show();
+                        Intent intent=new Intent(FormularioInfoPersonal.this, FormularioInfoPersonal1.class);
+                        startActivity(intent);
+                        finish();
+                    }else{
+                        Toast.makeText(FormularioInfoPersonal.this,"Complete la informacion", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(FormularioInfoPersonal.this,"No se pudo registrar", Toast.LENGTH_LONG).show();
+                }
+            }
+
+        });
+
+    }
+
+    public void planEntrenamiento(){
+
+        //Base de datos Firebase
+        Map<String,Object> ejercio1 = new HashMap<>();
+        ejercio1.put("finalidad","calentamiento");
+        ejercio1.put("tipo_de_ejercicio","Subir escaleras / Salto de lazo");
+        ejercio1.put("intensidad","Normal");
+        ejercio1.put("tiempo","5 minutos");
+
+        Map<String,Object> ejercio2 = new HashMap<>();
+        ejercio2.put("finalidad","calentamiento");
+        ejercio2.put("tipo_de_ejercicio","caminata");
+        ejercio2.put("intensidad","Normal");
+        ejercio2.put("tiempo","25 minutos");
+
+        Map<String,Object> ejercio3 = new HashMap<>();
+        ejercio2.put("finalidad","Fuerza");
+        ejercio2.put("tipo_de_ejercicio","Subir los brazos en frontal");
+        ejercio2.put("intensidad","2 libras");
+        ejercio2.put("tiempo","2 series de 15 repeticiones");
+
+        Map<String,Object> ejercio4 = new HashMap<>();
+        ejercio2.put("finalidad","Fuerza");
+        ejercio2.put("tipo_de_ejercicio","Subir los brazos en lateral");
+        ejercio2.put("intensidad","Normal");
+        ejercio2.put("tiempo","25 minutos");
+
+        Map<String,Object> ejercio5 = new HashMap<>();
+        ejercio2.put("finalidad","Estiramiento");
+        ejercio2.put("tipo_de_ejercicio","Cuello");
+        ejercio2.put("intensidad","Normal");
+        ejercio2.put("tiempo","30 segundos");
+
+        Map<String,Object> ejercio6 = new HashMap<>();
+        ejercio2.put("finalidad","Estiramiento");
+        ejercio2.put("tipo_de_ejercicio","Espalda");
+        ejercio2.put("intensidad","Normal");
+        ejercio2.put("tiempo","30 segundos");
+
+        Map<String,Object> ejercio7 = new HashMap<>();
+        ejercio2.put("finalidad","Fuerza");
+        ejercio2.put("tipo_de_ejercicio","Miembros superiores");
+        ejercio2.put("intensidad","Normal");
+        ejercio2.put("tiempo","30 segundos");
+
+        Map<String,Object> ejercio8 = new HashMap<>();
+        ejercio2.put("finalidad","Fuerza");
+        ejercio2.put("tipo_de_ejercicio","Miembros inferiores");
+        ejercio2.put("intensidad","Normal");
+        ejercio2.put("tiempo","30 segundos");
+
+        Map<String,Object> ejercicios = new HashMap<>();
+        ejercicios.put("ejercicio_1",ejercio1);
+        ejercicios.put("ejercicio_2",ejercio2);
+        ejercicios.put("ejercicio_3",ejercio3);
+        ejercicios.put("ejercicio_4",ejercio4);
+        ejercicios.put("ejercicio_5",ejercio5);
+        ejercicios.put("ejercicio_6",ejercio6);
+        ejercicios.put("ejercicio_7",ejercio7);
+        ejercicios.put("ejercicio_8",ejercio8);
+
+
+        String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
+
+        mDatabase.child("Entrenamientos").child(id).setValue(ejercicios).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
