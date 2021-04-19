@@ -45,17 +45,7 @@ public class Adapter_Nutricion extends RecyclerView.Adapter<Adapter_Nutricion.Vi
             @Override
             public void onClick(View v) {
 
-                if(nutricion.getAlimento().equals("Rutina Fisica")){
-                    Intent intent = new Intent(holder.itemView.getContext(), Nutricion.class);
-                    holder.itemView.getContext().startActivity(intent);
-
-
-                }if(nutricion.getAlimento().equals("Nutrición")){
-                    Intent intent = new Intent(holder.itemView.getContext(), Nutricion.class);
-                    holder.itemView.getContext().startActivity(intent);
-                }
-
-                Toast.makeText(context, nutricion.getAlimento(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, nutricion.getLeyendaAlimento(), Toast.LENGTH_SHORT).show();
             }
         });
     }

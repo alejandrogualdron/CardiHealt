@@ -232,56 +232,87 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
 
     public void planEntrenamiento(){
 
+        //Fecha actual
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = dateFormat.format(date) + "";
+
+
         //Base de datos Firebase
         Map<String,Object> ejercio1 = new HashMap<>();
         ejercio1.put("finalidad","calentamiento");
-        ejercio1.put("tipo_de_ejercicio","Subir escaleras / Salto de lazo");
+        ejercio1.put("tipo_de_ejercicio","Subir escaleras");
         ejercio1.put("intensidad","Normal");
-        ejercio1.put("tiempo","5 minutos");
+        Map<String,Object> tiempo1 = new HashMap<>();
+        tiempo1.put("minutos","05");
+        tiempo1.put("segundos","00");
+        ejercio1.put("tiempo",tiempo1);
 
         Map<String,Object> ejercio2 = new HashMap<>();
         ejercio2.put("finalidad","calentamiento");
         ejercio2.put("tipo_de_ejercicio","caminata");
         ejercio2.put("intensidad","Normal");
-        ejercio2.put("tiempo","25 minutos");
+        Map<String,Object> tiempo2 = new HashMap<>();
+        tiempo2.put("minutos","25");
+        tiempo2.put("segundos","00");
+        ejercio2.put("tiempo",tiempo2);
 
         Map<String,Object> ejercio3 = new HashMap<>();
-        ejercio2.put("finalidad","Fuerza");
-        ejercio2.put("tipo_de_ejercicio","Subir los brazos en frontal");
-        ejercio2.put("intensidad","2 libras");
-        ejercio2.put("tiempo","2 series de 15 repeticiones");
+        ejercio3.put("finalidad","Fuerza");
+        ejercio3.put("tipo_de_ejercicio","Subir los brazos en frontal");
+        ejercio3.put("intensidad","2 libras");
+        Map<String,Object> tiempo3 = new HashMap<>();
+        tiempo3.put("series","2");
+        tiempo3.put("repeticiones","15");
+        ejercio3.put("tiempo",tiempo3);
 
         Map<String,Object> ejercio4 = new HashMap<>();
-        ejercio2.put("finalidad","Fuerza");
-        ejercio2.put("tipo_de_ejercicio","Subir los brazos en lateral");
-        ejercio2.put("intensidad","Normal");
-        ejercio2.put("tiempo","25 minutos");
+        ejercio4.put("finalidad","Fuerza");
+        ejercio4.put("tipo_de_ejercicio","Subir los brazos en lateral");
+        ejercio4.put("intensidad","2 libras");
+        Map<String,Object> tiempo4 = new HashMap<>();
+        tiempo4.put("series","2");
+        tiempo4.put("repeticiones","15");
+        ejercio4.put("tiempo",tiempo4);
 
         Map<String,Object> ejercio5 = new HashMap<>();
-        ejercio2.put("finalidad","Estiramiento");
-        ejercio2.put("tipo_de_ejercicio","Cuello");
-        ejercio2.put("intensidad","Normal");
-        ejercio2.put("tiempo","30 segundos");
+        ejercio5.put("finalidad","Estiramiento");
+        ejercio5.put("tipo_de_ejercicio","Cuello");
+        ejercio5.put("intensidad","Normal");
+        Map<String,Object> tiempo5 = new HashMap<>();
+        tiempo5.put("minutos","00");
+        tiempo5.put("segundos","30");
+        ejercio5.put("tiempo",tiempo5);
 
         Map<String,Object> ejercio6 = new HashMap<>();
-        ejercio2.put("finalidad","Estiramiento");
-        ejercio2.put("tipo_de_ejercicio","Espalda");
-        ejercio2.put("intensidad","Normal");
-        ejercio2.put("tiempo","30 segundos");
+        ejercio6.put("finalidad","Estiramiento");
+        ejercio6.put("tipo_de_ejercicio","Espalda");
+        ejercio6.put("intensidad","Normal");
+        Map<String,Object> tiempo6 = new HashMap<>();
+        tiempo6.put("minutos","00");
+        tiempo6.put("segundos","30");
+        ejercio6.put("tiempo",tiempo6);
 
         Map<String,Object> ejercio7 = new HashMap<>();
-        ejercio2.put("finalidad","Fuerza");
-        ejercio2.put("tipo_de_ejercicio","Miembros superiores");
-        ejercio2.put("intensidad","Normal");
-        ejercio2.put("tiempo","30 segundos");
+        ejercio7.put("finalidad","Estiramiento");
+        ejercio7.put("tipo_de_ejercicio","Miembros superiores");
+        ejercio7.put("intensidad","Normal");
+        Map<String,Object> tiempo7 = new HashMap<>();
+        tiempo7.put("minutos","00");
+        tiempo7.put("segundos","30");
+        ejercio7.put("tiempo",tiempo7);
 
         Map<String,Object> ejercio8 = new HashMap<>();
-        ejercio2.put("finalidad","Fuerza");
-        ejercio2.put("tipo_de_ejercicio","Miembros inferiores");
-        ejercio2.put("intensidad","Normal");
-        ejercio2.put("tiempo","30 segundos");
+        ejercio8.put("finalidad","Estiramiento");
+        ejercio8.put("tipo_de_ejercicio","Miembros inferiores");
+        ejercio8.put("intensidad","Normal");
+        Map<String,Object> tiempo8 = new HashMap<>();
+        tiempo8.put("minutos","00");
+        tiempo8.put("segundos","30");
+        ejercio8.put("tiempo",tiempo8);
 
         Map<String,Object> ejercicios = new HashMap<>();
+        ejercicios.put("fecha",fecha);
         ejercicios.put("ejercicio_1",ejercio1);
         ejercicios.put("ejercicio_2",ejercio2);
         ejercicios.put("ejercicio_3",ejercio3);
@@ -299,20 +330,11 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
             public void onComplete(@NonNull Task<Void> task) {
 
                 if (task.isSuccessful()){
-                    if(!nombre.isEmpty()||!apellido.isEmpty()||!edad.isEmpty()||!genero.isEmpty()){
 
-                        Toast.makeText(FormularioInfoPersonal.this,"Se ha registrado exitosamente",Toast.LENGTH_LONG).show();
-                        Intent intent=new Intent(FormularioInfoPersonal.this, FormularioInfoPersonal1.class);
-                        startActivity(intent);
-                        finish();
-                    }else{
-                        Toast.makeText(FormularioInfoPersonal.this,"Complete la informacion", Toast.LENGTH_LONG).show();
-                    }
                 }else{
-                    Toast.makeText(FormularioInfoPersonal.this,"No se pudo registrar", Toast.LENGTH_LONG).show();
+                    Toast.makeText(FormularioInfoPersonal.this,"No se pudo crear plan", Toast.LENGTH_LONG).show();
                 }
             }
-
         });
 
     }

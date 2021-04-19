@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,11 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class Informe extends AppCompatActivity implements View.OnClickListener {
-
-    ImageButton btnMenuInforme;
-    TextView nombre,apellido,edad,genero,riesgoEdad,actividadFisica,estadoFisico,indiceMasaCorporal
-            ,perimetroAbdominal,riesgoPerAbd,indiceTabac,riesgoEpoc,riesgoAntecedentes
-            ,riesgoEnfermedades,riesgoEstimado,riesgoLetra;
+    Button  btnSiguiente;
     String nombreS,apellidoS,edadS,generoS,riesgoEdadS,actividadFisicaS,estadoFisicoS,indiceMasaCorporalS
             ,perimetroAbdominalS,riesgoPerAbS,indiceTabacS,riesgoEpocS,riesgoAntecedentesS
             ,riesgoEnfermedadesS,riesgoEstimadoS,riesgoLetaS;
@@ -40,43 +37,41 @@ public class Informe extends AppCompatActivity implements View.OnClickListener {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        btnMenuInforme = (ImageButton) findViewById(R.id.menuInforme);
-
-        nombre=(TextView)findViewById(R.id.nombreInforme);
-        apellido=(TextView)findViewById(R.id.apellidoInforme);
-        edad=(TextView)findViewById(R.id.edadInforme);
-        genero=(TextView)findViewById(R.id.generoInforme);
-        riesgoEdad=(TextView)findViewById(R.id.riesgoPorEdadInforme);
-        actividadFisica=(TextView)findViewById(R.id.actividadFisicaInforme);
-        estadoFisico=(TextView)findViewById(R.id.estadoFisicoInfor);
-        indiceMasaCorporal=(TextView)findViewById(R.id.imcInforme);
-        perimetroAbdominal=(TextView)findViewById(R.id.perimetroInforme);
-        riesgoPerAbd=(TextView)findViewById(R.id.riesgoPerAbdInforme);
-        indiceTabac=(TextView)findViewById(R.id.indiceTabaInforme);
-        riesgoEpoc=(TextView)findViewById(R.id.riesgoEpoc);
-        riesgoAntecedentes=(TextView)findViewById(R.id.riesgoPorAntecedentes);
-        riesgoEnfermedades=(TextView)findViewById(R.id.enfermedadesBaseInforme);
-        riesgoEstimado=(TextView)findViewById(R.id.riesgoEstimadoInforme);
-        riesgoLetra=(TextView)findViewById(R.id.riesgoLetraInforme);
-
-        btnMenuInforme.setOnClickListener(this);
+        btnSiguiente = (Button) findViewById(R.id.menuInforme);
+        btnSiguiente.setOnClickListener(this);
         informe();
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
             case R.id.menuInforme:
 
-                    Intent intent = new Intent(Informe.this, Menu.class);
-                    startActivity(intent);
+                Intent miIntent=new Intent(Informe.this,InformeFinal.class);
+                miIntent.putExtra("nombre",nombreS);
+                miIntent.putExtra("apellido",apellidoS);
+                miIntent.putExtra("edad",edadS);
+                miIntent.putExtra("actividadF",actividadFisicaS);
+                miIntent.putExtra("riesgoAntecedentes",riesgoAntecedentesS);
 
+                miIntent.putExtra("estadoF",estadoFisicoS);
+                miIntent.putExtra("indiceM",indiceMasaCorporalS);
+                miIntent.putExtra("perimetroAbdominal",perimetroAbdominalS);
+                miIntent.putExtra("indiceT",indiceTabacS);
+                miIntent.putExtra("riesgoEnfermedades",riesgoEnfermedadesS);
+
+                miIntent.putExtra("riesgoEdad",riesgoEdadS);
+                miIntent.putExtra("riesgoE",riesgoEpocS);
+                miIntent.putExtra("riesgoPerAb",riesgoPerAbS);
+                miIntent.putExtra("riesgoEstimado",riesgoEstimadoS);
+                miIntent.putExtra("riesgoLeta",riesgoLetaS);
+
+                miIntent.putExtra("genero",generoS);
+
+                startActivity(miIntent);
                 break;
 
         }
-
     }
 
     public void informe(){
@@ -102,24 +97,6 @@ public class Informe extends AppCompatActivity implements View.OnClickListener {
                     riesgoPerAbS = snapshot.child("riesgo por perimetro abdominal").getValue().toString();
                     riesgoLetaS = snapshot.child("riesgo").getValue().toString();
                     riesgoEstimadoS = snapshot.child("riesgo estimado").getValue().toString();
-
-                   nombre.setText(nombreS);
-                   apellido.setText(apellidoS);
-                   indiceTabac.setText(indiceTabacS);
-                   riesgoEpoc.setText(riesgoEpocS);
-                   estadoFisico.setText(estadoFisicoS);
-                   indiceMasaCorporal.setText(indiceMasaCorporalS);
-                   actividadFisica.setText(actividadFisicaS);
-                   genero.setText(generoS);
-                   edad.setText(edadS);
-                   riesgoEdad.setText(riesgoEdadS);
-                   perimetroAbdominal.setText(perimetroAbdominalS);
-                   riesgoEnfermedades.setText(riesgoEnfermedadesS);
-                   riesgoAntecedentes.setText(riesgoAntecedentesS);
-                   riesgoPerAbd.setText(riesgoPerAbS);
-                   riesgoLetra.setText(riesgoLetaS);
-                   riesgoEstimado.setText(riesgoEstimadoS);
-
                 }
             }
 

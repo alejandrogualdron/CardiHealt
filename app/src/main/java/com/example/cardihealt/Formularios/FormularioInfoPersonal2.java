@@ -24,6 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -136,7 +139,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
                     Intent intent = new Intent(FormularioInfoPersonal2.this, Menu.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(FormularioInfoPersonal2.this, "Acepte la politica de uso de datos", Toast.LENGTH_LONG).show();
+                Toast.makeText(FormularioInfoPersonal2.this, "Acepte la politica de uso de datos", Toast.LENGTH_LONG).show();
                 }
                 break;
 
@@ -191,7 +194,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         if(caminarL.isChecked() == true){
             energiaC= energiaC+2.5;
         }if(trabajoE.isChecked() == true){
-            energiaC= energiaC+2.0;
+            energiaC= energiaC+1.0;
         }
 
         return energiaC;
@@ -320,14 +323,14 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         perAbd=cintura/cadera;
         if(generoDb.equals("Mujer")&&perAbd>0.84){
             riesgoT=riesgoT+1;
-            riesgoPerAb="Posee riesgo";
+            riesgoPerAb="Si";
         } if(generoDb.equals("Hombre")&&perAbd>0.93){
             riesgoT=riesgoT+1;
-            riesgoPerAb="Posee riesgo";
+            riesgoPerAb="Si";
         }if(generoDb.equals("Mujer")&&perAbd<0.85){
-            riesgoPerAb="No posee riesgo";
+            riesgoPerAb="No";
         }if(generoDb.equals("Hombre")&&perAbd<0.94){
-            riesgoPerAb="No posee riesgo";
+            riesgoPerAb="No";
         }
     }
 
@@ -418,9 +421,14 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
 
     //Creacion del informe
     public void informeDatabase(String id){
+        //Fecha actual
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = dateFormat.format(date) + "";
 
         //Base de datos Firebase
         Map<String, Object> map = new HashMap<>();
+        map.put("fecha",fecha);
         map.put("nombre", nombre);
         map.put("apellido", apellido);
         map.put("indice tabaquico", indiceTabaquico + "");
@@ -440,6 +448,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         map.put("puntaje Prueba", riesgoT+"");
 
 
+
         mDatabase.child("Informes").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -447,6 +456,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
             }
         });
     }
+
 
 }
 

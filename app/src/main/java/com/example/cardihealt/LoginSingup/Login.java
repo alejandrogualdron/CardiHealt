@@ -11,8 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
-
 import com.example.cardihealt.Formularios.FormularioInfoPersonal;
 import com.example.cardihealt.Menu;
 import com.example.cardihealt.R;
@@ -38,7 +38,8 @@ import com.google.firebase.database.ValueEventListener;
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
     private EditText user, pass;
-    private Button btnEntrar, btnRegistrar, btnGmail;
+    private Button btnEntrar, btnRegistrar;
+    private ImageButton btnGmail;
 
     private String usuario = "";
     private String contraseña = "";
@@ -63,9 +64,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         user = (EditText) findViewById(R.id.userLogin);
         pass = (EditText) findViewById(R.id.passwordLogin);
 
-        btnEntrar = (Button) findViewById(R.id.btnEntrar);
+        btnEntrar = (Button) findViewById(R.id.btnIniciarCronometro);
         btnRegistrar = (Button) findViewById(R.id.btnRegistrar);
-        btnGmail = (Button) findViewById(R.id.btnGmail);
+        btnGmail = (ImageButton) findViewById(R.id.btnGmail);
 
         btnEntrar.setOnClickListener(this);
         btnRegistrar.setOnClickListener(this);
@@ -121,11 +122,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             if (user != null) { //si no es null el usuario ya esta logueado
 
                                 String id= firebaseAuth.getCurrentUser().getUid();
-                                nDatabase.child("Informes").child(id
-                                ).addValueEventListener(new ValueEventListener() {
+                                nDatabase.child("Informes").child(id).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         if(snapshot.exists()){
+
                                             Intent dashboardActivity = new Intent(Login.this, Menu.class);
                                             startActivity(dashboardActivity);
                                         }else{
@@ -133,7 +134,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                             startActivity(dashboardActivity);
                                         }
                                     }
-
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
                                     }
@@ -212,7 +212,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         contraseña = pass.getText().toString();
         switch (v.getId()) {
 
-            case R.id.btnEntrar:
+            case R.id.btnIniciarCronometro:
 
                 entrar();
 

@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Nutricion.Informacion_Nutricion"></activity>
+        <activity android:name=".Informacion.Informacion"></activity>
+        <activity android:name=".Informes.InformeFinal" />
+        <activity android:name=".Entrenamiento.Count_Down" />
+        <activity android:name=".Entrenamiento.Cronometro" />
+        <activity android:name=".Entrenamiento.Informacion_Entrenamiento" />
+        <activity android:name=".Nutricion.Informacion_Nutricion" />
         <activity android:name=".Entrenamiento.Entrenamiento" />
         <activity android:name=".Nutricion.Nutricion" />
         <activity android:name=".Recomendaciones.Recomendaciones" />

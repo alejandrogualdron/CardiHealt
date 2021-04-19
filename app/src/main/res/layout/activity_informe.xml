@@ -6,336 +6,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Informes.Informe"
-    android:background="@drawable/negrofondo"
+    android:background="@drawable/fondo_informe"
     >
 
+
     <TextView
-        android:id="@+id/nombreInforme"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text=""
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/cinzel_decorative"
+        android:text="Informe general"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView51"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/apellidoInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text=""
-        app:layout_constraintStart_toEndOf="@+id/nombreInforme"
-        app:layout_constraintTop_toTopOf="@+id/nombreInforme"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Edad: "
-        app:layout_constraintStart_toStartOf="@+id/nombreInforme"
-        app:layout_constraintTop_toBottomOf="@+id/nombreInforme"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/edadInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Actividad Fisica: "
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/textView40"
-        app:layout_constraintTop_toBottomOf="@+id/textView40" />
-
-    <TextView
-        android:id="@+id/actividadFisicaInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="Genero: "
-        app:layout_constraintStart_toEndOf="@+id/edadInforme"
-        app:layout_constraintTop_toTopOf="@+id/edadInforme"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/generoInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView25"
-        app:layout_constraintTop_toTopOf="@+id/textView25"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Estado Fisico: "
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/estadoFisicoInfor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView27"
-        app:layout_constraintTop_toTopOf="@+id/textView27"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Indice deMasa Corporal: "
-        app:layout_constraintStart_toStartOf="@+id/textView27"
-        app:layout_constraintTop_toBottomOf="@+id/textView27"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/imcInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView29"
-        app:layout_constraintTop_toTopOf="@+id/textView29"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/riesgoEpoc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView33"
-        app:layout_constraintTop_toTopOf="@+id/textView33"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView33"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="Riesgo EPOC: "
-        app:layout_constraintStart_toEndOf="@+id/indiceTabaInforme"
-        app:layout_constraintTop_toTopOf="@+id/textView31"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView49"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Enfermedades base: "
-        app:layout_constraintStart_toStartOf="@+id/textView42"
-        app:layout_constraintTop_toBottomOf="@+id/textView42"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView47"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Posee un riesgo: "
-        app:layout_constraintStart_toStartOf="@+id/textView44"
-        app:layout_constraintTop_toBottomOf="@+id/textView44"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView37"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Riesgo por perimetro abdominal: "
-        app:layout_constraintStart_toStartOf="@+id/textView35"
-        app:layout_constraintTop_toBottomOf="@+id/textView35"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView44"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Riesgo Estimado: "
-        app:layout_constraintStart_toStartOf="@+id/textView49"
-        app:layout_constraintTop_toBottomOf="@+id/textView49"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Perimetro Abdominal: "
-        app:layout_constraintStart_toStartOf="@+id/textView29"
-        app:layout_constraintTop_toBottomOf="@+id/textView29"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView42"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Riesgo por antecedentes: "
-        app:layout_constraintStart_toStartOf="@+id/textView31"
-        app:layout_constraintTop_toBottomOf="@+id/textView31"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView31"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Indice Tabaquico: "
-        app:layout_constraintStart_toStartOf="@+id/textView37"
-        app:layout_constraintTop_toBottomOf="@+id/textView37"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/indiceTabaInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView31"
-        app:layout_constraintTop_toTopOf="@+id/textView31"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/perimetroInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView35"
-        app:layout_constraintTop_toTopOf="@+id/textView35"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/riesgoPerAbdInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView37"
-        app:layout_constraintTop_toTopOf="@+id/textView37"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/textView40"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Riesgo por edad: "
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/riesgoPorEdadInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView40"
-        app:layout_constraintTop_toTopOf="@+id/textView40"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/riesgoPorAntecedentes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView42"
-        app:layout_constraintTop_toTopOf="@+id/textView42"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/riesgoEstimadoInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView44"
-        app:layout_constraintTop_toTopOf="@+id/textView44"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:id="@+id/riesgoLetraInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/textView47"
-        app:layout_constraintTop_toTopOf="@+id/textView47"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-
-    <TextView
-        android:id="@+id/enfermedadesBaseInforme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/textView49"
-        app:layout_constraintStart_toEndOf="@+id/textView49"
-        app:layout_constraintTop_toTopOf="@+id/textView49"
-        android:textColor="@color/white"
-        android:textSize="15sp"/>
-
-    <ImageButton
+    <Button
         android:id="@+id/menuInforme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/common_google_signin_btn_text_dark_disabled"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="120dp"
+        android:text="Ver Informe"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/menu" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_disabled"
+        android:fontFamily="@font/baloo_bhaina"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/textView51"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="INFORME GENERAL"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/baloo_bhaina"
+        android:text="A continuación se encontrara con el informe repartido en tres secciones,  información personal, estado actual y el riesgo."
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/white"
-        android:textSize="20sp"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
