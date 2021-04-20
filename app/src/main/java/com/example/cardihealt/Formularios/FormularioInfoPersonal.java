@@ -240,7 +240,7 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
 
         //Base de datos Firebase
         Map<String,Object> ejercio1 = new HashMap<>();
-        ejercio1.put("finalidad","calentamiento");
+        ejercio1.put("finalidad","Calentamiento");
         ejercio1.put("tipo_de_ejercicio","Subir escaleras");
         ejercio1.put("intensidad","Normal");
         Map<String,Object> tiempo1 = new HashMap<>();
@@ -249,7 +249,7 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
         ejercio1.put("tiempo",tiempo1);
 
         Map<String,Object> ejercio2 = new HashMap<>();
-        ejercio2.put("finalidad","calentamiento");
+        ejercio2.put("finalidad","Calentamiento");
         ejercio2.put("tipo_de_ejercicio","caminata");
         ejercio2.put("intensidad","Normal");
         Map<String,Object> tiempo2 = new HashMap<>();

@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Informacion.Informacion"></activity>
+        <activity android:name=".Medico.Informes_Medico.Detalle_Informe"></activity>
+        <activity android:name=".Medico.Informes_Medico.MostrarInformes" />
+        <activity android:name=".Informacion.Informacion" />
         <activity android:name=".Informes.InformeFinal" />
         <activity android:name=".Entrenamiento.Count_Down" />
         <activity android:name=".Entrenamiento.Cronometro" />
@@ -23,7 +25,8 @@
         <activity android:name=".Informes.Informe" />
         <activity android:name=".Formularios.FormularioInfoPersonal2" />
         <activity android:name=".Formularios.FormularioInfoPersonal1" />
-        <activity android:name=".Menu" />
+        <activity android:name=".UsarioMenu.Menu" />
+        <activity android:name=".Medico.Menu_Medico" />
         <activity android:name=".Formularios.FormularioInfoPersonal" />
         <activity android:name=".LoginSingup.Registro" />
         <activity android:name=".LoginSingup.Login">

@@ -14,7 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import com.example.cardihealt.Formularios.FormularioInfoPersonal;
-import com.example.cardihealt.Menu;
+import com.example.cardihealt.Medico.Menu_Medico;
+import com.example.cardihealt.UsarioMenu.Menu;
 import com.example.cardihealt.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -103,7 +104,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 }
             } else {
                 Log.d(TAG, "Error, login no exitoso:" + task.getException().toString());
-                Toast.makeText(this, "Ocurrio un error. " + task.getException().toString(),
+                Toast.makeText(this, "Cancelado",
                         Toast.LENGTH_LONG).show();
             }
         }
@@ -116,23 +117,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
                             // Sign in success, update UI with the signed-in user's information
 
                             if (user != null) { //si no es null el usuario ya esta logueado
-
                                 String id= firebaseAuth.getCurrentUser().getUid();
                                 nDatabase.child("Informes").child(id).addValueEventListener(new ValueEventListener() {
                                     @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                                    {
                                         if(snapshot.exists()){
-
                                             Intent dashboardActivity = new Intent(Login.this, Menu.class);
                                             startActivity(dashboardActivity);
                                         }else{
-                                            Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
-                                            startActivity(dashboardActivity);
-                                        }
+
+                                                Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
+                                                startActivity(dashboardActivity);
+                                            }
+
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
@@ -151,10 +152,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
         FirebaseUser user = firebaseAuth.getCurrentUser();
-
     }
-
-
 
     private void entrar() {
             usuario = user.getText().toString().trim();
@@ -168,30 +166,36 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(this,"Ingrese una contraseña",Toast.LENGTH_LONG).show();
                 return;
             }
+
             //Login de usuario
             firebaseAuth.signInWithEmailAndPassword(usuario,contraseña)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                String id= firebaseAuth.getCurrentUser().getUid();
-                                nDatabase.child("Usuario").child(id).addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        if(snapshot.exists()){
-                                            Intent dashboardActivity = new Intent(Login.this, Menu.class);
-                                            startActivity(dashboardActivity);
-                                        }else{
-                                            Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
-                                            startActivity(dashboardActivity);
+                                    String id= firebaseAuth.getCurrentUser().getUid();
+                                    nDatabase.child("Informes").child(id).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if(snapshot.exists()){
+                                                Intent dashboardActivity = new Intent(Login.this, Menu.class);
+                                                startActivity(dashboardActivity);
+                                            }else{
+                                                //Ingresar medico
+                                                if (usuario.equals("medico@gmail.com")){
+                                                    Intent dashboardActivity = new Intent(Login.this, Menu_Medico.class);
+                                                    startActivity(dashboardActivity);
+                                                }else{
+                                                    Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
+                                                    startActivity(dashboardActivity);
+                                                }
+                                            }
                                         }
-                                    }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-                                    }
-                                });
-
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                        }
+                                    });
                             }else{
                                 if(task.getException() instanceof FirebaseAuthUserCollisionException){ //Si existe el usuario
                                     Toast.makeText(Login.this,"El usuario ya existe",Toast.LENGTH_SHORT).show();

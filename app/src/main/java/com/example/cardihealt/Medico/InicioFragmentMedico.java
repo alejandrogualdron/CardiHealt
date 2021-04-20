@@ -1,4 +1,4 @@
-package com.example.cardihealt.Fragments;
+package com.example.cardihealt.Medico;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,12 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.cardihealt.Formularios.FormularioInfoPersonal1;
 import com.example.cardihealt.Informacion.Informacion;
 import com.example.cardihealt.Informes.Informe;
 import com.example.cardihealt.LoginSingup.Login;
+import com.example.cardihealt.Medico.Informes_Medico.InformesUsuario;
+import com.example.cardihealt.Medico.Informes_Medico.MostrarInformes;
 import com.example.cardihealt.R;
-import com.example.cardihealt.Recomendaciones.Recomendaciones;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -31,10 +31,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link InicioFragment#newInstance} factory method to
+ * Use the {@link InicioFragmentMedico#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class InicioFragment extends Fragment {
+public class InicioFragmentMedico extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,16 +44,16 @@ public class InicioFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    CardView cardInforme,cardRecomendaciones,cardActualizar,cardCerrarsesion,cardEncuesta,cardInformacion;
+    CardView cardInformes,cardRecomendacionesMedico,cardCerrarsesion,cardEncuesta,cardInformacion;
     View vista;
+
     Activity activity;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private GoogleSignInOptions gso;
 
-    public InicioFragment() {
+    public InicioFragmentMedico() {
         // Required empty public constructor
     }
 
@@ -63,11 +63,11 @@ public class InicioFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment InicioFragment.
+     * @return A new instance of fragment InicioFragmentMedico.
      */
     // TODO: Rename and change types and number of parameters
-    public static InicioFragment newInstance(String param1, String param2) {
-        InicioFragment fragment = new InicioFragment();
+    public static InicioFragmentMedico newInstance(String param1, String param2) {
+        InicioFragmentMedico fragment = new InicioFragmentMedico();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -95,44 +95,20 @@ public class InicioFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        vista=inflater.inflate(R.layout.fragment_inicio_medico, container, false);
 
-        vista=inflater.inflate(R.layout.fragment_inicio, container, false);
-
-
-        cardInforme=vista.findViewById(R.id.informe);
-        cardInforme.setOnClickListener(new View.OnClickListener() {
+        cardInformes=vista.findViewById(R.id.informesUsuarios);
+        cardInformes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i;
-                i = new Intent(getContext(), Informe.class);
+                i = new Intent(getContext(), MostrarInformes.class);
                 startActivity(i);
 
             }
         });
 
-        cardActualizar=vista.findViewById(R.id.actualizar);
-        cardActualizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i;
-                i = new Intent(getContext(), FormularioInfoPersonal1.class);
-                startActivity(i);
-
-            }
-        });
-
-        cardRecomendaciones=vista.findViewById(R.id.entrenamiento);
-        cardRecomendaciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i;
-                i = new Intent(getContext(), Recomendaciones.class);
-                startActivity(i);
-
-            }
-        });
-
-        cardCerrarsesion=vista.findViewById(R.id.cerrarsesion);
+        cardCerrarsesion=vista.findViewById(R.id.cerrarsesionMedico);
         cardCerrarsesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,7 +132,7 @@ public class InicioFragment extends Fragment {
             }
         });
 
-        cardEncuesta=vista.findViewById(R.id.encuesta);
+        cardEncuesta=vista.findViewById(R.id.encuestaMedico);
         cardEncuesta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,7 +144,7 @@ public class InicioFragment extends Fragment {
             }
         });
 
-        cardInformacion=vista.findViewById(R.id.info);
+        cardInformacion=vista.findViewById(R.id.infoMedico);
         cardInformacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,6 +157,4 @@ public class InicioFragment extends Fragment {
 
         return vista;
     }
-
-
 }

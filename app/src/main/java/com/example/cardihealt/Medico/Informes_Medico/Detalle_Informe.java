@@ -1,4 +1,4 @@
-package com.example.cardihealt.Informes;
+package com.example.cardihealt.Medico.Informes_Medico;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,19 +10,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 
+import com.example.cardihealt.Informes.InfoFragment;
+import com.example.cardihealt.Informes.InformeFinal;
 import com.example.cardihealt.R;
 import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InformeFinal extends AppCompatActivity {
+public class Detalle_Informe extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     private String dato1;
@@ -30,17 +26,18 @@ public class InformeFinal extends AppCompatActivity {
     private String dato3;
     private String dato4;
     private String dato5;
+    private InformesUsuario itemDetail;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_informe_final);
-
+        setContentView(R.layout.activity_detalle__informe);
 
         //assign variable
-        tabLayout=findViewById(R.id.tab_layout);
-        viewPager=findViewById(R.id.view_pager);
+        tabLayout=findViewById(R.id.tab_detalles);
+        viewPager=findViewById(R.id.view_detalles);
 
         //Initialize array list
         ArrayList<String> arrayList= new ArrayList<>();
@@ -55,22 +52,18 @@ public class InformeFinal extends AppCompatActivity {
 
         //setup with view pager
         tabLayout.setupWithViewPager(viewPager);
-
-
     }
-
     private void prepareViewPager(ViewPager viewPager, ArrayList<String> arrayList) {
         //Initialize main adapter
         MainAdapter adapter = new MainAdapter(getSupportFragmentManager());
         //initialize main fragment
-        InfoFragment fragment= new InfoFragment();
+        InformesMedicoFragment fragment= new InformesMedicoFragment();
 
         //use for loop
         for (int i=0;i<arrayList.size();i++){
 
             //initialize bundle
             Bundle bundle= new Bundle();
-
 
             //put String
             bundle.putString("dato1", editarText1(arrayList.get(i)));
@@ -84,21 +77,19 @@ public class InformeFinal extends AppCompatActivity {
             //Add fragment
             adapter.addFragment(fragment,arrayList.get(i));
             //define new fragment
-            fragment=new InfoFragment();
+            fragment=new InformesMedicoFragment();
         }
         //set adapter
         viewPager.setAdapter(adapter);
-
     }
-
 
     public String editarText1(String titulo){
 
         if(titulo.equals("Infrormación Personal")){
-            dato1= "Nombre: "+getIntent().getStringExtra("nombre");
+            dato1= "Nombre: "+getIntent().getStringExtra("nombre");;
         }
         if(titulo.equals("Estado Actual")){
-            dato1= "Estado fisico: "+getIntent().getStringExtra("estadoF");
+            dato1= "Estado fisico: "+getIntent().getStringExtra("contextura");
         }
         if(titulo.equals("Riesgo")){
             dato1= "Riesgo por edad: "+getIntent().getStringExtra("riesgoEdad");
@@ -110,13 +101,13 @@ public class InformeFinal extends AppCompatActivity {
     public String editarText2(String titulo){
 
         if(titulo.equals("Infrormación Personal")){
-            dato2= "Apellido: "+ getIntent().getStringExtra("apellido");
+            dato2= "Apellido: "+getIntent().getStringExtra("apellido");
         }
         if(titulo.equals("Estado Actual")){
-            dato2= "Indice Tabaquico: "+ getIntent().getStringExtra("indiceT");
+            dato2= "Indice Tabaquico: "+ getIntent().getStringExtra("indiceTabaquico");
         }
         if(titulo.equals("Riesgo")){
-            dato2= "Riesgo de EPOC: "+getIntent().getStringExtra("riesgoE");
+            dato2= "Riesgo de EPOC: "+getIntent().getStringExtra("riesgoEpoc");
         }
 
         return dato2;
@@ -133,7 +124,7 @@ public class InformeFinal extends AppCompatActivity {
             dato3= "Perimetro Abdominal: "+ sSubCadena;
         }
         if(titulo.equals("Riesgo")){
-            dato3= "Riesgo por Perimetro Abdominal: "+getIntent().getStringExtra("riesgoPerAb");
+            dato3= "Riesgo por Perimetro Abdominal: "+getIntent().getStringExtra("riesgoPerimetroAbd");
         }
 
         return dato3;
@@ -142,11 +133,11 @@ public class InformeFinal extends AppCompatActivity {
     public String editarText4(String titulo){
 
         if(titulo.equals("Infrormación Personal")){
-            dato4= "Actividad fisica: "+getIntent().getStringExtra("actividadF");
+            dato4= "Actividad fisica: "+getIntent().getStringExtra("actividadFisica");
         }
 
         if(titulo.equals("Estado Actual")){
-            String sCadena = getIntent().getStringExtra("indiceM");
+            String sCadena = getIntent().getStringExtra("indiceMasaCorporal");
             String sSubCadena = sCadena.substring(0,4);
             dato4= "Indice Masa Corporal: "+ sSubCadena;
         }
@@ -159,26 +150,22 @@ public class InformeFinal extends AppCompatActivity {
     public String editarText5(String titulo){
 
         if(titulo.equals("Infrormación Personal")){
-            dato5= "Riesgo por antecedentes: "+getIntent().getStringExtra("riesgoAntecedentes");
+            dato5= "Riesgo por antecedentes: "+getIntent().getStringExtra("riesgoEstimado");
         }
         if(titulo.equals("Estado Actual")){
-            dato5= "Enfermedades base: "+ getIntent().getStringExtra("riesgoEnfermedades");
+            dato5= "Enfermedades base: "+ getIntent().getStringExtra("riesgoGenetico");
         }
         if(titulo.equals("Riesgo")){
-            dato5= "Posee un riesgo: "+getIntent().getStringExtra("riesgoLeta");
+            dato5= "Posee un riesgo: "+getIntent().getStringExtra("riesgo");
         }
-
         return dato5;
     }
 
 
-
-
-
-    private class MainAdapter extends FragmentPagerAdapter{
+    private class MainAdapter extends FragmentPagerAdapter {
         //Initialize array list
         ArrayList<String> arrayList=new ArrayList<>();
-        List<Fragment>fragmentList=new ArrayList<>();
+        List<Fragment> fragmentList=new ArrayList<>();
 
         public void addFragment(Fragment fragment,String title){
             //Add Title

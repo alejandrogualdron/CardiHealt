@@ -36,8 +36,8 @@ public class Nutricion extends AppCompatActivity {
                 new List_Nutricion("Bebidas azucaradas","Anule su consumo",R.drawable.nutricion_soda),
                 new List_Nutricion("Alimentos de paquete","Reduzca su consumo",R.drawable.nutricion_snack),
                 new List_Nutricion("Productos Lacteos","Anule su consumo",R.drawable.nutricion_lacteos),
-                new List_Nutricion("Carnes magras de res (rojas)","Reduzca su consumo",R.drawable.nutricion_carne),
-                new List_Nutricion("Comidas con alto sodio (sal)","Anule su consumo",R.drawable.nutricion_sal),
+                new List_Nutricion("Carnes rojas","Reduzca su consumo",R.drawable.nutricion_carne),
+                new List_Nutricion("Comidas saladas","Anule su consumo",R.drawable.nutricion_sal),
                 new List_Nutricion("Alcohol","Anule su consumo",R.drawable.nutricion_cerveza),
                 new List_Nutricion("Alimentos fritos","Anule su consumo",R.drawable.nutricion_frito),
 
