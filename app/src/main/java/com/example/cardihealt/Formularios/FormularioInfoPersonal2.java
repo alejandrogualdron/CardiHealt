@@ -16,6 +16,7 @@ import com.example.cardihealt.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -424,8 +425,13 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = dateFormat.format(date) + "";
 
+        FirebaseUser user = mAuth.getCurrentUser();
+        String  email;
+        email = user.getEmail();
+
         //Base de datos Firebase
         Map<String, Object> map = new HashMap<>();
+        map.put("email",email);
         map.put("fecha",fecha);
         map.put("nombre", nombre);
         map.put("apellido", apellido);

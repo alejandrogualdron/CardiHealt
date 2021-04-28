@@ -129,7 +129,7 @@ public class InformeFinal extends AppCompatActivity {
         }
         if(titulo.equals("Estado Actual")){
             String sCadena = getIntent().getStringExtra("perimetroAbdominal");
-            String sSubCadena = sCadena.substring(0,4);
+            String sSubCadena = sCadena.substring(0,3);
             dato3= "Perimetro Abdominal: "+ sSubCadena;
         }
         if(titulo.equals("Riesgo")){

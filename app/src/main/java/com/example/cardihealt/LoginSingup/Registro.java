@@ -92,6 +92,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener 
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
+
                             Intent intent=new Intent(getApplication(), FormularioInfoPersonal.class);
                             startActivity(intent);
                             finish();

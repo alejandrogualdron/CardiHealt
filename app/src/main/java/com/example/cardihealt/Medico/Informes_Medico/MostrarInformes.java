@@ -27,14 +27,10 @@ public class MostrarInformes extends AppCompatActivity  implements View.OnClickL
     private ArrayList<InformesUsuario> nInformesList=new ArrayList<>();
     private DatabaseReference nDatabase;
     private FirebaseAuth nAuth;
-    private Button btnAtras;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_informes);
-
-        btnAtras = (Button) findViewById(R.id.btnAtrasMost);
-        btnAtras.setOnClickListener( this);
 
         nDatabase= FirebaseDatabase.getInstance().getReference();
         nAuth = FirebaseAuth.getInstance();
@@ -53,6 +49,7 @@ public class MostrarInformes extends AppCompatActivity  implements View.OnClickL
                 if(snapshot.exists()){
                     nInformesList.clear();
                     for (DataSnapshot ds: snapshot.getChildren()){
+                        String email = ds.child("email").getValue().toString();
                         String nombreS = ds.child("nombre").getValue().toString();
                         String apellidoS = ds.child("apellido").getValue().toString();
                         String indiceTabacS = ds.child("indice tabaquico").getValue().toString();
@@ -71,7 +68,7 @@ public class MostrarInformes extends AppCompatActivity  implements View.OnClickL
                         String  riesgoEstimadoS = ds.child("riesgo estimado").getValue().toString();
                         String  fecha = ds.child("fecha").getValue().toString();
 
-                        nInformesList.add(new InformesUsuario(actividadFisicaS,riesgoEnfermedadesS,
+                        nInformesList.add(new InformesUsuario(email,actividadFisicaS,riesgoEnfermedadesS,
                                 apellidoS,estadoFisicoS,edadS,fecha,generoS,indiceMasaCorporalS,indiceTabacS,
                                 nombreS,perimetroAbdominalS,riesgoLetaS,riesgoEpocS,riesgoEstimadoS,riesgoAntecedentesS,
                                 riesgoPerAbS,riesgoEdadS));

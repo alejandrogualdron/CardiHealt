@@ -71,6 +71,7 @@ public class Detalle_Informe extends AppCompatActivity {
             bundle.putString("dato3",editarText3(arrayList.get(i)));
             bundle.putString("dato4",editarText4(arrayList.get(i)));
             bundle.putString("dato5",editarText5(arrayList.get(i)));
+            bundle.putString("email",getIntent().getStringExtra("email"));
 
             //set Argument
             fragment.setArguments(bundle);

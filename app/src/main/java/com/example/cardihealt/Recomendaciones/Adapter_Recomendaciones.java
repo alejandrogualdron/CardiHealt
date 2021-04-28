@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cardihealt.Entrenamiento.Entrenamiento;
+import com.example.cardihealt.Entrenamiento.Entrenamiento_Recomendacion;
 import com.example.cardihealt.Nutricion.Nutricion;
 import com.example.cardihealt.R;
 
@@ -45,7 +46,7 @@ public class Adapter_Recomendaciones extends RecyclerView.Adapter<Adapter_Recome
             public void onClick(View v) {
 
                 if(recomendacion.getRecomendacion().equals("Rutina Fisica")){
-                    Intent intent = new Intent(holder.itemView.getContext(), Entrenamiento.class);
+                    Intent intent = new Intent(holder.itemView.getContext(), Entrenamiento_Recomendacion.class);
                     holder.itemView.getContext().startActivity(intent);
 
 

@@ -16,6 +16,7 @@ import com.example.cardihealt.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.text.DateFormat;
@@ -41,6 +42,7 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
     private FirebaseAuth mAuth;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,7 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         btnSiguiente = (ImageButton) findViewById(R.id.btnSiguienteFormul);
         btnSiguiente.setOnClickListener(this);
@@ -197,6 +200,10 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
     }
 
     public void crearDB(){
+        FirebaseUser user = mAuth.getCurrentUser();
+        String  email;
+        email = user.getEmail();
+
         //Base de datos Firebase
         Map<String,Object> map = new HashMap<>();
         map.put("nombre",nombre);
@@ -204,16 +211,15 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
         map.put("edad",edad);
         map.put("genero",genero);
         map.put("genetica",genetica);
+        map.put("email",email);
 
         String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
 
         mDatabase.child("Usuario").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-
                 if (task.isSuccessful()){
                     if(!nombre.isEmpty()||!apellido.isEmpty()||!edad.isEmpty()||!genero.isEmpty()){
-
                         Toast.makeText(FormularioInfoPersonal.this,"Se ha registrado exitosamente",Toast.LENGTH_LONG).show();
                         Intent intent=new Intent(FormularioInfoPersonal.this, FormularioInfoPersonal1.class);
                         startActivity(intent);
@@ -225,9 +231,7 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
                     Toast.makeText(FormularioInfoPersonal.this,"No se pudo registrar", Toast.LENGTH_LONG).show();
                 }
             }
-
         });
-
     }
 
     public void planEntrenamiento(){

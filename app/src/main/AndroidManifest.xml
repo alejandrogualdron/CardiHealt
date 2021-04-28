@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Medico.Informes_Medico.Detalle_Informe"></activity>
+        <activity android:name=".Entrenamiento.Entrenamiento_Recomendacion"></activity>
+        <activity android:name=".Medico.Informes_Medico.EnvioCorreo" />
+        <activity android:name=".Medico.Informes_Medico.Detalle_Informe" />
         <activity android:name=".Medico.Informes_Medico.MostrarInformes" />
         <activity android:name=".Informacion.Informacion" />
         <activity android:name=".Informes.InformeFinal" />

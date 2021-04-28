@@ -137,12 +137,13 @@ public class InicioFragmentMedico extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i;
-                Uri uri= Uri.parse("https://www.google.com/?hl=es");
+                Uri uri= Uri.parse("https://forms.gle/gTv2bJMmcZZeugeh8");
                 i = new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
 
             }
         });
+
 
         cardInformacion=vista.findViewById(R.id.infoMedico);
         cardInformacion.setOnClickListener(new View.OnClickListener() {

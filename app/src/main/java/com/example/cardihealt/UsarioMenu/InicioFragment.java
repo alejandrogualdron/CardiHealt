@@ -161,10 +161,9 @@ public class InicioFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent i;
-                Uri uri= Uri.parse("https://www.google.com/?hl=es");
+                Uri uri= Uri.parse("https://forms.gle/gTv2bJMmcZZeugeh8");
                 i = new Intent(Intent.ACTION_VIEW,uri);
                 startActivity(i);
-
             }
         });
 
@@ -175,7 +174,6 @@ public class InicioFragment extends Fragment {
                 Intent i;
                 i = new Intent(getContext(), Informacion.class);
                 startActivity(i);
-
             }
         });
 
