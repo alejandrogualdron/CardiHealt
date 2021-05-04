@@ -17,6 +17,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import com.example.cardihealt.Formularios.FormularioInfoPersonal;
+import com.example.cardihealt.Formularios.FormularioInfoPersonal1;
+import com.example.cardihealt.Formularios.FormularioInfoPersonal2;
 import com.example.cardihealt.Medico.Menu_Medico;
 import com.example.cardihealt.UsarioMenu.Menu;
 import com.example.cardihealt.R;
@@ -77,6 +79,55 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         btnGmail.setOnClickListener(this);
         googlesSignInOptions();
     }
+    @Override
+    protected void onStart() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user!=null){ //si no es null el usuario ya esta logueado
+            String id= firebaseAuth.getCurrentUser().getUid();
+            nDatabase.child("Usuario").child(id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot)
+                {
+                    if(snapshot.exists()){
+                        if(snapshot.child("rol").exists()) {
+                            Intent dashboardActivity = new Intent(Login.this, Menu_Medico.class);
+                            startActivity(dashboardActivity);
+
+                        }else if(snapshot.child("actividad fisica").exists()&&snapshot.child("disnea").exists()){
+
+                            Intent dashboardActivity = new Intent(Login.this, Menu.class);
+                            startActivity(dashboardActivity);
+
+                        }else if(snapshot.child("fumador").exists()&&snapshot.child("años de fumador").exists()
+                                &&snapshot.child("numero de cigarrillos").exists()&&snapshot.child("peso").exists()
+                                &&snapshot.child("altura").exists()&&snapshot.child("cintura").exists()
+                                &&snapshot.child("cadera").exists()&&snapshot.child("cianosis").exists()
+                                &&snapshot.child("colesterol").exists()&&snapshot.child("diabetes").exists()
+                                &&snapshot.child("hipertension").exists()){
+
+                            Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal2.class);
+                            startActivity(dashboardActivity);
+
+                        }else if(snapshot.child("nombre").exists()&&snapshot.child("apellido").exists()&&snapshot.child("edad").exists()
+                                &&snapshot.child("genero").exists()&&snapshot.child("genetica").exists()){
+
+                            Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal1.class);
+                            startActivity(dashboardActivity);
+
+                        }else {
+                            Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
+                            startActivity(dashboardActivity);
+                        }
+                    }
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+        super.onStart();
+    }
+
 
     //Se controla el boton atrás
     @Override
@@ -114,6 +165,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
     }
 
+    //envia informacion obtenida de ventana google CUENTA Y CREDENCIALES
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -139,6 +191,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+    //Authentication con google
     private void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         firebaseAuth.signInWithCredential(credential)
@@ -147,27 +200,49 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-
                             if (user != null) { //si no es null el usuario ya esta logueado
                                 String id= firebaseAuth.getCurrentUser().getUid();
-                                nDatabase.child("Informes").child(id).addValueEventListener(new ValueEventListener() {
+                                nDatabase.child("Usuario").child(id).addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot)
                                     {
                                         if(snapshot.exists()){
-                                            Intent dashboardActivity = new Intent(Login.this, Menu.class);
-                                            startActivity(dashboardActivity);
-                                        }else{
+                                            if(snapshot.child("rol").exists()) {
+                                                Intent dashboardActivity = new Intent(Login.this, Menu_Medico.class);
+                                                startActivity(dashboardActivity);
 
+                                            }else if(snapshot.child("actividad fisica").exists()&&snapshot.child("disnea").exists()){
+
+                                                Intent dashboardActivity = new Intent(Login.this, Menu.class);
+                                                startActivity(dashboardActivity);
+
+                                            }else if(snapshot.child("fumador").exists()&&snapshot.child("años de fumador").exists()
+                                                    &&snapshot.child("numero de cigarrillos").exists()&&snapshot.child("peso").exists()
+                                                    &&snapshot.child("altura").exists()&&snapshot.child("cintura").exists()
+                                                    &&snapshot.child("cadera").exists()&&snapshot.child("cianosis").exists()
+                                                    &&snapshot.child("colesterol").exists()&&snapshot.child("diabetes").exists()
+                                                    &&snapshot.child("hipertension").exists()){
+
+                                                Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal2.class);
+                                                startActivity(dashboardActivity);
+
+                                            }else if(snapshot.child("nombre").exists()&&snapshot.child("apellido").exists()&&snapshot.child("edad").exists()
+                                                    &&snapshot.child("genero").exists()&&snapshot.child("genetica").exists()){
+
+                                                Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal1.class);
+                                                startActivity(dashboardActivity);
+
+                                            }else {
                                                 Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
                                                 startActivity(dashboardActivity);
                                             }
-
+                                        }
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
                                     }
                                 });
+
                             }
                         } else {
                             // If sign in fails, display a message to the user.
@@ -180,7 +255,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-        FirebaseUser user = firebaseAuth.getCurrentUser();
     }
 
     private void entrar() {
@@ -195,36 +269,54 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(this,"Ingrese una contraseña",Toast.LENGTH_LONG).show();
                 return;
             }
-
             //Login de usuario
             firebaseAuth.signInWithEmailAndPassword(usuario,contraseña)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                    String id= firebaseAuth.getCurrentUser().getUid();
-                                    nDatabase.child("Informes").child(id).addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                            if(snapshot.exists()){
+                                String id= firebaseAuth.getCurrentUser().getUid();
+
+                                nDatabase.child("Usuario").child(id).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot)
+                                    {
+                                        if(snapshot.exists()){
+                                            if(snapshot.child("rol").exists()) {
+                                                Intent dashboardActivity = new Intent(Login.this, Menu_Medico.class);
+                                                startActivity(dashboardActivity);
+
+                                            }else if(snapshot.child("actividad fisica").exists()&&snapshot.child("disnea").exists()){
+
                                                 Intent dashboardActivity = new Intent(Login.this, Menu.class);
                                                 startActivity(dashboardActivity);
-                                            }else{
-                                                //Ingresar medico
-                                                if (usuario.equals("medico@gmail.com")){
-                                                    Intent dashboardActivity = new Intent(Login.this, Menu_Medico.class);
-                                                    startActivity(dashboardActivity);
-                                                }else{
-                                                    Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
-                                                    startActivity(dashboardActivity);
-                                                }
+
+                                            }else if(snapshot.child("fumador").exists()&&snapshot.child("años de fumador").exists()
+                                                    &&snapshot.child("numero de cigarrillos").exists()&&snapshot.child("peso").exists()
+                                                    &&snapshot.child("altura").exists()&&snapshot.child("cintura").exists()
+                                                    &&snapshot.child("cadera").exists()&&snapshot.child("cianosis").exists()
+                                                    &&snapshot.child("colesterol").exists()&&snapshot.child("diabetes").exists()
+                                                    &&snapshot.child("hipertension").exists()){
+
+                                                Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal2.class);
+                                                startActivity(dashboardActivity);
+
+                                            }else if(snapshot.child("nombre").exists()&&snapshot.child("apellido").exists()&&snapshot.child("edad").exists()
+                                                    &&snapshot.child("genero").exists()&&snapshot.child("genetica").exists()){
+
+                                                Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal1.class);
+                                                startActivity(dashboardActivity);
+
+                                            }else {
+                                                Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
+                                                startActivity(dashboardActivity);
                                             }
                                         }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-                                        }
-                                    });
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                    }
+                                });
                             }else{
                                 if(task.getException() instanceof FirebaseAuthUserCollisionException){ //Si existe el usuario
                                     Toast.makeText(Login.this,"El usuario ya existe",Toast.LENGTH_SHORT).show();

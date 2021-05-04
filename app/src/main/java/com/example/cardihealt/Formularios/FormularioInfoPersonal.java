@@ -30,7 +30,7 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
 
     EditText etNombre, etApellido,etFechaN;
     ImageButton  btnSiguiente;
-    RadioButton hombre,siG;
+    RadioButton hombre,siG,mujer,noG;
     String nombre = "";
     String apellido = "";
     String fechaNacimiento = "";
@@ -52,7 +52,9 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
         etApellido = (EditText) findViewById(R.id.etApellido);
         etFechaN=(EditText)findViewById(R.id.etFechaEdad);
         siG = (RadioButton) findViewById(R.id.RegRadbtnSiG);
+        noG = (RadioButton) findViewById(R.id.RegRadbtnNoG);
         hombre = (RadioButton) findViewById(R.id.RegRadbtnHombre);
+        mujer = (RadioButton) findViewById(R.id.RegRadbtnMujer);
 
         etFechaEdad();
 
@@ -82,9 +84,20 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
                 nombre = etNombre.getText().toString();
                 fechaNacimiento = etFechaN.getText().toString();
 
+                if (nombre.equals("")){
+                    Toast.makeText(FormularioInfoPersonal.this, "Ingrese su nombre", Toast.LENGTH_LONG).show();
+                }else if (apellido.equals("")){
+                Toast.makeText(FormularioInfoPersonal.this, "Ingrese su apellido", Toast.LENGTH_LONG).show();
+                }else if (fechaNacimiento.equals("")){
+                Toast.makeText(FormularioInfoPersonal.this, "Ingrese su fecha de nacimiento", Toast.LENGTH_LONG).show();
+                }else if(hombre.isChecked() == false&&mujer.isChecked() == false){
+                    Toast.makeText(FormularioInfoPersonal.this, "Seleccione su genero", Toast.LENGTH_LONG).show();
+                }else if(siG.isChecked() == false&&noG.isChecked() == false){
+                    Toast.makeText(FormularioInfoPersonal.this, "Complete toda la información", Toast.LENGTH_LONG).show();
+                }else{
                 crearDB();
                 planEntrenamiento();
-
+            }
 
                 break;
         }
@@ -220,7 +233,6 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
                     if(!nombre.isEmpty()||!apellido.isEmpty()||!edad.isEmpty()||!genero.isEmpty()){
-                        Toast.makeText(FormularioInfoPersonal.this,"Se ha registrado exitosamente",Toast.LENGTH_LONG).show();
                         Intent intent=new Intent(FormularioInfoPersonal.this, FormularioInfoPersonal1.class);
                         startActivity(intent);
                         finish();

@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.cardihealt.Informes.Informe;
 import com.example.cardihealt.UsarioMenu.Menu;
 import com.example.cardihealt.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -75,7 +76,6 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
     double cadera=0;
     double cintura=0;
 
-
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
 
@@ -117,7 +117,6 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         Map<String,Object> map = new HashMap<>();
         map.put("actividad fisica",actividadF);
         map.put("disnea", disnea);
-
         String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
         mDatabase.child("Usuario").child(id).updateChildren(map);
     }
@@ -128,8 +127,13 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         switch (v.getId()) {
 
             case R.id.btnSiguienteFormul2:
-                if (regCheckbx.isChecked() == true||!actividadF.equals("")) {
 
+                if (disnea0.isChecked() == false&&disnea1.isChecked() == false&&disnea2.isChecked() == false
+                        && disnea3.isChecked() == false){
+                    Toast.makeText(FormularioInfoPersonal2.this, "Responda si posee sensacion de ahogo", Toast.LENGTH_LONG).show();
+                }else if(revisarSintomas()==0){
+                    Toast.makeText(FormularioInfoPersonal2.this, "Seleccione alguna actividad", Toast.LENGTH_LONG).show();
+                }else if (regCheckbx.isChecked() == true) {
                     disnea();
                     actividadFis();
                     crearDB();
@@ -141,7 +145,6 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
                 Toast.makeText(FormularioInfoPersonal2.this, "Acepte la politica de uso de datos", Toast.LENGTH_LONG).show();
                 }
                 break;
-
         }
     }
 
@@ -451,12 +454,10 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         map.put("riesgo", riesgoLetras);
         map.put("puntaje Prueba", riesgoT+"");
 
-
-
         mDatabase.child("Informes").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-
+                Toast.makeText(FormularioInfoPersonal2.this, "Se ha generado su informe", Toast.LENGTH_LONG).show();
             }
         });
     }

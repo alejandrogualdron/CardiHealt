@@ -106,31 +106,46 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
 
             case R.id.btnSiguienteFormul1:
 
-                if(si.isChecked()==true||no.isChecked()==true){
-                    fumador();
-                    numeroCigarrillos=numeroC.getText().toString();
-                    añosFumador=añosF.getText().toString();
-                    peso = etPeso.getText().toString();
-                    altura = etAltura.getText().toString();
-                    cadera = etCadera.getText().toString();
-                    cintura = etCintura.getText().toString();
+                peso = etPeso.getText().toString();
+                altura = etAltura.getText().toString();
+                cadera = etCadera.getText().toString();
+                cintura = etCintura.getText().toString();
+                numeroCigarrillos = numeroC.getText().toString();
+                añosFumador = añosF.getText().toString();
 
-                    if(fuma.equals("Fumador")&& numeroCigarrillos.equals("")|| fuma.equals("Fumador")&&añosFumador.equals("")){
-                        Toast.makeText(FormularioInfoPersonal1.this,"Complete la informacion", Toast.LENGTH_LONG).show();
-                    }else {
-                        cianosis();
-                        colesterol();
-                        diabetes();
-                        hipertension();
-                        crearDB();
-
-                        Intent intent=new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
-                        startActivity(intent);
-                    }
-                }else{
+                if (peso.equals("")){
+                    Toast.makeText(FormularioInfoPersonal1.this,"Ingrese el peso", Toast.LENGTH_LONG).show();
+                }else if (altura.equals("")){
+                    Toast.makeText(FormularioInfoPersonal1.this,"Ingrese el altura", Toast.LENGTH_LONG).show();
+                }else if (cadera.equals("")){
+                    Toast.makeText(FormularioInfoPersonal1.this,"Ingrese la medida cadera", Toast.LENGTH_LONG).show();
+                }else if (cintura.equals("")){
+                    Toast.makeText(FormularioInfoPersonal1.this,"Ingrese la medida cintura", Toast.LENGTH_LONG).show();
+                }else if(si.isChecked()==false&&no.isChecked()==false)  {
                     Toast.makeText(FormularioInfoPersonal1.this,"Complete la informacion", Toast.LENGTH_LONG).show();
+                }else if(si.isChecked()==true&& numeroCigarrillos.equals("")|| si.isChecked()==true &&añosFumador.equals("")) {
+                    Toast.makeText(FormularioInfoPersonal1.this, "Complete la informacion", Toast.LENGTH_LONG).show();
+                }if(si.isChecked()==true) {
+                            fumador();
+                            cianosis();
+                            colesterol();
+                            diabetes();
+                            hipertension();
+                            crearDB();
+                            Intent intent=new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
+                            startActivity(intent);
+                }else if(no.isChecked()==true) {
+                    numeroCigarrillos = "0";
+                    añosFumador = "0";
+                    fumador();
+                    cianosis();
+                    colesterol();
+                    diabetes();
+                    hipertension();
+                    crearDB();
+                    Intent intent=new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
+                    startActivity(intent);
                 }
-
                 break;
         }
     }
