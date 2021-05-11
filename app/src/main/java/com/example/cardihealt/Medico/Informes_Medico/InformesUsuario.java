@@ -1,6 +1,7 @@
 package com.example.cardihealt.Medico.Informes_Medico;
 
 public class InformesUsuario {
+    String key="";
     String email="";
     String actividadFisica="";
     String antecedentes="";
@@ -21,11 +22,12 @@ public class InformesUsuario {
     String riesgoPerimetroAbd="";
     String riesgoEdad="";
 
-    public InformesUsuario(String email,String actividadFisica, String antecedentes, String apellido, String contextura,
+    public InformesUsuario(String key,String  email,String actividadFisica, String antecedentes, String apellido, String contextura,
                            String edad, String fecha, String genero, String indiceMasaCorporal, String indiceTabaquico,
                            String nombre, String perimetroAbdominal, String riesgo,String riesgoEpoc,String riesgoEstimado,
                            String riesgoGenetico, String riesgoPerimetroAbd,String riesgoEdad) {
 
+        this.key=key;
         this.email = email;
         this.actividadFisica = actividadFisica;
         this.antecedentes = antecedentes;
@@ -47,6 +49,13 @@ public class InformesUsuario {
         this.riesgoEdad = riesgoEdad;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public String getEmail() {
         return email;

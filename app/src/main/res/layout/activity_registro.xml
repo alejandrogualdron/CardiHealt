@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:fontFamily="@font/baloo_bhaina"
-        android:hint="Usuario"
+        android:hint="Correo electronico"
         android:inputType="textEmailAddress"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
@@ -23,8 +23,10 @@
         android:textColorLink="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.283" />
 
     <EditText
         android:id="@+id/passwordReg"
@@ -33,7 +35,7 @@
         android:layout_margin="20dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/baloo_bhaina"
-        android:hint="Password"
+        android:hint="Contraseña"
         android:inputType="textPassword"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
@@ -49,14 +51,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:background="@color/common_google_signin_btn_text_dark_disabled"
         android:fontFamily="@font/baloo_bhaina"
         android:text="Registrar"
         android:textColor="#ffffff"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordReg" />
 

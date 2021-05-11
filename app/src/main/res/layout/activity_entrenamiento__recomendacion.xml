@@ -12,12 +12,12 @@
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/cinzel_decorative"
+        android:fontFamily="@font/cabin_bold"
         android:text="Recomendaciones actividades fisicas"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -30,15 +30,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
-        android:text="¡Vamos!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_disabled"
-        android:fontFamily="@font/baloo_bhaina"
+        android:fontFamily="@font/cabin_bold"
+        android:text="¡Vamos!"
         android:textColor="#ffffff"
         android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
@@ -47,7 +48,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="24dp"
-        android:fontFamily="@font/baloo_bhaina"
+        android:fontFamily="@font/cabin_bold"
         android:text="Antes de cualquier actividad fisica se le recomienda que
          consuma por lo menos media manzana verde."
         android:textColor="#FFFFFF"

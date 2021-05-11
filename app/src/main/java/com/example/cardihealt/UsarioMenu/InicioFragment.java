@@ -114,7 +114,19 @@ public class InicioFragment extends Fragment {
         cardActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = mAuth.getCurrentUser().getUid();
+              //  String id = mAuth.getCurrentUser().getUid();
+                borrarInfo();
+                Intent i;
+                i = new Intent(getContext(), FormularioInfoPersonal1.class);
+                startActivity(i);
+
+
+/*
+                mDatabase.child("Usuario").child(id).child("actividad fisica").removeValue();
+                mDatabase.child("Usuario").child(id).child("disnea").removeValue();
+                mDatabase.child("Usuario").child(id).child("fumador").removeValue();
+
+/*
                 mDatabase.child("Usuario").child(id).child("fumador").removeValue();
                 mDatabase.child("Usuario").child(id).child("años de fumador").removeValue();
                 mDatabase.child("Usuario").child(id).child("numero de cigarrillos").removeValue();
@@ -126,12 +138,8 @@ public class InicioFragment extends Fragment {
                 mDatabase.child("Usuario").child(id).child("diabetes").removeValue();
                 mDatabase.child("Usuario").child(id).child("colesterol").removeValue();
                 mDatabase.child("Usuario").child(id).child("hipertension").removeValue();
-                mDatabase.child("Usuario").child(id).child("actividad fisica").removeValue();
-                mDatabase.child("Usuario").child(id).child("disnea").removeValue();
 
-                Intent i;
-                i = new Intent(getContext(), FormularioInfoPersonal1.class);
-                startActivity(i);
+*/
 
             }
         });
@@ -193,6 +201,23 @@ public class InicioFragment extends Fragment {
         });
 
         return vista;
+    }
+    public void borrarInfo(){
+        String id = mAuth.getCurrentUser().getUid();
+        mDatabase.child("Usuario").child(id).child("actividad fisica").removeValue();
+        mDatabase.child("Usuario").child(id).child("disnea").removeValue();
+        mDatabase.child("Usuario").child(id).child("fumador").removeValue();
+
+        mDatabase.child("Usuario").child(id).child("años de fumador").removeValue();
+        mDatabase.child("Usuario").child(id).child("numero de cigarrillos").removeValue();
+        mDatabase.child("Usuario").child(id).child("altura").removeValue();
+        mDatabase.child("Usuario").child(id).child("cintura").removeValue();
+        mDatabase.child("Usuario").child(id).child("peso").removeValue();
+        mDatabase.child("Usuario").child(id).child("cianosis").removeValue();
+        mDatabase.child("Usuario").child(id).child("diabetes").removeValue();
+        mDatabase.child("Usuario").child(id).child("colesterol").removeValue();
+        mDatabase.child("Usuario").child(id).child("hipertension").removeValue();
+
     }
 
 

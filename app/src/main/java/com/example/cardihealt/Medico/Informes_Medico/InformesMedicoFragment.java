@@ -8,11 +8,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import com.example.cardihealt.Informacion.Informacion;
 import com.example.cardihealt.R;
 
 /**
@@ -32,6 +29,7 @@ public class InformesMedicoFragment extends Fragment implements View.OnClickList
     private String mParam2;
     ImageButton mensaje;
     String email;
+    String key;
 
     public InformesMedicoFragment() {
         // Required empty public constructor
@@ -88,6 +86,7 @@ public class InformesMedicoFragment extends Fragment implements View.OnClickList
         String dato4S=getArguments().getString("dato4");
         String dato5S=getArguments().getString("dato5");
         email = getArguments().getString("email");
+        key=getArguments().getString("key");
 
         //set Title
         dato1.setText(dato1S);

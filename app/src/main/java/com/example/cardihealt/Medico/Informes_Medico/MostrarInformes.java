@@ -49,6 +49,7 @@ public class MostrarInformes extends AppCompatActivity  implements View.OnClickL
                 if(snapshot.exists()){
                     nInformesList.clear();
                     for (DataSnapshot ds: snapshot.getChildren()){
+                        String key=ds.getKey();
                         String email = ds.child("email").getValue().toString();
                         String nombreS = ds.child("nombre").getValue().toString();
                         String apellidoS = ds.child("apellido").getValue().toString();
@@ -68,7 +69,7 @@ public class MostrarInformes extends AppCompatActivity  implements View.OnClickL
                         String  riesgoEstimadoS = ds.child("riesgo estimado").getValue().toString();
                         String  fecha = ds.child("fecha").getValue().toString();
 
-                        nInformesList.add(new InformesUsuario(email,actividadFisicaS,riesgoEnfermedadesS,
+                        nInformesList.add(new InformesUsuario(key,email,actividadFisicaS,riesgoEnfermedadesS,
                                 apellidoS,estadoFisicoS,edadS,fecha,generoS,indiceMasaCorporalS,indiceTabacS,
                                 nombreS,perimetroAbdominalS,riesgoLetaS,riesgoEpocS,riesgoEstimadoS,riesgoAntecedentesS,
                                 riesgoPerAbS,riesgoEdadS));
@@ -83,9 +84,6 @@ public class MostrarInformes extends AppCompatActivity  implements View.OnClickL
             }
         });
     }
-
-
-
 
     @Override
     public void onClick(View v) {

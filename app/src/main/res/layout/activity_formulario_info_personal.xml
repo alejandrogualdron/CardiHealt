@@ -1,63 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Formularios.FormularioInfoPersonal">
+
 
         <TextView
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="44dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/baloo_bhaina"
+            android:fontFamily="@font/cabin_bold"
             android:text="¿Algun miembro de su familia(mamá,papá,tios,abuelos) han tenido enfermedades cardiovasculares?"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/textView10"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
-        <RadioGroup
+    <RadioGroup
+        android:id="@+id/radioGroup4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13">
+
+        <RadioButton
+            android:id="@+id/RegRadbtnSiG"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.533"
+            android:fontFamily="@font/cabin_bold"
+            android:text="Si"
+            android:textColor="@color/black"
+            android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView13">
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
-                <RadioButton
-                    android:id="@+id/RegRadbtnSiG"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/baloo_bhaina"
-                    android:text="Si"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-                <RadioButton
-                    android:id="@+id/RegRadbtnNoG"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/baloo_bhaina"
-                    android:text="No"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-        </RadioGroup>
+        <RadioButton
+            android:id="@+id/RegRadbtnNoG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/cabin_bold"
+            android:text="No"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+    </RadioGroup>
 
         <EditText
             android:id="@+id/etApellido"
-            android:layout_width="280dp"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/baloo_bhaina"
+            android:fontFamily="@font/cabin"
             android:textColor="@color/black"
             android:textColorHighlight="#000000"
             android:textColorHint="#000000"
@@ -72,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/baloo_bhaina"
+            android:fontFamily="@font/cabin_bold"
             android:text="Apellido"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -81,9 +88,10 @@
 
         <EditText
             android:id="@+id/etFechaEdad"
-            android:layout_width="359dp"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/baloo_bhaina"
+            android:fontFamily="@font/cabin"
+            android:gravity="center"
             android:hint="dd/mm/aa"
             android:inputType="number"
             android:textColor="@color/black"
@@ -91,18 +99,18 @@
             app:layout_constraintStart_toStartOf="@+id/textView11"
             app:layout_constraintTop_toBottomOf="@+id/textView11"></EditText>
 
+
         <TextView
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/baloo_bhaina"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/cabin_bold"
             android:text="Fecha Nacimiento"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/textView8"
             app:layout_constraintTop_toBottomOf="@+id/etApellido" />
-
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -119,7 +127,7 @@
                     android:id="@+id/RegRadbtnMujer"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/baloo_bhaina"
+                    android:fontFamily="@font/cabin_bold"
                     android:text="Mujer"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -128,7 +136,7 @@
                     android:id="@+id/RegRadbtnHombre"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/baloo_bhaina"
+                    android:fontFamily="@font/cabin_bold"
                     android:text="Hombre"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -138,8 +146,8 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/baloo_bhaina"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/cabin_bold"
             android:text="Genero:"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -153,7 +161,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:fontFamily="@font/cinzel_decorative"
+            android:fontFamily="@font/cabin_bold"
             android:text="Necesitamos más información para finalizar"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -167,7 +175,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:fontFamily="@font/baloo_bhaina"
+            android:fontFamily="@font/cabin_bold"
             android:text="Nombre:"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -176,24 +184,28 @@
 
         <EditText
             android:id="@+id/etNombre"
-            android:layout_width="280dp"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/baloo_bhaina"
+            android:fontFamily="@font/cabin"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView7"
             app:layout_constraintStart_toEndOf="@+id/textView7"
             app:layout_constraintTop_toTopOf="@+id/textView7"></EditText>
 
-        <ImageButton
-            android:id="@+id/btnSiguienteFormul"
-            android:layout_width="76dp"
-            android:layout_height="76dp"
-            android:layout_marginEnd="4dp"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/next" />
+    <ImageButton
+        android:id="@+id/btnSiguienteFormul"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="4dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup4"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/next" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+</ScrollView>

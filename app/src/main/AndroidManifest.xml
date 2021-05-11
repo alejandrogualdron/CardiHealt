@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_index"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Entrenamiento.Entrenamiento_Recomendacion"></activity>
+        <activity android:name=".Entrenamiento.Entrenamiento_Recomendacion" />
         <activity android:name=".Medico.Informes_Medico.EnvioCorreo" />
         <activity android:name=".Medico.Informes_Medico.Detalle_Informe" />
         <activity android:name=".Medico.Informes_Medico.MostrarInformes" />
@@ -20,7 +20,6 @@
         <activity android:name=".Entrenamiento.Count_Down" />
         <activity android:name=".Entrenamiento.Cronometro" />
         <activity android:name=".Entrenamiento.Informacion_Entrenamiento" />
-        <activity android:name=".Nutricion.Informacion_Nutricion" />
         <activity android:name=".Entrenamiento.Entrenamiento" />
         <activity android:name=".Nutricion.Nutricion" />
         <activity android:name=".Recomendaciones.Recomendaciones" />

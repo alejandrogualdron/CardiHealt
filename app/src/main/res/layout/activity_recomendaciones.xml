@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".Recomendaciones.Recomendaciones"
-    android:background="@drawable/fondo_reco">
+    android:background="@drawable/fondo_informe">
 
     <TextView
         android:id="@+id/textView4"
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/cinzel_decorative"
+        android:fontFamily="@font/cabin_bold"
         android:text="Recomendaciones"
         android:textColor="@color/white"
         android:textSize="24sp"

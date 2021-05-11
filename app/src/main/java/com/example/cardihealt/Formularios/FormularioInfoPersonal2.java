@@ -138,9 +138,9 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
                     actividadFis();
                     crearDB();
                     crearDBInforme();
-
                     Intent intent = new Intent(FormularioInfoPersonal2.this, Menu.class);
                     startActivity(intent);
+
                 } else {
                 Toast.makeText(FormularioInfoPersonal2.this, "Acepte la politica de uso de datos", Toast.LENGTH_LONG).show();
                 }
@@ -323,15 +323,16 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
        cadera= Integer.parseInt(caderaDb);
        cintura=Integer.parseInt(cinturaDb);
         perAbd=cintura/cadera;
-        if(generoDb.equals("Mujer")&&perAbd>0.84){
+        if(generoDb.equals("Mujer")&&perAbd>0.86){
             riesgoT=riesgoT+1;
             riesgoPerAb="Si";
-        } if(generoDb.equals("Hombre")&&perAbd>0.93){
+        }else if(generoDb.equals("Mujer")&&perAbd<0.85) {
+            riesgoPerAb = "No";
+        }
+        if(generoDb.equals("Hombre")&&perAbd>0.93){
             riesgoT=riesgoT+1;
             riesgoPerAb="Si";
-        }if(generoDb.equals("Mujer")&&perAbd<0.85){
-            riesgoPerAb="No";
-        }if(generoDb.equals("Hombre")&&perAbd<0.94){
+        }else if(generoDb.equals("Hombre")&&perAbd<0.94){
             riesgoPerAb="No";
         }
     }

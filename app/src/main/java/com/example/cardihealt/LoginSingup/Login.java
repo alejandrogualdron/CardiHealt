@@ -88,7 +88,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot)
                 {
-                    if(snapshot.exists()){
                         if(snapshot.child("rol").exists()) {
                             Intent dashboardActivity = new Intent(Login.this, Menu_Medico.class);
                             startActivity(dashboardActivity);
@@ -117,7 +116,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         }else {
                             Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
                             startActivity(dashboardActivity);
-                        }
                     }
                 }
                 @Override
@@ -206,7 +204,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot)
                                     {
-                                        if(snapshot.exists()){
                                             if(snapshot.child("rol").exists()) {
                                                 Intent dashboardActivity = new Intent(Login.this, Menu_Medico.class);
                                                 startActivity(dashboardActivity);
@@ -236,7 +233,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                                 Intent dashboardActivity = new Intent(Login.this, FormularioInfoPersonal.class);
                                                 startActivity(dashboardActivity);
                                             }
-                                        }
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {

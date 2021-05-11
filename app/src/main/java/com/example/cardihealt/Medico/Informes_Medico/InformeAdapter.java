@@ -61,9 +61,11 @@ public class InformeAdapter extends RecyclerView.Adapter<InformeAdapter.ViewHold
                 String riesgoPerimetroAbd=informes.getRiesgoPerimetroAbd();
                 String riesgoEdad=informes.getRiesgoEdad();
                 String email=informes.getEmail();
+                String key=informes.getKey();
 
                 Intent intent=new Intent(holder.itemView.getContext(),Detalle_Informe.class);
 
+                intent.putExtra("key",key);
                 intent.putExtra("email",email);
                 intent.putExtra("nombre", nombre);
                 intent.putExtra("apellido", apellido);

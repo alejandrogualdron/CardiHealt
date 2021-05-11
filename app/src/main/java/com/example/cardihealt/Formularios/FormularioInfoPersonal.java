@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
 import com.example.cardihealt.R;
+import com.example.cardihealt.UsarioMenu.Menu;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -97,6 +98,9 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
                 }else{
                 crearDB();
                 planEntrenamiento();
+
+                Intent intent = new Intent(FormularioInfoPersonal.this, FormularioInfoPersonal1.class);
+                startActivity(intent);
             }
 
                 break;
@@ -228,7 +232,8 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
 
         String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
 
-        mDatabase.child("Usuario").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+        mDatabase.child("Usuario").child(id).setValue(map);
+     /*  mDatabase.child("Usuario").child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()){
@@ -243,7 +248,7 @@ public class FormularioInfoPersonal extends AppCompatActivity implements View.On
                     Toast.makeText(FormularioInfoPersonal.this,"No se pudo registrar", Toast.LENGTH_LONG).show();
                 }
             }
-        });
+        });*/
     }
 
     public void planEntrenamiento(){

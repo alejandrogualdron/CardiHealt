@@ -13,12 +13,21 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import com.example.cardihealt.LoginSingup.Login;
+import com.example.cardihealt.Medico.Menu_Medico;
 import com.example.cardihealt.R;
+import com.example.cardihealt.UsarioMenu.Menu;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,8 +68,8 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
 
         etPeso = (EditText) findViewById(R.id.etPeso);
         etAltura = (EditText) findViewById(R.id.etAltura);
-        etCadera = (EditText) findViewById(R.id.cintura);
-        etCintura = (EditText) findViewById(R.id.cadera);
+        etCadera = (EditText) findViewById(R.id.cadera);
+        etCintura = (EditText) findViewById(R.id.cintura);
 
         cbCianosis = (CheckBox) findViewById(R.id.cbCianosis);
         cbColesterol = (CheckBox) findViewById(R.id.cbColesterol);
@@ -76,6 +85,7 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
         btnSiguiente.setOnClickListener(this);
 
     }
+
 
 
     public void crearDB(){
@@ -132,8 +142,8 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
                             diabetes();
                             hipertension();
                             crearDB();
-                            Intent intent=new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
-                            startActivity(intent);
+                Intent intent = new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
+                startActivity(intent);
                 }else if(no.isChecked()==true) {
                     numeroCigarrillos = "0";
                     añosFumador = "0";
@@ -143,8 +153,8 @@ public class FormularioInfoPersonal1 extends AppCompatActivity implements View.O
                     diabetes();
                     hipertension();
                     crearDB();
-                    Intent intent=new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
-                    startActivity(intent);
+                Intent intent = new Intent(FormularioInfoPersonal1.this, FormularioInfoPersonal2.class);
+                startActivity(intent);
                 }
                 break;
         }

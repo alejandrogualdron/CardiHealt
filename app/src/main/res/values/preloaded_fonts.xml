@@ -3,6 +3,8 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/baloo_bhaina</item>
         <item>@font/bree_serif</item>
+        <item>@font/cabin</item>
+        <item>@font/cabin_bold</item>
         <item>@font/cinzel_decorative</item>
     </array>
 </resources>

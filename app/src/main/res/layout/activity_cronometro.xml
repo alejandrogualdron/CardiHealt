@@ -14,7 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_disabled"
-        android:fontFamily="@font/baloo_bhaina"
+        android:fontFamily="@font/cabin_bold"
         android:text="¡INICIAR!"
         android:textColor="#ffffff"
         android:textSize="18sp"
@@ -22,8 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descripcion_cronometro"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/descripcion_cronometro" />
 
     <TextView
         android:id="@+id/descripcion_cronometro"
@@ -43,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:fontFamily="@font/cinzel_decorative"
+        android:fontFamily="@font/cabin_bold"
         android:text="TextView"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
@@ -73,15 +72,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_disabled"
-        android:fontFamily="@font/baloo_bhaina"
+        android:fontFamily="@font/cabin_bold"
         android:text="¡Pause!"
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnIniciarCronometro"
-       />
+        app:layout_constraintTop_toBottomOf="@+id/btnIniciarCronometro" />
 
     <Button
         android:id="@+id/btnReset"
@@ -90,15 +88,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_disabled"
-        android:fontFamily="@font/baloo_bhaina"
+        android:fontFamily="@font/cabin_bold"
         android:text="¡RESET!"
         android:textColor="#ffffff"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnStop"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/btnStop" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

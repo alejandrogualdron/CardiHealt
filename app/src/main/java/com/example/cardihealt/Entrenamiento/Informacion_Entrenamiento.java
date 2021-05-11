@@ -79,7 +79,7 @@ public class Informacion_Entrenamiento extends AppCompatActivity implements View
                                     tiempo.setText(tiempoS);
                                     descripcionS=descripcion(ejercicio);
                                     descripcion.setText(descripcionS);
-                                    imagen_entrenamiento.setImageResource(R.drawable.calentamiento_trotar);
+                                    imagen_entrenamiento.setImageResource(R.drawable.calentamiento_subir_escalera);
                                 }
                             }
                         @Override
@@ -117,7 +117,7 @@ public class Informacion_Entrenamiento extends AppCompatActivity implements View
                                     tiempo.setText(tiempoS);
                                     descripcionS=descripcion(ejercicio);
                                     descripcion.setText(descripcionS);
-                                    imagen_entrenamiento.setImageResource(R.drawable.calentamiento_subir_escalera);
+                                    imagen_entrenamiento.setImageResource(R.drawable.calentamiento_trotar);
                                 }
                             }
                             @Override

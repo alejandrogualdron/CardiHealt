@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="30dp"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/cabin_bold"
         android:text="Comunicar con paciente"
         android:textColor="#000000"
         android:textSize="24sp" />
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/cabin_bold"
         android:text="Correo"
         android:textColor="#000000"
         android:textSize="18sp" />
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/cabin"
         android:text=""
         android:textColor="#000000"
         android:textSize="18sp" />
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/cabin_bold"
         android:text="Asunto:"
         android:textColor="#000000"
         android:textSize="18sp" />
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/cabin"
         android:text="Información CardiHealt"
         android:textColor="#000000"
         android:textSize="18sp" />
@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/cabin_bold"
         android:text="Mensaje"
         android:textColor="#000000"
         android:textSize="18sp" />
@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="@font/cabin"
         android:hint="Comunicado"
         android:textColor="#000000"
         android:textSize="18sp" />
