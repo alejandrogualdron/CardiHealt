@@ -1,0 +1,173 @@
+@startuml
+
+title __ENTRENAMIENTO's Class Diagram__\n
+
+  namespace com.example.cardihealt {
+    namespace Entrenamiento {
+      class com.example.cardihealt.Entrenamiento.Adapter_Entrenamiento {
+          ~ context : Context
+          ~ myEntrenamiento : List_Entrenamiento[]
+          + Adapter_Entrenamiento()
+          + getItemCount()
+          + onBindViewHolder()
+          + onCreateViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Entrenamiento {
+      class com.example.cardihealt.Entrenamiento.Adapter_Entrenamiento.ViewHolder {
+          ~ ejercicio : TextView
+          ~ imageEntrenamiento : ImageView
+          + ViewHolder()
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Entrenamiento {
+      class com.example.cardihealt.Entrenamiento.Count_Down {
+          ~ cronometro : TextView
+          ~ descripcion : TextView
+          ~ descripcionS : String
+          ~ detener : Button
+          ~ ejercicio : TextView
+          ~ ejercicioS : String
+          ~ iniciar : Button
+          ~ min : int
+          ~ minData : String
+          ~ relojCorriendo : boolean
+          ~ reset : Button
+          ~ seg : int
+          ~ segData : String
+          ~ temporizador : CountDownTimer
+          ~ time : String
+          + onClick()
+          # onCreate()
+          - iniciarCuenta()
+          - pauseTimer()
+          - resetTimer()
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Entrenamiento {
+      class com.example.cardihealt.Entrenamiento.Cronometro {
+          ~ chronometer : Chronometer
+          ~ descripcion : TextView
+          ~ descripcionS : String
+          ~ detener : Button
+          ~ eje : String
+          ~ ejercicio : TextView
+          ~ ejercicioS : String
+          ~ iniciar : Button
+          ~ reset : Button
+          ~ running : boolean
+          - pauseoffset : long
+          + onClick()
+          + pauseChronometer()
+          + stopCronometro()
+          # onCreate()
+          - startChronometer()
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Entrenamiento {
+      class com.example.cardihealt.Entrenamiento.Entrenamiento {
+          ~ myMovieData : List_Entrenamiento[]
+          - mAuth : FirebaseAuth
+          - mDatabase : DatabaseReference
+          + mostrar()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Entrenamiento {
+      class com.example.cardihealt.Entrenamiento.Entrenamiento_Recomendacion {
+          - btnEntrenamiento : Button
+          + onClick()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Entrenamiento {
+      class com.example.cardihealt.Entrenamiento.Informacion_Entrenamiento {
+          ~ dato : String
+          ~ descripcion : TextView
+          ~ descripcionS : String
+          ~ ejercicio : String
+          ~ finalidad : TextView
+          ~ imagen_entrenamiento : ImageView
+          ~ intensidad : TextView
+          ~ intensidadS : String
+          ~ minutos : String
+          ~ repeticiones : String
+          ~ segundos : String
+          ~ series : String
+          ~ tiempo : TextView
+          ~ tiempoS : String
+          ~ tipo_ejercicio : TextView
+          ~ tipo_ejercicioS : String
+          - btnCronometro : Button
+          - mAuth : FirebaseAuth
+          - mDatabase : DatabaseReference
+          + descripcion()
+          + ejercicios()
+          + onClick()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Entrenamiento {
+      class com.example.cardihealt.Entrenamiento.List_Entrenamiento {
+          - ejercicio : String
+          - imagenEntrenamiento : Integer
+          + List_Entrenamiento()
+          + getEjercicio()
+          + getImagenEntrenamiento()
+          + setEjercicio()
+          + setImagenEntrenamiento()
+      }
+    }
+  }
+  
+
+  com.example.cardihealt.Entrenamiento.Adapter_Entrenamiento -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.cardihealt.Entrenamiento.Adapter_Entrenamiento +-down- com.example.cardihealt.Entrenamiento.Adapter_Entrenamiento.ViewHolder
+  com.example.cardihealt.Entrenamiento.Adapter_Entrenamiento.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.cardihealt.Entrenamiento.Count_Down .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Entrenamiento.Count_Down -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.cardihealt.Entrenamiento.Cronometro .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Entrenamiento.Cronometro -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.cardihealt.Entrenamiento.Entrenamiento -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.cardihealt.Entrenamiento.Entrenamiento_Recomendacion .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Entrenamiento.Entrenamiento_Recomendacion -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.cardihealt.Entrenamiento.Informacion_Entrenamiento .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Entrenamiento.Informacion_Entrenamiento -up-|> androidx.appcompat.app.AppCompatActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

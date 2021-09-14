@@ -11,7 +11,6 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.example.cardihealt.Informes.Informe;
 import com.example.cardihealt.UsarioMenu.Menu;
 import com.example.cardihealt.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -88,7 +87,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        btnSiguiente1 = (ImageButton) findViewById(R.id.btnSiguienteFormul2);
+        btnSiguiente1 = (ImageButton) findViewById(R.id.btnSiguienteFormulario2);
 
         regCheckbx = (CheckBox) findViewById(R.id.RegCheckbx);
 
@@ -98,16 +97,16 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         disnea3 = (RadioButton) findViewById(R.id.RegRadDisnea3);
 
         dormir = (CheckBox) findViewById(R.id.cbDormir);
-        verTv = (CheckBox) findViewById(R.id.cbVerTv);
-        leer = (CheckBox) findViewById(R.id.cbLeer);
+        verTv = (CheckBox) findViewById(R.id.cbVerTelevision);
+        leer = (CheckBox) findViewById(R.id.cbPollo);
         planchar = (CheckBox) findViewById(R.id.cbPlanchar);
         conducir = (CheckBox) findViewById(R.id.cbConducir);
         cocinar = (CheckBox) findViewById(R.id.cbCocinar);
         trotar = (CheckBox) findViewById(R.id.cbTrotar);
         saltarC = (CheckBox) findViewById(R.id.cbSaltarCuerda);
-        cicla = (CheckBox) findViewById(R.id.cbCicla);
-        caminarL = (CheckBox) findViewById(R.id.cbCaminarLento);
-        trabajoE = (CheckBox) findViewById(R.id.cbTrabajoEscritorio);
+        cicla = (CheckBox) findViewById(R.id.cbMontarCicla);
+        caminarL = (CheckBox) findViewById(R.id.cbCaminar);
+        trabajoE = (CheckBox) findViewById(R.id.cbTiempoSentado);
 
         btnSiguiente1.setOnClickListener(this);
     }
@@ -126,7 +125,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
 
         switch (v.getId()) {
 
-            case R.id.btnSiguienteFormul2:
+            case R.id.btnSiguienteFormulario2:
 
                 if (disnea0.isChecked() == false&&disnea1.isChecked() == false&&disnea2.isChecked() == false
                         && disnea3.isChecked() == false){
@@ -138,6 +137,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
                     actividadFis();
                     crearDB();
                     crearDBInforme();
+                  //  planEntrenamiento();
                     Intent intent = new Intent(FormularioInfoPersonal2.this, Menu.class);
                     startActivity(intent);
 
@@ -151,14 +151,11 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
     public void actividadFis(){
         if( revisarSintomas()>0 && revisarSintomas()<2.0){
             actividadF="Sedentario";
-        }
-        if( revisarSintomas()>1.9 && revisarSintomas()<3.0){
+        }else if( revisarSintomas()>1.9 && revisarSintomas()<3.0){
             actividadF="Ligera";
-        }
-        if( revisarSintomas()>2.9 && revisarSintomas()<5.9){
+        }else if( revisarSintomas()>2.9 && revisarSintomas()<5.9){
             actividadF="Moderada";
-        }
-        if( revisarSintomas()>6 ){
+        }else if( revisarSintomas()>6 ){
             actividadF="Rigurosa";
         }
     }
@@ -206,16 +203,13 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
 
         if (disnea0.isChecked() == true) {
             disnea = "No";
-        }
-        if (disnea1.isChecked() == true) {
+        }else if (disnea1.isChecked() == true) {
             disnea = "Si";
             riesgoT = riesgoT+1;
-        }
-        if (disnea2.isChecked() == true) {
+        }else if (disnea2.isChecked() == true) {
             disnea = "Si";
             riesgoT = riesgoT+2;
-        }
-        if (disnea3.isChecked() == true) {
+        }else if (disnea3.isChecked() == true) {
             disnea = "Si";
             riesgoT = riesgoT+3;
         }
@@ -251,7 +245,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
                         añosFumador=Integer.parseInt(añosFDb);
                         indiceTabaquico = numeroCigarrillos*añosFumador/20 ;
                         riesgoPorTabaco();
-                    }   if(fumaDb.equals("No")){
+                    } else  if(fumaDb.equals("No")){
                         indiceTabaquico = 0 ;
                         riesgoEpoc=0;
                     }
@@ -277,16 +271,13 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         //Calculo del  tabaco riesgo
         if (indiceTabaquico < 10) {
             riesgoEpoc = 0;
-        }
-        if (indiceTabaquico > 9 && indiceTabaquico < 21) {
+        }else if (indiceTabaquico > 9 && indiceTabaquico < 21) {
             riesgoT=riesgoT+1;
             riesgoEpoc = 33;
-        }
-        if (indiceTabaquico > 20 && indiceTabaquico < 40) {
+        }else if (indiceTabaquico > 20 && indiceTabaquico < 40) {
             riesgoT=riesgoT+2;
             riesgoEpoc = 66;
-        }
-        if (indiceTabaquico > 40) {
+        }else if (indiceTabaquico > 40) {
             riesgoT=riesgoT+3;
             riesgoEpoc = 99;
         }
@@ -318,7 +309,6 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
 
     //Riesgo Abdominal
     public void riesgoAbdominal(){
-
         //perimetro abdominal
        cadera= Integer.parseInt(caderaDb);
        cintura=Integer.parseInt(cinturaDb);
@@ -328,8 +318,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
             riesgoPerAb="Si";
         }else if(generoDb.equals("Mujer")&&perAbd<0.85) {
             riesgoPerAb = "No";
-        }
-        if(generoDb.equals("Hombre")&&perAbd>0.93){
+        }else if(generoDb.equals("Hombre")&&perAbd>0.93){
             riesgoT=riesgoT+1;
             riesgoPerAb="Si";
         }else if(generoDb.equals("Hombre")&&perAbd<0.94){
@@ -348,20 +337,16 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
 
         if (imc > 18.4 && imc < 25) {
             imcS = "Normal";
-        }
-        if (imc > 24.9 && imc < 30) {
+        }else if (imc > 24.9 && imc < 30) {
             riesgoT=riesgoT+1;
             imcS = "Sobrepeso";
-        }
-        if (imc > 29.9 && imc < 35) {
+        }else if (imc > 29.9 && imc < 35) {
             riesgoT=riesgoT+2;
             imcS = "Obesidad I";
-        }
-        if (imc > 34.9 && imc < 39.9) {
+        }else if (imc > 34.9 && imc < 39.9) {
             riesgoT=riesgoT+3;
             imcS = "Obesidad II";
-        }
-        if (imc > 39.9) {
+        }else if (imc > 39.9) {
             riesgoT=riesgoT+4;
             imcS = "Obesidad III";
         }
@@ -377,8 +362,7 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
             } else {
                 rEdad = "No";
             }
-        }
-        if (generoDb.equals("Mujer")) {
+        }else if (generoDb.equals("Mujer")) {
             if (Integer.parseInt(edadDb) > 44) {
                 riesgoT=riesgoT+1;
                 rEdad = "Si";
@@ -393,9 +377,9 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         //riesgo actividad F
         if(actividadF.equals("Sedentario")){
             riesgoT=riesgoT+3;
-        }if(actividadF.equals("Ligera")){
+        }else if(actividadF.equals("Ligera")){
             riesgoT=riesgoT+2;
-        }if(actividadF.equals("Moderada")){
+        }else if(actividadF.equals("Moderada")){
             riesgoT=riesgoT+1;
         }
     }
@@ -413,14 +397,16 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         riesgoProm=(riesgoT*100)/21;
         if(riesgoProm<26){
             riesgoLetras="Bajo";
-        }if(riesgoProm>25 &&riesgoProm<51){
+        }else if(riesgoProm>25 &&riesgoProm<51){
             riesgoLetras="Medio";
-        }if(riesgoProm>50 &&riesgoProm<76){
+        }else if(riesgoProm>50 &&riesgoProm<76){
             riesgoLetras="Alto";
-        }if(riesgoProm>75 &&riesgoProm<101){
+        }else if(riesgoProm>75 &&riesgoProm<101){
             riesgoLetras="Muy alto";
         }
+        ejerciciosPlanPersonaliado(riesgoLetras);
     }
+
 
     //Creacion del informe
     public void informeDatabase(String id){
@@ -463,6 +449,587 @@ public class FormularioInfoPersonal2 extends AppCompatActivity implements View.O
         });
     }
 
+    public void ejerciciosPlanPersonaliado(String riesgo){
+
+        if(riesgo=="Bajo"){
+            planEntrenamientoBajo();
+        } else if(riesgo=="Medio"){
+            planEntrenamientoMedio();
+        } else if(riesgo=="Alto"){
+            planEntrenamientoAlto();
+        } else if(riesgo=="Muy alto"){
+            planEntrenamientoMuyAlto();
+        }
+    }
+
+    public void planEntrenamientoBajo(){
+
+        //Fecha actual
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = dateFormat.format(date) + "";
+
+
+        //Base de datos Firebase
+        Map<String,Object> ejercio1 = new HashMap<>();
+        Map<String,Object> ejercio2 = new HashMap<>();
+        Map<String,Object> ejercio3 = new HashMap<>();
+        Map<String,Object> ejercio4 = new HashMap<>();
+        Map<String,Object> ejercio5 = new HashMap<>();
+        Map<String,Object> ejercio6 = new HashMap<>();
+        Map<String,Object> ejercio7 = new HashMap<>();
+        Map<String,Object> ejercio8 = new HashMap<>();
+
+        //EJERCICIO 1
+        ejercio1.put("finalidad","Calentamiento");
+        ejercio1.put("tipo_de_ejercicio","Subir escaleras");
+        ejercio1.put("intensidad","Normal");
+        Map<String,Object> tiempo1 = new HashMap<>();
+        tiempo1.put("minutos","" + "07");
+        tiempo1.put("segundos","00");
+        ejercio1.put("tiempo",tiempo1);
+
+        //EJERCICIO 2
+        ejercio2.put("finalidad","Calentamiento");
+        ejercio2.put("tipo_de_ejercicio","caminata");
+        ejercio2.put("intensidad","Normal");
+        Map<String,Object> tiempo2 = new HashMap<>();
+        tiempo2.put("minutos","30");
+        tiempo2.put("segundos","00");
+        ejercio2.put("tiempo",tiempo2);
+
+        if (rEdad.equals("Si")){
+
+            //EJERCICIO 3
+            ejercio3.put("finalidad","Fuerza");
+            ejercio3.put("tipo_de_ejercicio","Subir los brazos en frontal");
+            ejercio3.put("intensidad","2 libras");
+            Map<String,Object> tiempo3 = new HashMap<>();
+            tiempo3.put("series","2");
+            tiempo3.put("repeticiones","10");
+            ejercio3.put("tiempo",tiempo3);
+
+            //EJERCICIO 3
+            ejercio4.put("finalidad","Fuerza");
+            ejercio4.put("tipo_de_ejercicio","Subir los brazos en lateral");
+            ejercio4.put("intensidad","2 libras");
+            Map<String,Object> tiempo4 = new HashMap<>();
+            tiempo4.put("series","2");
+            tiempo4.put("repeticiones","10");
+            ejercio4.put("tiempo",tiempo4);
+
+        }
+        else{
+
+            //EJERCICIO 3
+            ejercio3.put("finalidad","Fuerza");
+            ejercio3.put("tipo_de_ejercicio","Subir los brazos en frontal");
+            ejercio3.put("intensidad","2 libras");
+            Map<String,Object> tiempo3 = new HashMap<>();
+            tiempo3.put("series","2");
+            tiempo3.put("repeticiones","17");
+            ejercio3.put("tiempo",tiempo3);
+
+            //EJERCICIO 4
+            ejercio4.put("finalidad","Fuerza");
+            ejercio4.put("tipo_de_ejercicio","Subir los brazos en lateral");
+            ejercio4.put("intensidad","2 libras");
+            Map<String,Object> tiempo4 = new HashMap<>();
+            tiempo4.put("series","2");
+            tiempo4.put("repeticiones","17");
+            ejercio4.put("tiempo",tiempo4);
+        }
+
+        //EJERCICIO 5
+        ejercio5.put("finalidad","Estiramiento");
+        ejercio5.put("tipo_de_ejercicio","Cuello");
+        ejercio5.put("intensidad","Normal");
+        Map<String,Object> tiempo5 = new HashMap<>();
+        tiempo5.put("minutos","00");
+        tiempo5.put("segundos","30");
+        ejercio5.put("tiempo",tiempo5);
+
+        //EJERCICIO 6
+        ejercio6.put("finalidad","Estiramiento");
+        ejercio6.put("tipo_de_ejercicio","Espalda");
+        ejercio6.put("intensidad","Normal");
+        Map<String,Object> tiempo6 = new HashMap<>();
+        tiempo6.put("minutos","00");
+        tiempo6.put("segundos","30");
+        ejercio6.put("tiempo",tiempo6);
+
+        //EJERCICIO 7
+        ejercio7.put("finalidad","Estiramiento");
+        ejercio7.put("tipo_de_ejercicio","Miembros superiores");
+        ejercio7.put("intensidad","Normal");
+        Map<String,Object> tiempo7 = new HashMap<>();
+        tiempo7.put("minutos","00");
+        tiempo7.put("segundos","30");
+        ejercio7.put("tiempo",tiempo7);
+
+        //EJERCICIO 8
+        ejercio8.put("finalidad","Estiramiento");
+        ejercio8.put("tipo_de_ejercicio","Miembros inferiores");
+        ejercio8.put("intensidad","Normal");
+        Map<String,Object> tiempo8 = new HashMap<>();
+        tiempo8.put("minutos","00");
+        tiempo8.put("segundos","30");
+        ejercio8.put("tiempo",tiempo8);
+
+        Map<String,Object> ejercicios = new HashMap<>();
+        ejercicios.put("fecha",fecha);
+        ejercicios.put("ejercicio_1",ejercio1);
+        ejercicios.put("ejercicio_2",ejercio2);
+        ejercicios.put("ejercicio_3",ejercio3);
+        ejercicios.put("ejercicio_4",ejercio4);
+        ejercicios.put("ejercicio_5",ejercio5);
+        ejercicios.put("ejercicio_6",ejercio6);
+        ejercicios.put("ejercicio_7",ejercio7);
+        ejercicios.put("ejercicio_8",ejercio8);
+
+
+        String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
+
+        mDatabase.child("Entrenamientos").child(id).setValue(ejercicios).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()){
+
+                }else{
+                    Toast.makeText(FormularioInfoPersonal2.this,"No se pudo crear plan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+
+    public void planEntrenamientoMedio(){
+
+        //Fecha actual
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = dateFormat.format(date) + "";
+
+
+        //Base de datos Firebase
+        Map<String,Object> ejercio1 = new HashMap<>();
+        Map<String,Object> ejercio2 = new HashMap<>();
+        Map<String,Object> ejercio3 = new HashMap<>();
+        Map<String,Object> ejercio4 = new HashMap<>();
+        Map<String,Object> ejercio5 = new HashMap<>();
+        Map<String,Object> ejercio6 = new HashMap<>();
+        Map<String,Object> ejercio7 = new HashMap<>();
+        Map<String,Object> ejercio8 = new HashMap<>();
+
+        //EJERCICIO 1
+        ejercio1.put("finalidad","Calentamiento");
+        ejercio1.put("tipo_de_ejercicio","Subir escaleras");
+        ejercio1.put("intensidad","Normal");
+        Map<String,Object> tiempo1 = new HashMap<>();
+        tiempo1.put("minutos","" + "10");
+        tiempo1.put("segundos","00");
+        ejercio1.put("tiempo",tiempo1);
+
+        //EJERCICIO 2
+        ejercio2.put("finalidad","Calentamiento");
+        ejercio2.put("tipo_de_ejercicio","caminata");
+        ejercio2.put("intensidad","Normal");
+        Map<String,Object> tiempo2 = new HashMap<>();
+        tiempo2.put("minutos","27");
+        tiempo2.put("segundos","00");
+        ejercio2.put("tiempo",tiempo2);
+
+        if (rEdad.equals("Si")){
+
+            //EJERCICIO 3
+            ejercio3.put("finalidad","Fuerza");
+            ejercio3.put("tipo_de_ejercicio","Subir los brazos en frontal");
+            ejercio3.put("intensidad","2 libras");
+            Map<String,Object> tiempo3 = new HashMap<>();
+            tiempo3.put("series","2");
+            tiempo3.put("repeticiones","10");
+            ejercio3.put("tiempo",tiempo3);
+
+            //EJERCICIO 3
+            ejercio4.put("finalidad","Fuerza");
+            ejercio4.put("tipo_de_ejercicio","Subir los brazos en lateral");
+            ejercio4.put("intensidad","2 libras");
+            Map<String,Object> tiempo4 = new HashMap<>();
+            tiempo4.put("series","2");
+            tiempo4.put("repeticiones","10");
+            ejercio4.put("tiempo",tiempo4);
+
+        }
+        else{
+
+            //EJERCICIO 3
+            ejercio3.put("finalidad","Fuerza");
+            ejercio3.put("tipo_de_ejercicio","Subir los brazos en frontal");
+            ejercio3.put("intensidad","2 libras");
+            Map<String,Object> tiempo3 = new HashMap<>();
+            tiempo3.put("series","2");
+            tiempo3.put("repeticiones","15");
+            ejercio3.put("tiempo",tiempo3);
+
+            //EJERCICIO 4
+            ejercio4.put("finalidad","Fuerza");
+            ejercio4.put("tipo_de_ejercicio","Subir los brazos en lateral");
+            ejercio4.put("intensidad","2 libras");
+            Map<String,Object> tiempo4 = new HashMap<>();
+            tiempo4.put("series","2");
+            tiempo4.put("repeticiones","15");
+            ejercio4.put("tiempo",tiempo4);
+        }
+
+        //EJERCICIO 5
+        ejercio5.put("finalidad","Estiramiento");
+        ejercio5.put("tipo_de_ejercicio","Cuello");
+        ejercio5.put("intensidad","Normal");
+        Map<String,Object> tiempo5 = new HashMap<>();
+        tiempo5.put("minutos","00");
+        tiempo5.put("segundos","30");
+        ejercio5.put("tiempo",tiempo5);
+
+        //EJERCICIO 6
+        ejercio6.put("finalidad","Estiramiento");
+        ejercio6.put("tipo_de_ejercicio","Espalda");
+        ejercio6.put("intensidad","Normal");
+        Map<String,Object> tiempo6 = new HashMap<>();
+        tiempo6.put("minutos","00");
+        tiempo6.put("segundos","30");
+        ejercio6.put("tiempo",tiempo6);
+
+        //EJERCICIO 7
+        ejercio7.put("finalidad","Estiramiento");
+        ejercio7.put("tipo_de_ejercicio","Miembros superiores");
+        ejercio7.put("intensidad","Normal");
+        Map<String,Object> tiempo7 = new HashMap<>();
+        tiempo7.put("minutos","00");
+        tiempo7.put("segundos","30");
+        ejercio7.put("tiempo",tiempo7);
+
+        //EJERCICIO 8
+        ejercio8.put("finalidad","Estiramiento");
+        ejercio8.put("tipo_de_ejercicio","Miembros inferiores");
+        ejercio8.put("intensidad","Normal");
+        Map<String,Object> tiempo8 = new HashMap<>();
+        tiempo8.put("minutos","00");
+        tiempo8.put("segundos","30");
+        ejercio8.put("tiempo",tiempo8);
+
+        Map<String,Object> ejercicios = new HashMap<>();
+        ejercicios.put("fecha",fecha);
+        ejercicios.put("ejercicio_1",ejercio1);
+        ejercicios.put("ejercicio_2",ejercio2);
+        ejercicios.put("ejercicio_3",ejercio3);
+        ejercicios.put("ejercicio_4",ejercio4);
+        ejercicios.put("ejercicio_5",ejercio5);
+        ejercicios.put("ejercicio_6",ejercio6);
+        ejercicios.put("ejercicio_7",ejercio7);
+        ejercicios.put("ejercicio_8",ejercio8);
+
+
+        String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
+
+        mDatabase.child("Entrenamientos").child(id).setValue(ejercicios).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()){
+
+                }else{
+                    Toast.makeText(FormularioInfoPersonal2.this,"No se pudo crear plan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    public void planEntrenamientoAlto(){
+
+
+        //Fecha actual
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = dateFormat.format(date) + "";
+
+
+        //Base de datos Firebase
+        Map<String,Object> ejercio1 = new HashMap<>();
+        Map<String,Object> ejercio2 = new HashMap<>();
+        Map<String,Object> ejercio3 = new HashMap<>();
+        Map<String,Object> ejercio4 = new HashMap<>();
+        Map<String,Object> ejercio5 = new HashMap<>();
+        Map<String,Object> ejercio6 = new HashMap<>();
+        Map<String,Object> ejercio7 = new HashMap<>();
+        Map<String,Object> ejercio8 = new HashMap<>();
+
+        //EJERCICIO 1
+        ejercio1.put("finalidad","Calentamiento");
+        ejercio1.put("tipo_de_ejercicio","Subir escaleras");
+        ejercio1.put("intensidad","Normal");
+        Map<String,Object> tiempo1 = new HashMap<>();
+        tiempo1.put("minutos","" + "12");
+        tiempo1.put("segundos","00");
+        ejercio1.put("tiempo",tiempo1);
+
+        //EJERCICIO 2
+        ejercio2.put("finalidad","Calentamiento");
+        ejercio2.put("tipo_de_ejercicio","caminata");
+        ejercio2.put("intensidad","Normal");
+        Map<String,Object> tiempo2 = new HashMap<>();
+        tiempo2.put("minutos","30");
+        tiempo2.put("segundos","00");
+        ejercio2.put("tiempo",tiempo2);
+
+        if (rEdad.equals("Si")){
+
+            //EJERCICIO 3
+            ejercio3.put("finalidad","Fuerza");
+            ejercio3.put("tipo_de_ejercicio","Subir los brazos en frontal");
+            ejercio3.put("intensidad","2 libras");
+            Map<String,Object> tiempo3 = new HashMap<>();
+            tiempo3.put("series","2");
+            tiempo3.put("repeticiones","8");
+            ejercio3.put("tiempo",tiempo3);
+
+            //EJERCICIO 3
+            ejercio4.put("finalidad","Fuerza");
+            ejercio4.put("tipo_de_ejercicio","Subir los brazos en lateral");
+            ejercio4.put("intensidad","2 libras");
+            Map<String,Object> tiempo4 = new HashMap<>();
+            tiempo4.put("series","2");
+            tiempo4.put("repeticiones","8");
+            ejercio4.put("tiempo",tiempo4);
+
+        }
+        else{
+
+            //EJERCICIO 3
+            ejercio3.put("finalidad","Fuerza");
+            ejercio3.put("tipo_de_ejercicio","Subir los brazos en frontal");
+            ejercio3.put("intensidad","2 libras");
+            Map<String,Object> tiempo3 = new HashMap<>();
+            tiempo3.put("series","2");
+            tiempo3.put("repeticiones","17");
+            ejercio3.put("tiempo",tiempo3);
+
+            //EJERCICIO 4
+            ejercio4.put("finalidad","Fuerza");
+            ejercio4.put("tipo_de_ejercicio","Subir los brazos en lateral");
+            ejercio4.put("intensidad","2 libras");
+            Map<String,Object> tiempo4 = new HashMap<>();
+            tiempo4.put("series","2");
+            tiempo4.put("repeticiones","17");
+            ejercio4.put("tiempo",tiempo4);
+        }
+
+        //EJERCICIO 5
+        ejercio5.put("finalidad","Estiramiento");
+        ejercio5.put("tipo_de_ejercicio","Cuello");
+        ejercio5.put("intensidad","Normal");
+        Map<String,Object> tiempo5 = new HashMap<>();
+        tiempo5.put("minutos","00");
+        tiempo5.put("segundos","30");
+        ejercio5.put("tiempo",tiempo5);
+
+        //EJERCICIO 6
+        ejercio6.put("finalidad","Estiramiento");
+        ejercio6.put("tipo_de_ejercicio","Espalda");
+        ejercio6.put("intensidad","Normal");
+        Map<String,Object> tiempo6 = new HashMap<>();
+        tiempo6.put("minutos","00");
+        tiempo6.put("segundos","30");
+        ejercio6.put("tiempo",tiempo6);
+
+        //EJERCICIO 7
+        ejercio7.put("finalidad","Estiramiento");
+        ejercio7.put("tipo_de_ejercicio","Miembros superiores");
+        ejercio7.put("intensidad","Normal");
+        Map<String,Object> tiempo7 = new HashMap<>();
+        tiempo7.put("minutos","00");
+        tiempo7.put("segundos","30");
+        ejercio7.put("tiempo",tiempo7);
+
+        //EJERCICIO 8
+        ejercio8.put("finalidad","Estiramiento");
+        ejercio8.put("tipo_de_ejercicio","Miembros inferiores");
+        ejercio8.put("intensidad","Normal");
+        Map<String,Object> tiempo8 = new HashMap<>();
+        tiempo8.put("minutos","00");
+        tiempo8.put("segundos","30");
+        ejercio8.put("tiempo",tiempo8);
+
+        Map<String,Object> ejercicios = new HashMap<>();
+        ejercicios.put("fecha",fecha);
+        ejercicios.put("ejercicio_1",ejercio1);
+        ejercicios.put("ejercicio_2",ejercio2);
+        ejercicios.put("ejercicio_3",ejercio3);
+        ejercicios.put("ejercicio_4",ejercio4);
+        ejercicios.put("ejercicio_5",ejercio5);
+        ejercicios.put("ejercicio_6",ejercio6);
+        ejercicios.put("ejercicio_7",ejercio7);
+        ejercicios.put("ejercicio_8",ejercio8);
+
+
+        String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
+
+        mDatabase.child("Entrenamientos").child(id).setValue(ejercicios).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()){
+
+                }else{
+                    Toast.makeText(FormularioInfoPersonal2.this,"No se pudo crear plan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+
+    public void planEntrenamientoMuyAlto(){
+
+
+        //Fecha actual
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String fecha = dateFormat.format(date) + "";
+
+
+        //Base de datos Firebase
+        Map<String,Object> ejercio1 = new HashMap<>();
+        Map<String,Object> ejercio2 = new HashMap<>();
+        Map<String,Object> ejercio3 = new HashMap<>();
+        Map<String,Object> ejercio4 = new HashMap<>();
+        Map<String,Object> ejercio5 = new HashMap<>();
+        Map<String,Object> ejercio6 = new HashMap<>();
+        Map<String,Object> ejercio7 = new HashMap<>();
+        Map<String,Object> ejercio8 = new HashMap<>();
+
+        //EJERCICIO 1
+        ejercio1.put("finalidad","Calentamiento");
+        ejercio1.put("tipo_de_ejercicio","Subir escaleras");
+        ejercio1.put("intensidad","Normal");
+        Map<String,Object> tiempo1 = new HashMap<>();
+        tiempo1.put("minutos","" + "12");
+        tiempo1.put("segundos","00");
+        ejercio1.put("tiempo",tiempo1);
+
+        //EJERCICIO 2
+        ejercio2.put("finalidad","Calentamiento");
+        ejercio2.put("tipo_de_ejercicio","caminata");
+        ejercio2.put("intensidad","Normal");
+        Map<String,Object> tiempo2 = new HashMap<>();
+        tiempo2.put("minutos","30");
+        tiempo2.put("segundos","00");
+        ejercio2.put("tiempo",tiempo2);
+
+        if (rEdad.equals("Si")){
+
+            //EJERCICIO 3
+            ejercio3.put("finalidad","Fuerza");
+            ejercio3.put("tipo_de_ejercicio","Subir los brazos en frontal");
+            ejercio3.put("intensidad","2 libras");
+            Map<String,Object> tiempo3 = new HashMap<>();
+            tiempo3.put("series","2");
+            tiempo3.put("repeticiones","8");
+            ejercio3.put("tiempo",tiempo3);
+
+            //EJERCICIO 3
+            ejercio4.put("finalidad","Fuerza");
+            ejercio4.put("tipo_de_ejercicio","Subir los brazos en lateral");
+            ejercio4.put("intensidad","2 libras");
+            Map<String,Object> tiempo4 = new HashMap<>();
+            tiempo4.put("series","2");
+            tiempo4.put("repeticiones","8");
+            ejercio4.put("tiempo",tiempo4);
+
+        }
+        else{
+
+            //EJERCICIO 3
+            ejercio3.put("finalidad","Fuerza");
+            ejercio3.put("tipo_de_ejercicio","Subir los brazos en frontal");
+            ejercio3.put("intensidad","2 libras");
+            Map<String,Object> tiempo3 = new HashMap<>();
+            tiempo3.put("series","3");
+            tiempo3.put("repeticiones","15");
+            ejercio3.put("tiempo",tiempo3);
+
+            //EJERCICIO 4
+            ejercio4.put("finalidad","Fuerza");
+            ejercio4.put("tipo_de_ejercicio","Subir los brazos en lateral");
+            ejercio4.put("intensidad","2 libras");
+            Map<String,Object> tiempo4 = new HashMap<>();
+            tiempo4.put("series","3");
+            tiempo4.put("repeticiones","15");
+            ejercio4.put("tiempo",tiempo4);
+        }
+
+        //EJERCICIO 5
+        ejercio5.put("finalidad","Estiramiento");
+        ejercio5.put("tipo_de_ejercicio","Cuello");
+        ejercio5.put("intensidad","Normal");
+        Map<String,Object> tiempo5 = new HashMap<>();
+        tiempo5.put("minutos","00");
+        tiempo5.put("segundos","30");
+        ejercio5.put("tiempo",tiempo5);
+
+        //EJERCICIO 6
+        ejercio6.put("finalidad","Estiramiento");
+        ejercio6.put("tipo_de_ejercicio","Espalda");
+        ejercio6.put("intensidad","Normal");
+        Map<String,Object> tiempo6 = new HashMap<>();
+        tiempo6.put("minutos","00");
+        tiempo6.put("segundos","30");
+        ejercio6.put("tiempo",tiempo6);
+
+        //EJERCICIO 7
+        ejercio7.put("finalidad","Estiramiento");
+        ejercio7.put("tipo_de_ejercicio","Miembros superiores");
+        ejercio7.put("intensidad","Normal");
+        Map<String,Object> tiempo7 = new HashMap<>();
+        tiempo7.put("minutos","00");
+        tiempo7.put("segundos","30");
+        ejercio7.put("tiempo",tiempo7);
+
+        //EJERCICIO 8
+        ejercio8.put("finalidad","Estiramiento");
+        ejercio8.put("tipo_de_ejercicio","Miembros inferiores");
+        ejercio8.put("intensidad","Normal");
+        Map<String,Object> tiempo8 = new HashMap<>();
+        tiempo8.put("minutos","00");
+        tiempo8.put("segundos","30");
+        ejercio8.put("tiempo",tiempo8);
+
+        Map<String,Object> ejercicios = new HashMap<>();
+        ejercicios.put("fecha",fecha);
+        ejercicios.put("ejercicio_1",ejercio1);
+        ejercicios.put("ejercicio_2",ejercio2);
+        ejercicios.put("ejercicio_3",ejercio3);
+        ejercicios.put("ejercicio_4",ejercio4);
+        ejercicios.put("ejercicio_5",ejercio5);
+        ejercicios.put("ejercicio_6",ejercio6);
+        ejercicios.put("ejercicio_7",ejercio7);
+        ejercicios.put("ejercicio_8",ejercio8);
+
+
+        String id= mAuth.getCurrentUser().getUid(); // Obtiene id que da firebase
+
+        mDatabase.child("Entrenamientos").child(id).setValue(ejercicios).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if (task.isSuccessful()){
+
+                }else{
+                    Toast.makeText(FormularioInfoPersonal2.this,"No se pudo crear plan", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
 
 }
 

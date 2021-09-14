@@ -23,6 +23,7 @@ public class Nutricion extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List_Nutricion[] myMovieData = new List_Nutricion[]{
+
                 new List_Nutricion("Cereales","Consumalo en porciones moderadas",R.drawable.nutricion_cereal),
                 new List_Nutricion("Vegetales","Consumalo en porciones moderadas",R.drawable.nutricion_vegetales),
                 new List_Nutricion("Frutas","Consumalo en porciones moderadas",R.drawable.nutricion_frutas),
@@ -40,8 +41,6 @@ public class Nutricion extends AppCompatActivity {
                 new List_Nutricion("Comidas saladas","Anule su consumo",R.drawable.nutricion_sal),
                 new List_Nutricion("Alcohol","Anule su consumo",R.drawable.nutricion_cerveza),
                 new List_Nutricion("Alimentos fritos","Anule su consumo",R.drawable.nutricion_frito),
-
-
         };
 
         Adapter_Nutricion adapterRecome = new Adapter_Nutricion(myMovieData, Nutricion.this);

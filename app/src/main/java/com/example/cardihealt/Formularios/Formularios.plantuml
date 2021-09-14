@@ -1,0 +1,177 @@
+@startuml
+
+title __FORMULARIOS's Class Diagram__\n
+
+  namespace com.example.cardihealt {
+    namespace Formularios {
+      class com.example.cardihealt.Formularios.FormularioInfoPersonal {
+          ~ apellido : String
+          ~ btnSiguiente : ImageButton
+          ~ edad : String
+          ~ etApellido : EditText
+          ~ etFechaN : EditText
+          ~ etNombre : EditText
+          ~ fechaNacimiento : String
+          ~ genero : String
+          ~ genetica : String
+          ~ hombre : RadioButton
+          ~ mujer : RadioButton
+          ~ noG : RadioButton
+          ~ nombre : String
+          ~ siG : RadioButton
+          - mAuth : FirebaseAuth
+          - mDatabase : DatabaseReference
+          + calcEdad()
+          + crearDB()
+          + etFechaEdad()
+          + genero()
+          + genetica()
+          + onClick()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Formularios {
+      class com.example.cardihealt.Formularios.FormularioInfoPersonal1 {
+          ~ altura : String
+          ~ añosF : EditText
+          ~ añosFumador : String
+          ~ btnSiguiente : ImageButton
+          ~ cadera : String
+          ~ cbCianosis : CheckBox
+          ~ cbColesterol : CheckBox
+          ~ cbDiabetes : CheckBox
+          ~ cbHipertension : CheckBox
+          ~ cianosis : String
+          ~ cintura : String
+          ~ colesterol : String
+          ~ diabetes : String
+          ~ etAltura : EditText
+          ~ etCadera : EditText
+          ~ etCintura : EditText
+          ~ etPeso : EditText
+          ~ fuma : String
+          ~ hipertension : String
+          ~ no : RadioButton
+          ~ numeroC : EditText
+          ~ numeroCigarrillos : String
+          ~ peso : String
+          ~ si : RadioButton
+          - mAuth : FirebaseAuth
+          - mDatabase : DatabaseReference
+          + cianosis()
+          + colesterol()
+          + crearDB()
+          + diabetes()
+          + fumador()
+          + hipertension()
+          + onClick()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Formularios {
+      class com.example.cardihealt.Formularios.FormularioInfoPersonal2 {
+          ~ actividadF : String
+          ~ altura : double
+          ~ alturaDb : String
+          ~ apellido : String
+          ~ añosFDb : String
+          ~ añosFumador : int
+          ~ btnSiguiente1 : ImageButton
+          ~ cadera : double
+          ~ caderaDb : String
+          ~ caminarL : CheckBox
+          ~ cianosisDb : String
+          ~ cicla : CheckBox
+          ~ cintura : double
+          ~ cinturaDb : String
+          ~ cocinar : CheckBox
+          ~ colesterolDb : String
+          ~ conducir : CheckBox
+          ~ diabetesDb : String
+          ~ disnea : String
+          ~ disnea0 : RadioButton
+          ~ disnea1 : RadioButton
+          ~ disnea2 : RadioButton
+          ~ disnea3 : RadioButton
+          ~ dormir : CheckBox
+          ~ edadDb : String
+          ~ energiaC : double
+          ~ fumaDb : String
+          ~ generoDb : String
+          ~ geneticaDb : String
+          ~ hipertensionDb : String
+          ~ imc : double
+          ~ imcS : String
+          ~ indiceTabaquico : int
+          ~ leer : CheckBox
+          ~ nombre : String
+          ~ numeroCDb : String
+          ~ numeroCigarrillos : int
+          ~ perAbd : double
+          ~ peso : double
+          ~ pesoDb : String
+          ~ planchar : CheckBox
+          ~ rEdad : String
+          ~ regCheckbx : CheckBox
+          ~ riesgoEpoc : int
+          ~ riesgoLetras : String
+          ~ riesgoPerAb : String
+          ~ riesgoPor : String
+          ~ riesgoProm : int
+          ~ riesgoT : int
+          ~ saltarC : CheckBox
+          ~ trabajoE : CheckBox
+          ~ trotar : CheckBox
+          ~ verTv : CheckBox
+          - mAuth : FirebaseAuth
+          - mDatabase : DatabaseReference
+          + actividadFis()
+          + crearDB()
+          + crearDBInforme()
+          + disnea()
+          + ejerciciosPlanPersonaliado()
+          + indiceMasaCorporal()
+          + informeDatabase()
+          + onClick()
+          + planEntrenamientoAlto()
+          + planEntrenamientoBajo()
+          + planEntrenamientoMedio()
+          + planEntrenamientoMuyAlto()
+          + revisarSintomas()
+          + riesgoAbdominal()
+          + riesgoActividadFisica()
+          + riesgoAntecedentes()
+          + riesgoGenetico()
+          + riesgoPorEdad()
+          + riesgoPorTabaco()
+          + riesgoPromedio()
+          # onCreate()
+      }
+    }
+  }
+  
+
+  com.example.cardihealt.Formularios.FormularioInfoPersonal .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Formularios.FormularioInfoPersonal -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.cardihealt.Formularios.FormularioInfoPersonal1 .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Formularios.FormularioInfoPersonal1 -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.cardihealt.Formularios.FormularioInfoPersonal2 .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Formularios.FormularioInfoPersonal2 -up-|> androidx.appcompat.app.AppCompatActivity
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

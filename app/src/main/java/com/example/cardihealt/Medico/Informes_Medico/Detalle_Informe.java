@@ -122,7 +122,7 @@ public class Detalle_Informe extends AppCompatActivity {
         }
         if(titulo.equals("Estado Actual")){
             String sCadena = getIntent().getStringExtra("perimetroAbdominal");
-            String sSubCadena = sCadena.substring(0,4);
+            String sSubCadena = sCadena.substring(0,3);
             dato3= "Perimetro Abdominal: "+ sSubCadena;
         }
         if(titulo.equals("Riesgo")){
@@ -152,10 +152,10 @@ public class Detalle_Informe extends AppCompatActivity {
     public String editarText5(String titulo){
 
         if(titulo.equals("Infrormación Personal")){
-            dato5= "Riesgo por antecedentes: "+getIntent().getStringExtra("riesgoEstimado");
+            dato5= "Riesgo por antecedentes: "+getIntent().getStringExtra("riesgoGenetico");
         }
         if(titulo.equals("Estado Actual")){
-            dato5= "Enfermedades base: "+ getIntent().getStringExtra("riesgoGenetico");
+            dato5= "Enfermedades base: "+ getIntent().getStringExtra("antecedentes");
         }
         if(titulo.equals("Riesgo")){
             dato5= "Posee un riesgo: "+getIntent().getStringExtra("riesgo");

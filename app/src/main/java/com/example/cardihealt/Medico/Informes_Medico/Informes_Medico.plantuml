@@ -1,0 +1,228 @@
+@startuml
+
+title __INFORMES_MEDICO's Class Diagram__\n
+
+  namespace com.example.cardihealt {
+    namespace Medico {
+      namespace Informes_Medico {
+        class com.example.cardihealt.Medico.Informes_Medico.Detalle_Informe {
+            ~ tabLayout : TabLayout
+            ~ viewPager : ViewPager
+            - dato1 : String
+            - dato2 : String
+            - dato3 : String
+            - dato4 : String
+            - dato5 : String
+            + editarText1()
+            + editarText2()
+            + editarText3()
+            + editarText4()
+            + editarText5()
+            # onCreate()
+            - prepareViewPager()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Medico {
+      namespace Informes_Medico {
+        class com.example.cardihealt.Medico.Informes_Medico.Detalle_Informe.MainAdapter {
+            ~ arrayList : ArrayList<String>
+            ~ fragmentList : List<Fragment>
+            + MainAdapter()
+            + addFragment()
+            + getCount()
+            + getItem()
+            + getPageTitle()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Medico {
+      namespace Informes_Medico {
+        class com.example.cardihealt.Medico.Informes_Medico.EnvioCorreo {
+            ~ asunto : TextView
+            ~ correoEnvio : String
+            ~ tvCorreo : TextView
+            ~ tvMensajeoEnvio : EditText
+            - btnEnviarCorreo : Button
+            + onClick()
+            # onCreate()
+            - sendMail()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Medico {
+      namespace Informes_Medico {
+        class com.example.cardihealt.Medico.Informes_Medico.InformeAdapter {
+            - informesList : ArrayList<InformesUsuario>
+            - resourse : int
+            + InformeAdapter()
+            + getItemCount()
+            + onBindViewHolder()
+            + onCreateViewHolder()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Medico {
+      namespace Informes_Medico {
+        class com.example.cardihealt.Medico.Informes_Medico.InformeAdapter.ViewHolder {
+            + view : View
+            - apellido : TextView
+            - nombre : TextView
+            - riesgo : TextView
+            + ViewHolder()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Medico {
+      namespace Informes_Medico {
+        class com.example.cardihealt.Medico.Informes_Medico.InformesMedicoFragment {
+            ~ email : String
+            ~ key : String
+            ~ mensaje : ImageButton
+            {static} - ARG_PARAM1 : String
+            {static} - ARG_PARAM2 : String
+            - mParam1 : String
+            - mParam2 : String
+            + InformesMedicoFragment()
+            {static} + newInstance()
+            + onClick()
+            + onCreate()
+            + onCreateView()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Medico {
+      namespace Informes_Medico {
+        class com.example.cardihealt.Medico.Informes_Medico.InformesUsuario {
+            ~ actividadFisica : String
+            ~ antecedentes : String
+            ~ apellido : String
+            ~ contextura : String
+            ~ edad : String
+            ~ email : String
+            ~ fecha : String
+            ~ genero : String
+            ~ indiceMasaCorporal : String
+            ~ indiceTabaquico : String
+            ~ key : String
+            ~ nombre : String
+            ~ perimetroAbdominal : String
+            ~ puntajePrueba : String
+            ~ riesgo : String
+            ~ riesgoEdad : String
+            ~ riesgoEpoc : String
+            ~ riesgoEstimado : String
+            ~ riesgoGenetico : String
+            ~ riesgoPerimetroAbd : String
+            + InformesUsuario()
+            + getActividadFisica()
+            + getAntecedentes()
+            + getApellido()
+            + getContextura()
+            + getEdad()
+            + getEmail()
+            + getFecha()
+            + getGenero()
+            + getIndiceMasaCorporal()
+            + getIndiceTabaquico()
+            + getKey()
+            + getNombre()
+            + getPerimetroAbdominal()
+            + getPuntajePrueba()
+            + getRiesgo()
+            + getRiesgoEdad()
+            + getRiesgoEpoc()
+            + getRiesgoEstimado()
+            + getRiesgoGenetico()
+            + getRiesgoPerimetroAbd()
+            + setActividadFisica()
+            + setAntecedentes()
+            + setApellido()
+            + setContextura()
+            + setEdad()
+            + setEmail()
+            + setFecha()
+            + setGenero()
+            + setIndiceMasaCorporal()
+            + setIndiceTabaquico()
+            + setKey()
+            + setNombre()
+            + setPerimetroAbdominal()
+            + setPuntajePrueba()
+            + setRiesgo()
+            + setRiesgoEdad()
+            + setRiesgoEpoc()
+            + setRiesgoEstimado()
+            + setRiesgoGenetico()
+            + setRiesgoPerimetroAbd()
+        }
+      }
+    }
+  }
+  
+
+  namespace com.example.cardihealt {
+    namespace Medico {
+      namespace Informes_Medico {
+        class com.example.cardihealt.Medico.Informes_Medico.MostrarInformes {
+            - nAuth : FirebaseAuth
+            - nDatabase : DatabaseReference
+            - nInformesList : ArrayList<InformesUsuario>
+            - nRecyclerView : RecyclerView
+            + onClick()
+            # onCreate()
+            - getInformeFromFirebase()
+        }
+      }
+    }
+  }
+  
+
+  com.example.cardihealt.Medico.Informes_Medico.Detalle_Informe -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.cardihealt.Medico.Informes_Medico.Detalle_Informe o-- com.example.cardihealt.Medico.Informes_Medico.InformesUsuario : itemDetail
+  com.example.cardihealt.Medico.Informes_Medico.Detalle_Informe +-down- com.example.cardihealt.Medico.Informes_Medico.Detalle_Informe.MainAdapter
+  com.example.cardihealt.Medico.Informes_Medico.Detalle_Informe.MainAdapter -up-|> androidx.fragment.app.FragmentPagerAdapter
+  com.example.cardihealt.Medico.Informes_Medico.EnvioCorreo .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Medico.Informes_Medico.EnvioCorreo -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.cardihealt.Medico.Informes_Medico.InformeAdapter -up-|> androidx.recyclerview.widget.RecyclerView.Adapter
+  com.example.cardihealt.Medico.Informes_Medico.InformeAdapter +-down- com.example.cardihealt.Medico.Informes_Medico.InformeAdapter.ViewHolder
+  com.example.cardihealt.Medico.Informes_Medico.InformeAdapter.ViewHolder -up-|> androidx.recyclerview.widget.RecyclerView.ViewHolder
+  com.example.cardihealt.Medico.Informes_Medico.InformesMedicoFragment .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Medico.Informes_Medico.InformesMedicoFragment -up-|> androidx.fragment.app.Fragment
+  com.example.cardihealt.Medico.Informes_Medico.MostrarInformes .up.|> android.view.View.OnClickListener
+  com.example.cardihealt.Medico.Informes_Medico.MostrarInformes -up-|> androidx.appcompat.app.AppCompatActivity
+  com.example.cardihealt.Medico.Informes_Medico.MostrarInformes o-- com.example.cardihealt.Medico.Informes_Medico.InformeAdapter : iAdapter
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

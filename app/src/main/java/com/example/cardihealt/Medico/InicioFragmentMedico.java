@@ -117,7 +117,7 @@ public class InicioFragmentMedico extends Fragment {
                 mGoogleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        //Abrir MainActivity con SigIn button
+                        //Abrir FormularioInfoPersonalComida con SigIn button
                         if(task.isSuccessful()){
                             Intent mainActivity = new Intent(getContext(), Login.class);
                             startActivity(mainActivity);

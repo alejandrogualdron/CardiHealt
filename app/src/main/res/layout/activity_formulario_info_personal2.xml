@@ -19,7 +19,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/cabin_bold"
-        android:text="Marque a continuación que actividades realiza diariamente sin falta:"
+        android:text="Marque a continuación que actividades realiza generalmente:"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,15 +51,15 @@
         app:layout_constraintTop_toTopOf="@+id/cbCocinar" />
 
     <CheckBox
-        android:id="@+id/cbCicla"
+        android:id="@+id/cbMontarCicla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/cabin_bold"
         android:text="Montar cicla"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/cbVerTv"
-        app:layout_constraintTop_toBottomOf="@+id/cbVerTv" />
+        app:layout_constraintStart_toStartOf="@+id/cbVerTelevision"
+        app:layout_constraintTop_toBottomOf="@+id/cbVerTelevision" />
 
     <CheckBox
         android:id="@+id/cbCocinar"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cbPlanchar" />
 
     <CheckBox
-        android:id="@+id/cbCaminarLento"
+        android:id="@+id/cbCaminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/cabin_bold"
@@ -96,7 +96,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cbConducir" />
 
     <CheckBox
-        android:id="@+id/cbLeer"
+        android:id="@+id/cbPollo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/cabin_bold"
@@ -107,7 +107,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cbDormir" />
 
     <CheckBox
-        android:id="@+id/cbTrabajoEscritorio"
+        android:id="@+id/cbTiempoSentado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/cabin_bold"
@@ -125,8 +125,8 @@
         android:text="Trotar"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/cbLeer"
-        app:layout_constraintTop_toBottomOf="@+id/cbLeer" />
+        app:layout_constraintStart_toStartOf="@+id/cbPollo"
+        app:layout_constraintTop_toBottomOf="@+id/cbPollo" />
 
     <CheckBox
         android:id="@+id/cbPlanchar"
@@ -141,7 +141,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cbDormir" />
 
     <CheckBox
-        android:id="@+id/cbVerTv"
+        android:id="@+id/cbVerTelevision"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/cabin_bold"
@@ -149,10 +149,10 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/cbSaltarCuerda"
-        app:layout_constraintTop_toTopOf="@+id/cbLeer" />
+        app:layout_constraintTop_toTopOf="@+id/cbPollo" />
 
     <ImageButton
-        android:id="@+id/btnSiguienteFormul2"
+        android:id="@+id/btnSiguienteFormulario2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -185,8 +185,8 @@
         android:text="¿Tiene sensación de ahogo?"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/cbCaminarLento"
-        app:layout_constraintTop_toBottomOf="@+id/cbTrabajoEscritorio" />
+        app:layout_constraintStart_toStartOf="@+id/cbCaminar"
+        app:layout_constraintTop_toBottomOf="@+id/cbTiempoSentado" />
 
     <RadioGroup
         android:id="@+id/radioGroup3"
